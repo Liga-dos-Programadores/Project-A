@@ -1,2 +1,1 @@
-# ProjectA
-Bot Simples para o Discord, feito para estudantes de JavaScript ou interessados na discord.js
+![TypoLogo](https://i.imgur.com/AxI9yNz.png)
