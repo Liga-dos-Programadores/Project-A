@@ -1,1 +1,3 @@
-![TypoLogo](https://i.imgur.com/AxI9yNz.png)
+<p align="center">
+  <img src="https://i.imgur.com/AxI9yNz.png">
+</p>
