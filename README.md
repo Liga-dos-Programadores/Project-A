@@ -11,4 +11,5 @@ Nós da Liga dos Programadores. sempre se preocupamos em ajudar entusiastas em p
 ### Instalação
 ---
 Após ter clonado o repositorio e extraido todos arquivos. tenha certeza que possui o **npm** e o **node.js 8.0.0** ou mais recente. caso estiver com tudo pronto então execute o seguinte comando no diretorio dos arquivos.
-`$ npm install --save`
+
+```$ npm install --save```
