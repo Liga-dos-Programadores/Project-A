@@ -1,0 +1,16 @@
+{
+  "name": "project-a",
+  "version": "1.0.0",
+  "description": "Um simples bot para o discord.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Katho",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": ">=11.2.1",
+    "enmap": ">=0.3.2",
+    "mongoose": ">=4.12.0"
+  }
+}
