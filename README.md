@@ -15,3 +15,44 @@ Nós da Liga dos Programadores. sempre se preocupamos em ajudar entusiastas em p
 Após ter clonado o repositorio e extraido todos arquivos. tenha certeza que possui o [npm](https://www.npmjs.com/) e o [node.js 8.0.0](https://nodejs.org/en/) ou mais recente. caso estiver com tudo pronto então execute o seguinte comando no diretorio dos arquivos.
 
 ```$ npm install --save```
+
+Caso tudo der certo apos disso então coloque seu token de acesso no arquivo **config.js**
+
+```javascript
+module.exports = {
+  /** Token de Autorização do Bot. */
+  AUTH_TOKEN: "seu token magico aqui...",
+  /** Prefixo dos comandos. */
+  PREFIX: "p!",
+  /** Texto que aparecera no "Jogando..." */
+  GAME: "p!help",
+}
+```
+
+Então agora você pode iniciar seu bot... utilizando
+
+```$ node index```
+
+Caso a saida for esta então seu bot ja está completamente online...
+
+```
+log Carregando o total de 2 comandos.
+log Carregando comando: addlang
+log Carregando comando: help
+log Carregando o total de 2 eventos
+log O Bot foi iniciado completamente com XX usuarios em XX servidores
+```
+
+## Links
+* [Servidor do Discord A Liga dos Programadores](https://discord.gg/J78z3FV)
+* [Project: A GitHub](https://github.com/katho162/ProjectA)
+* [Twitter](https://twitter.com/123katho)
+
+## Doações
+Para fazer doações entre em contato em nosso servidor do discord.
+
+## Contribuições
+Aceitarei Pull requests desde que tenham algum sentido e não sejam gambiarra. se quiser começar a participar de projetos open-source como este entre em contato em nosso servidor do discord.
+
+## Ajuda
+Caso tenha alguma dificuldade em entender este codigo ou de utilizado. também poderá nos contatar em nosso servidor do discord.
