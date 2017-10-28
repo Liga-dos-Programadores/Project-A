@@ -10,7 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": ">=11.2.1",
-    "enmap": ">=0.3.2",
-    "mongoose": ">=4.12.0"
+    "enmap": ">=0.3.2"
   }
 }
