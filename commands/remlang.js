@@ -56,7 +56,7 @@ exports.run = (client, message, args) => {
     else 
     {
         message.member.removeRole(role);
-        return message.reply(`*Beep boop!@* Agora você possui o cargo **${role.name}**`);
+        return message.reply(`*Beep boop!@* Agora você não possui mais o cargo **${role.name}**`);
     }
 };
 
