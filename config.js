@@ -4,5 +4,6 @@ module.exports = {
   /** Prefixo dos comandos. */
   PREFIX: "p!",
   /** Texto que aparecera no "Jogando..." */
-  GAME: "p!help",
+  GAME: "p!help"
+  /** Test Line **/
 }
