@@ -5,5 +5,4 @@ module.exports = {
   PREFIX: "p!",
   /** Texto que aparecera no "Jogando..." */
   GAME: "p!help"
-  /** Test Line **/
 }
