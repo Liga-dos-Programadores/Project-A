@@ -34,7 +34,7 @@ exports.run = (client, message, args) => {
     }
     else if (args[0].toLowerCase() == 'scala')
     {
-        role = message.guild.roles.find("name", "scala");
+        role = message.guild.roles.find("name", "Scala");
     }
     else if (args[0].toLowerCase() == 'golang')
     {
@@ -42,7 +42,7 @@ exports.run = (client, message, args) => {
     }
     else if (args[0].toLowerCase() == 'javascript')
     {
-        role = message.guild.roles.find("name", "javascript");
+        role = message.guild.roles.find("name", "JavaScript");
     }
     else return message.reply(`?? Talvez isso possa ajuda-lo: \`\`\`${message.settings.PREFIX}${this.help.usage}\`\`\``);
 
