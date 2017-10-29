@@ -48,8 +48,8 @@ exports.conf = {
 }
 
 exports.help = {
-    name:"remove",
+    name:"bulk",
     categorie: "Moderação",
     description: "Apaga mensagens de um canal.",
-    usage:"remove [1 - 100]"
+    usage:"bulk [1 - 100]"
 }
