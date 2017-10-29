@@ -67,7 +67,7 @@ exports.conf = {
 
 /** Aqui exportamos ajuda do comando como o seu nome categoria descrição etc... */
 exports.help = {
-    name: "re,lang",
+    name: "remlang",
     category: "Moderação",
     description: "Remove um cargo de alguma linguagem de programação a si proprio.",
     usage: "remlang [java|c/c++|c#|python|kotlin|scala|golang|javascript]"
