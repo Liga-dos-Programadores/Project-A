@@ -1,5 +1,4 @@
-/**
- * @author Katho
+﻿/**
  * THE MIT LICENSE.
  * 
  * Copyright 2017 A Liga dos Programadores
