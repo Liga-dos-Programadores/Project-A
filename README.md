@@ -11,7 +11,7 @@
 ## Um projeto totalmente livre para começar a usar o discord.js
 Nós da Liga dos Programadores. sempre se preocupamos em ajudar entusiastas em programação ou pessoas que se interessam pelo assunto então decidimos criar projetos de codigo 100% livre para ajudar estudantes ou novatos na area a se familiarizarem com codigos uteis e interessantes!
 Então fizemos este projeto. para quem quer se aprofundar muito em bots para o discord e JavaScript. combinamos as melhores praticas do JavaScript para criar um bot estruturado simples e funcional. com coisas como Command Handlers, Event Handlers e um comando help bonito e automatico!
-
+![](https://media.giphy.com/media/xT9IgHcDbNGIRSdKko/source.gif)
 ## Instalação
 Após ter clonado o repositorio e extraido todos arquivos. tenha certeza que possui o [npm](https://www.npmjs.com/) e o [node.js 8.0.0](https://nodejs.org/en/) ou mais recente. caso estiver com tudo pronto então execute o seguinte comando no diretorio dos arquivos.
 
