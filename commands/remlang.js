@@ -1,5 +1,5 @@
-/**
- * O Comando "remlang" adicionará os cargos aos membros.
+﻿/**
+ * O Comando "remlang" removera os cargos de programação dos membros.
  */
 
 /** Primeiro o metodo run(client, message, args) será executado pelo nosso arquivo message.js
