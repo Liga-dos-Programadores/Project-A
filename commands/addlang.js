@@ -46,7 +46,8 @@ exports.run = (client, message, args) => {
     }
     else
     {
-        message.react('🤔');
+        const emoji = message.guild.emojis.find("name", "thinkkk");
+        message.react(emoji);
         return message.reply(`?? Talvez isso possa ajuda-lo: \`\`\`${message.settings.PREFIX}${this.help.usage}\`\`\``);
     }
 
