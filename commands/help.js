@@ -29,6 +29,9 @@ exports.run = (client, message, args) => {
     );
   });
 
+  /** Adiciona uma reacao a mensagem. */
+  message.react(':ok_hand:');
+  
   /** Então envia a mensagem embed para o usuario. */
   message.author.send({embed: embed});
 
