@@ -44,7 +44,11 @@ exports.run = (client, message, args) => {
     {
         role = message.guild.roles.find("name", "JavaScript");
     }
-    else return message.reply(`?? Talvez isso possa ajuda-lo: \`\`\`${message.settings.PREFIX}${this.help.usage}\`\`\``);
+    else
+    {
+        message.react('🤔');
+        return message.reply(`?? Talvez isso possa ajuda-lo: \`\`\`${message.settings.PREFIX}${this.help.usage}\`\`\``);
+    }
 
     /** Logo então removemos o cargo do membro e mandamos uma mensagem como resposta
      * Caso o membro não possua o cargo então é enviada uma mensagem retornando.
@@ -53,7 +57,7 @@ exports.run = (client, message, args) => {
     {
         return message.reply(`Você não possui esse cargo!`);
     }
-    else 
+    else
     {
         message.member.removeRole(role);
         return message.reply(`*Beep boop!@* Agora você não possui mais o cargo **${role.name}**`);

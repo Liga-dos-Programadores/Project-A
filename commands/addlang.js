@@ -44,7 +44,11 @@ exports.run = (client, message, args) => {
     {
         role = message.guild.roles.find("name", "JavaScript");
     }
-    else return message.reply(`?? Talvez isso possa ajuda-lo: \`\`\`${message.settings.PREFIX}${this.help.usage}\`\`\``);
+    else
+    {
+        message.react('🤔');
+        return message.reply(`?? Talvez isso possa ajuda-lo: \`\`\`${message.settings.PREFIX}${this.help.usage}\`\`\``);
+    }
 
     /** Logo então atribuimos o cargo ao membro e mandamos uma mensagem como resposta
      * Caso o membro ja possua o cargo então é enviada uma mensagem retornando.
@@ -54,7 +58,7 @@ exports.run = (client, message, args) => {
         message.member.addRole(role);
         return message.reply(`*Beep boop!@* Agora você possui o cargo **${role.name}**`);
     }
-    else 
+    else
     {
         return message.reply(`Você ja possui este cargo!`);
     }
