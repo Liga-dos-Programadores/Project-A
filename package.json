@@ -4,12 +4,12 @@
   "description": "Um simples bot para o discord.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "author": "Katho",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "discord.js": ">=11.2.1",
-    "enmap": ">=0.3.2"
+    "discord.js": "^11.2",
+    "enmap": "^0.3"
   }
 }
