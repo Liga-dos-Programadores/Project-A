@@ -15,7 +15,7 @@ Então fizemos este projeto. para quem quer se aprofundar muito em bots para o d
 ## Instalação
 Após ter clonado o repositorio e extraido todos arquivos. tenha certeza que possui o [npm](https://www.npmjs.com/) e o [node.js 8.0.0](https://nodejs.org/en/) ou mais recente. caso estiver com tudo pronto então execute o seguinte comando no diretorio dos arquivos.
 
-```$ npm install --save```
+```$ npm install```
 
 Caso tudo der certo apos disso então coloque seu token de acesso no arquivo **config.js**
 
@@ -32,7 +32,7 @@ module.exports = {
 
 Então agora você pode iniciar seu bot... utilizando
 
-```$ node index```
+```$ npm start```
 
 Caso a saida for esta então seu bot ja está completamente online...
 
