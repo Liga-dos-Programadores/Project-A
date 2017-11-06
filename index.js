@@ -75,7 +75,7 @@ const init = async () =>
   });
 
   /** Então finalmente iniciamos o Bot. */
-  client.login(process.env.TOKEN);
+  client.login(client.settings.AUTH_TOKEN);
 
 };
 
