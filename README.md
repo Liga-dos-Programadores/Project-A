@@ -17,18 +17,20 @@ Após ter clonado o repositorio e extraido todos arquivos. tenha certeza que pos
 
 ```$ npm install```
 
-Caso tudo der certo apos disso então coloque seu token de acesso no arquivo **config.js**
+Caso tudo der certo apos disso então coloque suas configurações no arquivo **config.js**
 
 ```javascript
 module.exports = {
-  /** Token de Autorização do Bot. */
-  AUTH_TOKEN: "seu token magico aqui...",
   /** Prefixo dos comandos. */
   PREFIX: "p!",
   /** Texto que aparecera no "Jogando..." */
   GAME: "p!help",
 }
 ```
+
+Então coloque seu token de acesso como uma variavel de ambiente
+
+```$ SET TOKEN=SEU_TOKEN```
 
 Então agora você pode iniciar seu bot... utilizando
 
