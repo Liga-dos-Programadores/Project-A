@@ -44,6 +44,10 @@ exports.run = (client, message, args) => {
     {
         role = message.guild.roles.find("name", "JavaScript");
     }
+    else if (args[0].toLowerCase() == 'php')
+    {
+        role = message.guild.roles.find("name", "PHP");
+    }
     else
     {
         const emoji = message.guild.emojis.find("name", "thinkkk");
@@ -75,5 +79,5 @@ exports.help = {
     name: "addlang",
     category: "Moderação",
     description: "Adiciona um cargo de alguma linguagem de programação a si proprio.",
-    usage: "addlang [java|c/c++|c#|python|kotlin|scala|golang|javascript]"
+    usage: "addlang [java|c/c++|c#|python|kotlin|scala|golang|javascript|php]"
 }
