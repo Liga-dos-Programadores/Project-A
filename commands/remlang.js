@@ -20,9 +20,9 @@ exports.run = (client, message, args) => {
     {
         role = message.guild.roles.find("name", "Python");
     }
-    else if (args[0].toLowerCase() == 'c/c++')
+    else if (args[0].toLowerCase() == 'c++')
     {
-        role = message.guild.roles.find("name", "C/C++");
+        role = message.guild.roles.find("name", "C++");
     }
     else if (args[0].toLowerCase() == 'c#')
     {
@@ -47,6 +47,26 @@ exports.run = (client, message, args) => {
     else if (args[0].toLowerCase() == 'php')
     {
         role = message.guild.roles.find("name", "PHP");
+    }
+    else if (args[0].toLowerCase() == 'scala')
+    {
+        role = message.guild.roles.find("name", "Scala");
+    }
+    else if (args[0].toLowerCase() == 'clojure')
+    {
+        role = message.guild.roles.find("name", "Clojure");
+    }
+    else if (args[0].toLowerCase() == 'elixir')
+    {
+        role = message.guild.roles.find("name", "Elixir");
+    }
+    else if (args[0].toLowerCase() == 'c')
+    {
+        role = message.guild.roles.find("name", "C");
+    }
+    else if (args[0].toLowerCase() == 'swift')
+    {
+        role = message.guild.roles.find("name", "swift");
     }
     else
     {
