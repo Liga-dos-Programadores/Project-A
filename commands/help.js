@@ -33,7 +33,14 @@ exports.run = (client, message, args) => {
   message.react('👌');
   
   /** Então envia a mensagem embed para o usuario. */
-  message.author.send({embed: embed});
+  message.author.send({embed: embed})
+   /** Adiciona uma reacao a mensagem. */
+  .then(function (message) {
+    
+             message.react('👌');
+            }).catch(function() {
+              //Something
+             });
 
 };
 
