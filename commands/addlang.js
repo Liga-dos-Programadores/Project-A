@@ -36,9 +36,9 @@ exports.run = (client, message, args) => {
     {
         role = message.guild.roles.find("name", "Scala");
     }
-    else if (args[0].toLowerCase() == 'golang')
+    else if (args[0].toLowerCase() == 'go')
     {
-        role = message.guild.roles.find("name", "Golang");
+        role = message.guild.roles.find("name", "Go");
     }
     else if (args[0].toLowerCase() == 'javascript')
     {
@@ -66,7 +66,15 @@ exports.run = (client, message, args) => {
     }
     else if (args[0].toLowerCase() == 'swift')
     {
-        role = message.guild.roles.find("name", "swift");
+        role = message.guild.roles.find("name", "Swift");
+    }
+    else if (args[0].toLowerCase() == 'rust')
+    {
+        role = message.guild.roles.find("name", "Rust");
+    }
+    else if (args[0].toLowerCase() == 'assembly')
+    {
+        role = message.guild.roles.find("name", "Assembly");
     }
     else
     {
@@ -99,5 +107,5 @@ exports.help = {
     name: "addlang",
     category: "Moderação",
     description: "Adiciona um cargo de alguma linguagem de programação a si proprio.",
-    usage: "addlang [java|c/c++|c#|python|kotlin|scala|golang|javascript|php]"
+    usage: "addlang [java|c|c++|c#|python|kotlin|scala|go|javascript|php|swift|ruby|elixir|rust|assembly]"
 }

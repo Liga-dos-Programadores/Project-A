@@ -9,7 +9,7 @@
   "author": "Katho",
   "license": "MIT",
   "dependencies": {
-    "discord.js": "^11.2",
-    "enmap": "^0.3"
+    "discord.js": "*",
+    "enmap": "*"
   }
 }
