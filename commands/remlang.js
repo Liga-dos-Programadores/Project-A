@@ -107,5 +107,5 @@ exports.help = {
     name: "remlang",
     category: "Moderação",
     description: "Remove um cargo de alguma linguagem de programação a si proprio.",
-    usage: "remlang [java|c|c++|c#|python|kotlin|scala|go|javascript|php]"
+    usage: "remlang [java|c|c++|c#|python|kotlin|scala|go|javascript|php|swift|ruby|elixir|rust|assembly]"
 }
