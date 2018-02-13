@@ -2,7 +2,7 @@
  * O Evento message é emitido toda vez que o bot recebe uma mensagem.
  * Podemos usar este evento como uma espécie de middleware para impedir vulnarabilidades ou outras coisas.
  */
-module.exports = (client, message) => 
+module.exports = (client, message) =>
 {
   /** É uma boa pratica ignorar outros bots. isso faz o bot se auto-ignorar também.
    * E Também não entrara em um loop de spam...
@@ -11,6 +11,21 @@ module.exports = (client, message) =>
 
   /** Chamamos as configurações para pegar algumas coisas */
   message.settings = client.settings;
+
+  // Checamos se a mensagem é do canal #apresente-se
+  if (message.channel.id === message.settings.APRESENTACAO) {
+    // Checamos se o usuario tem a role "Apresentado"
+    role = message.guild.roles.find("name", "Apresentado");
+    if (!message.member.roles.exists("name", role.name)) {
+      // Se nao tiver, adicionamos ela
+      message.member.addRole(role).catch(console.error);
+      message.react('👍');
+    } else {
+      // Se ja tiver, a mensagem e considerada como spam e é removida
+      message.delete().catch(console.error);
+    }
+    // return;
+  }
 
   /** Outra boa pratica é ignorar qualquer mensagem que não começe com o prefixo escolhido do bot.
    * OBS: O PREFIXO E PEGO ATRAVES DAS CONFIGURAÇÕES EM client.settings.
