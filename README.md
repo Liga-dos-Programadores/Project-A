@@ -2,7 +2,7 @@
   <img src="https://i.imgur.com/pI0g7mg.png"><br>
   <img src="https://i.imgur.com/AxI9yNz.png"><br>
   <b>Um Simples Bot para o https://discordapp.com</b><br><br>
-  
+
   <p>
     <a href="https://discord.gg/J78z3FV" target="_blank"><img src="https://discordapp.com/api/guilds/366404358440615951/embed.png" alt="Discord server"/></a>
   </p>
@@ -27,6 +27,8 @@ module.exports = {
   PREFIX: "p!",
   /** Texto que aparecera no "Jogando..." */
   GAME: "p!help",
+  /** ID do chat de apresentacao */
+  APRESENTACAO: "395257984764346368"
 }
 ```
 
