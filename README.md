@@ -28,7 +28,7 @@ module.exports = {
   /** Texto que aparecera no "Jogando..." */
   GAME: "p!help",
   /** ID do chat de apresentacao */
-  APRESENTACAO: "395257984764346368"
+  APRESENTACAO: ""
 }
 ```
 
