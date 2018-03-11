@@ -15,7 +15,8 @@ exports.run = (client, message, args) => {
                     return (m.author == message.author && m.deletable)
                 });
                 // Verifica se a variavel acima tem elementos
-                if (usrMessages.array.length != 0)
+                console.log();
+                if (usrMessages.array().length != 0)
                 {
                     // se existirem mensagens do usuario...
                     usrMessages.deleteAll(); // remove todas as mensagens
