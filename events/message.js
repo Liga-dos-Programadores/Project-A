@@ -22,9 +22,29 @@ module.exports = (client, message) =>
       message.react('👍');
     } else {
       // Se ja tiver, a mensagem e considerada como spam e é removida
+      let embed = {
+        color: 0xB1103C,
+        title: 'Como resetar seu status de apresentação:',
+        description: 'Caso voce tenha errado a digitacao de algo em sua mensagem, posso te ajudar!\nBasta digitar o comando `p!reset` no chat de comandos do servidor para resetar a sua apresentação para que voce possa reescreve-la!'
+      }
+      message.author.createDM().then((dm) => {
+        dm.fetchMessages({limit: 1}).then((msg) => {
+          if (msg.first().embeds.length == 1)
+          {
+            console.log(msg.first().embeds[0].title);
+            if (msg.first().embeds[0].title != "Como resetar seu status de apresentação:")
+            {
+              message.author.send({embed}).catch(console.error);
+            }
+          }
+          else
+          {
+            message.author.send({embed}).catch(console.error);
+          }
+        });
+      });
       message.delete().catch(console.error);
     }
-    // return;
   }
 
   /** Outra boa pratica é ignorar qualquer mensagem que não começe com o prefixo escolhido do bot.
