@@ -22,18 +22,23 @@ module.exports = (client, message) =>
       message.react('👍');
     } else {
       // Se ja tiver, a mensagem e considerada como spam e é removida
+      // Define um objeto especificando o embed
       let embed = {
         color: 0xB1103C,
         title: 'Como resetar seu status de apresentação:',
         description: 'Caso voce tenha errado a digitacao de algo em sua mensagem, posso te ajudar!\nBasta digitar o comando `p!reset` no chat de comandos do servidor para resetar a sua apresentação para que voce possa reescreve-la!'
       }
+      // o metodo createDM faz com que o bot crie um "canal" de DM com o usuario
       message.author.createDM().then((dm) => {
+        // Pegamos a ultima mensagem da conversa (dm e um objeto da classe DMChannel)
         dm.fetchMessages({limit: 1}).then((msg) => {
+          // Se a primeira mensagem (a unica no caso) tiver exatamente 1 embed...
           if (msg.first().embeds.length == 1)
           {
-            console.log(msg.first().embeds[0].title);
+            // Se o titulo desse embed nao for igual a "Como resetar seu status de apresentação:"...
             if (msg.first().embeds[0].title != "Como resetar seu status de apresentação:")
             {
+              // Envia o embed
               message.author.send({embed}).catch(console.error);
             }
           }
