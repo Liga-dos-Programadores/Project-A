@@ -12,75 +12,18 @@ exports.run = (client, message, args) => {
 
     /** Então verificamos os argumentos e instanciamos o cargo que queremos pelo nome. */
     let role;
-    if (args[0].toLowerCase() == 'java')
-    {
-        role = message.guild.roles.find("name", "Java");
-    }
-    else if (args[0].toLowerCase() == 'python')
-    {
-        role = message.guild.roles.find("name", "Python");
-    }
-    else if (args[0].toLowerCase() == 'c++')
-    {
-        role = message.guild.roles.find("name", "C++");
-    }
-    else if (args[0].toLowerCase() == 'c#')
-    {
-        role = message.guild.roles.find("name", "C#");
-    }
-    else if (args[0].toLowerCase() == 'kotlin')
-    {
-        role = message.guild.roles.find("name", "Kotlin");
-    }
-    else if (args[0].toLowerCase() == 'scala')
-    {
-        role = message.guild.roles.find("name", "Scala");
-    }
-    else if (args[0].toLowerCase() == 'go')
-    {
-        role = message.guild.roles.find("name", "Go");
-    }
-    else if (args[0].toLowerCase() == 'javascript')
-    {
-        role = message.guild.roles.find("name", "JavaScript");
-    }
-    else if (args[0].toLowerCase() == 'php')
-    {
-        role = message.guild.roles.find("name", "PHP");
-    }
-    else if (args[0].toLowerCase() == 'scala')
-    {
-        role = message.guild.roles.find("name", "Scala");
-    }
-    else if (args[0].toLowerCase() == 'clojure')
-    {
-        role = message.guild.roles.find("name", "Clojure");
-    }
-    else if (args[0].toLowerCase() == 'elixir')
-    {
-        role = message.guild.roles.find("name", "Elixir");
-    }
-    else if (args[0].toLowerCase() == 'c')
-    {
-        role = message.guild.roles.find("name", "C");
-    }
-    else if (args[0].toLowerCase() == 'swift')
-    {
-        role = message.guild.roles.find("name", "Swift");
-    }
-    else if (args[0].toLowerCase() == 'rust')
-    {
-        role = message.guild.roles.find("name", "Rust");
-    }
-    else if (args[0].toLowerCase() == 'assembly')
-    {
-        role = message.guild.roles.find("name", "Assembly");
+    
+    let langs = langmgr.getLanguages();
+    let idx = langs.map(x => x.toLowerCase()).indexOf(args[0].toLowerCase());
+
+    if (idx != -1) {
+        role = message.guild.roles.find("name", langs[idx]);
     }
     else
     {
         const emoji = message.guild.emojis.find("name", "thinkkk");
-        message.react(emoji);
-        return message.reply(`?? Talvez isso possa ajuda-lo: \`\`\`${message.settings.PREFIX}${this.help.usage}\`\`\``);
+        message.react((emoji) ? emoji : "🤔");
+        return message.reply(`?? Talvez isso possa ajuda-lo: \`\`\`${message.settings.PREFIX}addlang [${langs.join("|")}]\`\`\``);
     }
 
     /** Logo então removemos o cargo do membro e mandamos uma mensagem como resposta
