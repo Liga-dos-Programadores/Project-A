@@ -21,13 +21,16 @@ exports.run = (client, message, args) => {
                 if (message.guild.roles.find("name", name))
                 {
                     // Se existir, apenas adicionamos a linguagem ao arquivo de configuracao
-                    langmgr.addLanguage(name).then(() => {
-                        // Se a promise for resolvida:
+                    if (langmgr.addLanguage(name))
+                    {
+                        // Se nao houveram erros:
                         message.reply("Linguagem adicionada.");
-                    }).catch(() => {
-                        // Se nao:
+                    }
+                    else
+                    {
+                        // Se houver um erro...
                         message.reply("Algo de errado nao esta certo, nao consegui adicionar essa linguagem.");
-                    });
+                    }
                 }
                 else
                 {
@@ -36,12 +39,12 @@ exports.run = (client, message, args) => {
                         // adicionamos a linguagem ao arquivo de configuracao
                         if (langmgr.addLanguage(name))
                         {
-                            // Se a promise for resolvida:
+                            // Se nao houveram erros:
                             message.reply("Linguagem adicionada.");
                         }
                         else
                         {
-                            // Se nao:
+                            // Se houver um erro...
                             message.reply("Algo de errado nao esta certo, nao consegui adicionar essa linguagem.");
                         }
                     });
@@ -65,27 +68,31 @@ exports.run = (client, message, args) => {
                     // Se existir, deletamos a role
                     role.delete().then(() => {
                         // Entao, removemos do arquivo
-                        langmgr.removeLanguage(name).then(() => {
-                            // Se a promise for resolvida:
+                        if (langmgr.removeLanguage(name))
+                        {
+                            // Se nao houverem erros:
                             message.reply("Linguagem removida");
-                        }).catch(() => {
+                        }
+                        else
+                        {
                             // Se nao:
                             message.reply("Algo de errado nao esta certo, nao consegui remover essa linguagem.");
-                        });
-                    }).catch((err) => {
-                        throw err;
+                        }
                     });
                 }
                 else
                 {
                     // Se nao existir, apenas removemos a linguagem do arquivo
-                    langmgr.removeLanguage(name).then(() => {
-                        // Se a promise for resolvida:
+                    if (langmgr.removeLanguage(name))
+                    {
+                        // Se nao houverem erros:
                         message.reply("Linguagem removida");
-                    }).catch(() => {
+                    }
+                    else
+                    {
                         // Se nao:
                         message.reply("Algo de errado nao esta certo, nao consegui remover essa linguagem.");
-                    });
+                    }
                 }
             }
             else
