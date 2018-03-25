@@ -14,7 +14,7 @@ exports.run = (client, message, args) => {
 
     /** Então verificamos os argumentos e instanciamos o cargo que queremos pelo nome. */
     let langs = langmgr.getLanguages();
-    let role = langs.find(l => l.toLowerCase() === args.join(' '));
+    let role = langs.find(l => l.toLowerCase() === args.join(' ').toLowerCase());
 
     if (!role)
     {
