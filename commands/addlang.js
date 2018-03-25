@@ -11,7 +11,7 @@ const langmgr = new LanguageManager();
 exports.run = (client, message, args) => {
 
     /** Verificamos se o número de argumentos é válido. */
-    if (args.length < 1) return message.reply(`?? Talvez isso possa ajuda-lo: \`\`\`${message.settings.PREFIX}${this.help.usage}\`\`\``);
+    if (args.length < 1) return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${message.settings.PREFIX}${this.help.usage}\`\`\``);
 
     /** Então verificamos os argumentos e instanciamos o cargo que queremos pelo nome. */
     let langs = langmgr.getLanguages();
@@ -27,7 +27,7 @@ exports.run = (client, message, args) => {
     /** Logo então atribuimos o cargo ao membro e mandamos uma mensagem como resposta
      * Caso o membro já possua o cargo então é enviada uma mensagem retornando.
      */
-    if (!message.member.roles.exists("id", role.id))
+    if (!message.member.roles.has(role.id))
     {
         message.member.addRole(role);
         return message.reply(`*Beep boop!@* Agora você possui o cargo **${role.name}**`);
