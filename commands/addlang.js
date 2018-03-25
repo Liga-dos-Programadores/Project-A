@@ -17,7 +17,7 @@ run: function(client, message, args) {
 
     /** Então verificamos os argumentos e instanciamos o cargo que queremos pelo nome. */
     let langs = langmgr.getLanguages();
-    let role = langs.find(l => l.toLowerCase() === args.join(' ').toLowerCase());
+    let role = message.guild.roles.find("name", langs.find(l => l.toLowerCase() === args.join(' ').toLowerCase()));
 
     if (!role)
     {
