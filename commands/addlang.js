@@ -10,7 +10,7 @@ module.exports = {
 /** Primeiro o metodo run(client, message, args) será executado pelo nosso arquivo message.js
  * Que passará os argumentos atraves do middleware que programamos.
  */
-run: (client, message, args) => {
+run: function(client, message, args) {
 
     /** Verificamos se o número de argumentos é válido. */
     if (args.length < 1) return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${message.settings.PREFIX}${this.help.usage}\`\`\``);
