@@ -1,5 +1,4 @@
-
-const got = require('got');
+const request = require('snekfetch');
 const Discord = require("discord.js");
 
 module.exports = {
@@ -10,16 +9,23 @@ module.exports = {
     run: async (client, message, args) => {
         //Verificamos se o número de argumentos é válido. 
         if (args.length < 1) {
-            return message.reply(`?? Talvez isso possa ajudá-lo: ${message.settings.PREFIX}shorturl <url>`)
+            return message.reply(`?? Talvez isso possa ajudá-lo: ${message.settings.PREFIX}shorturl <url>`);
         }
 
-        //Pegando a url que o usuário mandou
+        //Pegando a URL que o usuário mandou
         let url = args.join(' ');
+
+        //Chechado ser é uma URL valida
+        const regx = /[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&\\=]*)/;
+        if (!url.match(regx)) {
+            return message.reply("URL fornecido inválido, tente novamente.");
+        }
+
         //Deletando message que o usuário mandou
         message.delete();
 
         //Fazendo conexão com a API do tinyurl
-        let res = await got(`http://tinyurl.com/api-create.php?url=${encodeURIComponent(url)}`);
+        let res = await request.get(`http://tinyurl.com/api-create.php?url=${encodeURIComponent(url)}`);
 
         //Criando embed que sera enviado para o usuário
         let embed = new Discord.RichEmbed()
