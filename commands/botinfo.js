@@ -15,7 +15,7 @@ module.exports = {
             .setDescription("Informações sobre o Bot")
             .setColor("#eb1818")
             .setThumbnail(botAvatar)
-            .addField("Nome do bot", username)
+            .addField("Nome do bot", userName)
             .addField("Criado em", formatDate("DD/MM/YYYY, às HH:mm:ss", date));
 
         //Aqui sera enviado o embed no canal que o usuário executo o comando
