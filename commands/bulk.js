@@ -4,6 +4,9 @@
 
 exports.run = (client, message, args) => {
 
+    // Verificamos se o objeto "member" existe, pode ser que o usuario esteja num chat privado
+    if (!message.member) return;
+
     /** Verifica se o membro possui permissão para administrar mensagens. */
     if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('Você não pode fazer isto :c');
     /** Verifica se é a quantidade de argumentos correta
