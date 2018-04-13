@@ -1,5 +1,8 @@
 const Discord = require("discord.js");
 
+const moment = require("moment");
+moment.locale("pt-br");
+
 module.exports = {
     /** 
      * Primeiro o metodo run(client, message, args) será executado pelo nosso arquivo message.js
@@ -16,6 +19,7 @@ module.exports = {
             .setColor("#eb1818")
             .setThumbnail(botAvatar)
             .addField("Nome do bot", userName)
+            .addField("Estou online a", moment().to(client.startTime, true))
             .addField("Criado em", formatDate("DD/MM/YYYY, às HH:mm:ss", date));
 
         //Aqui sera enviado o embed no canal que o usuário executo o comando
