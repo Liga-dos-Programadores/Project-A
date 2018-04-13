@@ -35,6 +35,9 @@ client.settings = require('./config')
 /** Instancia de uma nova collection de comandos. */
 client.commands = new Enmap();
 
+// Guarda o timestamp do inicio para medir o uptime
+client.startTime = Date.now();
+
 const init = async () => 
 {
 
