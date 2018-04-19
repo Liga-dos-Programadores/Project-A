@@ -12,5 +12,6 @@
     "discord.js": "*",
     "enmap": "*",
     "snekfetch": "^3.6.4"
+    "moment": "^2.22.0"
   }
 }
