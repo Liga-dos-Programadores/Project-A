@@ -59,10 +59,10 @@ module.exports = (client, message) =>
       embed: {
         author: {
           name: "Olá! Eu sou o Project: A!",
-          icon_url: client.user.avatarURL
+          icon_url: client.user.avatarURL,
+          url: 'https://github.com/Liga-dos-Programadores/Project-A'
         },
         color: 0xB1103C,
-        url: 'https://github.com/Liga-dos-Programadores/Project-A',
         description: 'Eu sou um bot criado pelos usuarios da Liga Dos programadores para facilitar a vida dos usuarios do servidor. Quer saber o que eu posso fazer? digite `p!help`!',
         footer: {
           text: 'Não se esqueça de checar nosso codigo fonte ;) ® 2018, A Liga Dos Programadores.',
