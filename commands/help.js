@@ -12,7 +12,7 @@ exports.run = (client, message, args) => {
     url: 'https://github.com/Liga-dos-Programadores/Project-A',
     description: 'Todos os Comandos disponiveis',
     footer: {
-      text: 'Não se esqueça de checar nosso codigo fonte ;) ® 2018, A Liga Dos Programadores.',
+      text: 'Não se esqueça de checar nosso codigo fonte ;) ® 2018, A Liga dos Programadores.',
     },
     fields: []
   }

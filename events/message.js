@@ -63,9 +63,9 @@ module.exports = (client, message) =>
           url: 'https://github.com/Liga-dos-Programadores/Project-A'
         },
         color: 0xB1103C,
-        description: 'Eu sou um bot criado pelos usuarios da Liga Dos programadores para facilitar a vida dos usuarios do servidor. Quer saber o que eu posso fazer? digite `p!help`!',
+        description: 'Eu sou um bot criado com o objetivo de facilitar a vida dos usuarios da Liga dos Programadores. Quer saber o que eu posso fazer? digite `p!help`!',
         footer: {
-          text: 'Não se esqueça de checar nosso codigo fonte ;) ® 2018, A Liga Dos Programadores.',
+          text: 'Não se esqueça de checar nosso codigo fonte ;) ® 2018, A Liga dos Programadores.',
         }
       }
     })
