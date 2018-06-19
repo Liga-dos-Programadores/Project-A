@@ -3,7 +3,8 @@ const languagemanager = require("../utils/languagemanager");
 const langmgr = new languagemanager();
 
 
-exports.run = (client, message, args) => {
+module.exports = {
+run: (client, message, args) => {
 
     /** Verifica se o membro possui permissão para administrar roles. */
     if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply('Você não pode fazer isto :c');
@@ -106,15 +107,19 @@ exports.run = (client, message, args) => {
     {
         return message.reply(`?? Talvez isso possa ajuda-lo: \`\`\`${message.settings.PREFIX}${this.help.usage}\`\`\``);
     }
+},
+
+conf: {
+    onlyguilds: true
+},
+
+get help () {
+    return {
+        name:"config",
+        categorie: "Moderação",
+        description: "Altera as configuracoes do bot.",
+        usage:"config [addlang (name|role)|remlang role]"
+    }
 }
 
-exports.conf = {
-
-}
-
-exports.help = {
-    name:"config",
-    categorie: "Moderação",
-    description: "Altera as configuracoes do bot.",
-    usage:"config [addlang (name|role)|remlang role]"
-}
+};

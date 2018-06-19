@@ -1,6 +1,7 @@
 // Esse comando serve para usuarios que querem resetar sua apresentacao no chat #apresente-se para criar uma nova
 
-exports.run = (client, message, args) => {
+module.exports = {
+run: (client, message, args) => {
     if (message.member.roles.exists("name", "Apresentado"))
     {
         // Registra e checa se o canal Apresente-se existe
@@ -32,26 +33,30 @@ exports.run = (client, message, args) => {
         }
         else
         {
-            // Verifica se existe o emoji especial do servidor (:thinkdown:) e se nao existir substitui pelo :thinking:
-            const specialemoji = message.guild.emojis.find("name", "thinkdown");
-            message.reply(`Não consegui encontrar o canal de apresentacoes ${(specialemoji) ? specialemoji : "🤔"}`);
+            // Verifica se existe o emoji especial do servidor (:thonk:) e se nao existir substitui pelo :thinking:
+            const specialemoji = message.guild.emojis.find("name", "thonk");
+            message.reply(`Não consegui encontrar o canal de apresentacoes ${specialemoji || "🤔"}`);
         }
     }
     else
     {
-        // Verifica se existe o emoji especial do servidor (:thinkdown:) e se nao existir substitui pelo :thinking:
-        const specialemoji = message.guild.emojis.find("name", "thinkdown");
-        message.reply(`${(specialemoji) ? specialemoji : "🤔"} Voce ainda não se apresentou!`)
+        // Verifica se existe o emoji especial do servidor (:thonk:) e se nao existir substitui pelo :thinking:
+        const specialemoji = message.guild.emojis.find("name", "thonk");
+        message.reply(`${specialemoji || "🤔"} Voce ainda não se apresentou!`)
+    }
+},
+
+conf: {
+    onlyguilds: true
+},
+
+get help () {
+    return {
+        name:"reset",
+        category: "",
+        description: "Reseta o status de apresentação do usuario",
+        usage:"reset"
     }
 }
 
-exports.conf = {
-
-}
-
-exports.help = {
-    name:"reset",
-    category: "",
-    description: "Reseta o status de apresentação do usuario",
-    usage:"reset"
-}
+};

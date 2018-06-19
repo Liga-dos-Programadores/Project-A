@@ -10,7 +10,7 @@ module.exports = {
 /** Primeiro o metodo run(client, message, args) será executado pelo nosso arquivo message.js
  * Que passará os argumentos atraves do middleware que programamos.
  */
-run: function(client, message, args) {
+run: (client, message, args) => {
 
     /** Verificamos se o número de argumentos é válido. */
     if (args.length < 1) return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${message.settings.PREFIX}${this.help.usage}\`\`\``);
@@ -22,7 +22,7 @@ run: function(client, message, args) {
 
     if (!role)
     {
-        const emoji = message.guild.emojis.find("name", "thinkkk");
+        const emoji = message.guild.emojis.find("name", "thonk");
         message.react(emoji || "🤔");
         return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${message.settings.PREFIX}addlang [${langs.join("|")}]\`\`\``);
     }
@@ -43,7 +43,9 @@ run: function(client, message, args) {
 },
 
 /** Aqui podemos colocar mais algumas configurações do comando. */
-conf: {},
+conf: {
+    onlyguilds: true
+},
 
 /** Aqui exportamos ajuda do comando como o seu nome categoria, descrição, etc... */
 get help () {
