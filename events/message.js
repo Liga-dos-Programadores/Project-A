@@ -52,6 +52,25 @@ module.exports = (client, message) =>
     }
   }
 
+
+  // "MOTD" pra quando o bot for mencionado
+  if(message.content == client.user) {
+    message.reply({
+      embed: {
+        author: {
+          name: "Olá! Eu sou o Project: A!",
+          icon_url: client.user.avatarURL
+        },
+        color: 0xB1103C,
+        url: 'https://github.com/Liga-dos-Programadores/Project-A',
+        description: 'Eu sou um bot criado pelos usuarios da Liga Dos programadores para facilitar a vida dos usuarios do servidor. Quer saber o que eu posso fazer? digite `p!help`!',
+        footer: {
+          text: 'Não se esqueça de checar nosso codigo fonte ;) ® 2018, A Liga Dos Programadores.',
+        }
+      }
+    })
+  }
+
   /** Outra boa pratica é ignorar qualquer mensagem que não começe com o prefixo escolhido do bot.
    * OBS: O PREFIXO E PEGO ATRAVES DAS CONFIGURAÇÕES EM client.settings.
    */
