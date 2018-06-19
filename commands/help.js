@@ -9,10 +9,10 @@ exports.run = (client, message, args) => {
   let embed = {
     color: 0xB1103C,
     title: 'Lista de Comandos Project: A',
-    url: 'https://github.com/katho162/ProjectA',
+    url: 'https://github.com/Liga-dos-Programadores/Project-A',
     description: 'Todos os Comandos disponiveis',
     footer: {
-      text: 'Não se esqueça de checar nosso codigo fonte ;) ® 2017, A Liga Dos Programadores.',
+      text: 'Não se esqueça de checar nosso codigo fonte ;) ® 2018, A Liga Dos Programadores.',
     },
     fields: []
   }
