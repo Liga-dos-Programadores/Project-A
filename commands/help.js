@@ -4,7 +4,6 @@
  */
 
 exports.run = (client, message, args) => {
-
   /** Objeto embed que irá ser enviado. */
   let embed = {
     color: 0xB1103C,
@@ -12,7 +11,7 @@ exports.run = (client, message, args) => {
     url: 'https://github.com/Liga-dos-Programadores/Project-A',
     description: 'Todos os Comandos disponiveis',
     footer: {
-      text: 'Não se esqueça de checar nosso codigo fonte ;) ® 2018, A Liga dos Programadores.',
+      text: 'Não se esqueça de checar nosso codigo fonte ;) ® 2018, A Liga dos Programadores.'
     },
     fields: []
   }
@@ -26,24 +25,23 @@ exports.run = (client, message, args) => {
         name: `**${process.env.PREFIX}${command.help.name}**`,
         value: `**Descrição**: ${command.help.description}\n**Como Usar**: ${process.env.PREFIX}${command.help.usage}`
       }
-    );
-  });
+    )
+  })
 
   /** Adiciona uma reacao a mensagem. */
-  message.react('👌');
-  
-  /** Então envia a mensagem embed para o usuario. */
-  message.author.send({embed: embed});
+  message.react('👌')
 
-};
+  /** Então envia a mensagem embed para o usuario. */
+  message.author.send({ embed: embed })
+}
 
 exports.conf = {
 
-};
+}
 
 exports.help = {
-  name:"help",
-  category:"Help",
-  description:"Mostra todos os comandos disponiveis do bot.",
-  usage: "help"
+  name: 'help',
+  category: 'Help',
+  description: 'Mostra todos os comandos disponiveis do bot.',
+  usage: 'help'
 }
