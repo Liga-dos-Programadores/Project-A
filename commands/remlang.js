@@ -11,7 +11,7 @@ module.exports = {
  */
   run: (client, message, args) => {
     /** Verificamos se o número de argumentos é válido. */
-    if (args.length < 1) return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${process.env.PREFIX}${this.help.usage}\`\`\``)
+    if (args.length < 1) return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
 
     /** Então verificamos os argumentos e instanciamos o cargo que queremos pelo nome. */
     let langs = langmgr.getLanguages()

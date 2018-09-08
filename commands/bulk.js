@@ -17,10 +17,10 @@ exports.run = (client, message, args) => {
   if (args.length === 1) {
     limit = parseInt(args[0])
   } else {
-    return message.reply(`?? Talvez isso possa ajuda-lo: \`\`\`${process.env.PREFIX}${this.help.usage}\`\`\``)
+    return message.reply(`?? Talvez isso possa ajuda-lo: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
   }
   /** Verifica se um numero foi passado como argumento. */
-  if (!Number.isInteger(limit)) return message.reply(`?? Talvez isso possa ajuda-lo: \`\`\`${process.env.PREFIX}${this.help.usage}\`\`\``)
+  if (!Number.isInteger(limit)) return message.reply(`?? Talvez isso possa ajuda-lo: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
   /** Então irá aumentar um numero para a mensagem de comando ser apagada junto com as outras. */
   limit++
   /** Limita que o numero de mensagens seja maior que 100 */

@@ -73,7 +73,7 @@ module.exports = {
         }
       }
     } else {
-      return message.reply(`?? Talvez isso possa ajuda-lo: \`\`\`${process.env.PREFIX}${this.help.usage}\`\`\``)
+      return message.reply(`?? Talvez isso possa ajuda-lo: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
     }
   },
 
