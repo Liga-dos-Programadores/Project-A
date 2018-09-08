@@ -17,6 +17,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+/** Inicia o dotenv */
+require('dotenv').config()
+
 /** Cheque se a versão do node.js é a 8.0.0 ou acima */
 if (process.version.slice(1).split(".")[0] < 8) throw new Error("Node 8.0.0 or higher is required. Update Node on your system.");
 
@@ -29,8 +32,6 @@ const Enmap = require('enmap');
 
 /** Instancia o Client do Discord. */
 const client = new Discord.Client();
-/** Arquivo de configuração com token e outras coisas */
-client.settings = require('./config')
 
 /** Instancia de uma nova collection de comandos. */
 client.commands = new Enmap();
@@ -78,7 +79,7 @@ const init = async () =>
   });
 
   /** Então finalmente iniciamos o Bot. */
-  client.login(client.settings.AUTH_TOKEN);
+  client.login(process.env.AUTH_TOKEN);
 
 };
 

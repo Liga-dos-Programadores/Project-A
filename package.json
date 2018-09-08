@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "discord.js": "*",
+    "dotenv": "^6.0.0",
     "enmap": "*",
     "moment": "^2.22.0"
   }

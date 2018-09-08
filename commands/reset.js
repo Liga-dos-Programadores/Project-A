@@ -5,7 +5,7 @@ run: (client, message, args) => {
     if (message.member.roles.exists("name", "Apresentado"))
     {
         // Registra e checa se o canal Apresente-se existe
-        var channel = message.guild.channels.find("id", client.settings.APRESENTACAO);
+        var channel = message.guild.channels.find("id", process.env.APRESENTACAO);
         if(channel)
         {
             // Faz um fetch de 100 mensagens no canal apresente-se

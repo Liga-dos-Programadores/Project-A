@@ -13,7 +13,7 @@ module.exports = {
 run: (client, message, args) => {
 
     /** Verificamos se o número de argumentos é válido. */
-    if (args.length < 1) return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${message.settings.PREFIX}${this.help.usage}\`\`\``);
+    if (args.length < 1) return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${process.env.PREFIX}${this.help.usage}\`\`\``);
 
     /** Então verificamos os argumentos e instanciamos o cargo que queremos pelo nome. */
     let langs = langmgr.getLanguages();
@@ -24,7 +24,7 @@ run: (client, message, args) => {
     {
         const emoji = message.guild.emojis.find("name", "thonk");
         message.react(emoji || "🤔");
-        return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${message.settings.PREFIX}addlang [${langs.join("|")}]\`\`\``);
+        return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${process.env.PREFIX}addlang [${langs.join("|")}]\`\`\``);
     }
 
     /** Logo então atribuimos o cargo ao membro e mandamos uma mensagem como resposta

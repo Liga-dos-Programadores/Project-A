@@ -10,7 +10,7 @@ module.exports = {
 run: (client, message, args) => {
 
     /** Verificamos se o numero de argumentos é o correto. */
-    if (!(args.length === 0)) return message.reply(`?? Talvez isso possa ajuda-lo: \`\`\`${message.settings.PREFIX}${this.help.usage}\`\`\``);
+    if (!(args.length === 0)) return message.reply(`?? Talvez isso possa ajuda-lo: \`\`\`${process.env.PREFIX}${this.help.usage}\`\`\``);
 
     /** Então verificamos os argumentos e instanciamos o cargo que queremos pelo nome. */
     let role = message.guild.roles.find("name", "Novidades");

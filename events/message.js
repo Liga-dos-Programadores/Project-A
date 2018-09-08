@@ -9,11 +9,8 @@ module.exports = (client, message) =>
    */
   if (message.author.bot) return;
 
-  /** Chamamos as configurações para pegar algumas coisas */
-  message.settings = client.settings;
-
   // Checamos se a mensagem é do canal #apresente-se
-  if (message.channel.id === message.settings.APRESENTACAO) {
+  if (message.channel.id === process.env.APRESENTACAO) {
     // Checamos se o usuario tem a role "Apresentado"
     role = message.guild.roles.find("name", "Apresentado");
     if (!message.member.roles.exists("name", role.name)) {
@@ -74,10 +71,10 @@ module.exports = (client, message) =>
   /** Outra boa pratica é ignorar qualquer mensagem que não começe com o prefixo escolhido do bot.
    * OBS: O PREFIXO E PEGO ATRAVES DAS CONFIGURAÇÕES EM client.settings.
    */
-  if(message.content.indexOf(message.settings.PREFIX) !== 0) return;
+  if(message.content.indexOf(process.env.PREFIX) !== 0) return;
 
   /** Então nós separamos o nome do comando de seus argumentos que são passados ao comando em si. */
-  const args = message.content.slice(message.settings.PREFIX.length).trim().split(/ +/g);
+  const args = message.content.slice(process.env.PREFIX.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
 
   /** Então se o comando existir ele irá ser executado.

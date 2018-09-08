@@ -105,7 +105,7 @@ run: (client, message, args) => {
     }
     else
     {
-        return message.reply(`?? Talvez isso possa ajuda-lo: \`\`\`${message.settings.PREFIX}${this.help.usage}\`\`\``);
+        return message.reply(`?? Talvez isso possa ajuda-lo: \`\`\`${process.env.PREFIX}${this.help.usage}\`\`\``);
     }
 },
 

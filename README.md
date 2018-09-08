@@ -17,20 +17,14 @@ Após ter clonado o repositorio e extraido todos arquivos. tenha certeza que pos
 
 ```$ npm install```
 
-Caso tudo der certo apos disso então coloque seu token de acesso no arquivo **config.js**
+Se tudo der certo, crie um arquivo com o nome de **.env** seguindo o exemplo do **.env.example**
 
-```javascript
-module.exports = {
-  /** Token de acesso do bot **/
-  AUTH_TOKEN: "...",
-  /** Prefixo dos comandos. */
-  PREFIX: "p!",
-  /** Texto que aparecera no "Jogando..." */
-  GAME: "p!help",
-  /** ID do chat de apresentacao */
-  APRESENTACAO: ""
-}
-```
+| Opção        | Descrição                        | Obrigatório? |
+| ------------ | -------------------------------- | ------------ |
+| AUTH_TOKEN   | Token de autenticação do seu bot | sim          |
+| PREFIX       | Prefixo dos comandos             | sim          |
+| GAME         | O que vai aparecer no Jogando... | sim          |
+| APRESENTACAO | ID do canal de apresentação      | sim          |
 
 Então agora você pode iniciar seu bot... utilizando
 

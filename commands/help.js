@@ -23,8 +23,8 @@ exports.run = (client, message, args) => {
   client.commands.forEach(command => {
     embed.fields.push(
       {
-        name: `**${message.settings.PREFIX}${command.help.name}**`,
-        value: `**Descrição**: ${command.help.description}\n**Como Usar**: ${message.settings.PREFIX}${command.help.usage}`
+        name: `**${process.env.PREFIX}${command.help.name}**`,
+        value: `**Descrição**: ${command.help.description}\n**Como Usar**: ${process.env.PREFIX}${command.help.usage}`
       }
     );
   });
