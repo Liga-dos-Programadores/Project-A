@@ -28,11 +28,10 @@ exports.run = (client, message, args) => {
     )
   })
 
-  /** Adiciona uma reacao a mensagem. */
-  message.react('👌')
-
   /** Então envia a mensagem embed para o usuario. */
   message.author.send({ embed: embed })
+    .then(() => message.react('👌'))
+    .catch(() => message.reply('Desculpe, mas eu não tenho permissões para enviar mensagens por DM para você!'))
 }
 
 exports.conf = {
