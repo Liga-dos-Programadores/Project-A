@@ -70,6 +70,10 @@ const init = async () => {
     client.on(eventName, event.bind(null, client))
   })
 
+  client.on('error', (err) => {
+    console.log('error', err)
+  })
+
   /** Então finalmente iniciamos o Bot. */
   client.login(process.env.AUTH_TOKEN)
 }
