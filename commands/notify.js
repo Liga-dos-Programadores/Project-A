@@ -9,7 +9,7 @@ module.exports = {
  */
   run: (client, message, args) => {
     /** Verificamos se o numero de argumentos é o correto. */
-    if (!(args.length === 0)) return message.reply(`?? Talvez isso possa ajuda-lo: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
+    if (!(args.length === 0)) return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
 
     /** Então verificamos os argumentos e instanciamos o cargo que queremos pelo nome. */
     let role = message.guild.roles.find('name', 'Novidades')
@@ -19,9 +19,9 @@ module.exports = {
      */
     if (!message.member.roles.exists('name', role.name)) {
       message.member.addRole(role)
-      return message.reply(`*Beep boop!@* Agora você sempre será notificado quando ouver noticias`)
+      return message.reply(`*Beep boop!@* Agora você sempre será notificado quando houver notícias`)
     } else {
-      return message.reply(`Você ja possui este cargo!`)
+      return message.reply(`Você já possui este cargo!`)
     }
   },
 
