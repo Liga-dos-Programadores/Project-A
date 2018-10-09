@@ -45,7 +45,7 @@ module.exports = {
     return {
       name: 'reset',
       category: '',
-      description: 'Reseta o status de apresentação do usuario',
+      description: 'Reseta o status de apresentação do usuário',
       usage: 'reset'
     }
   }
