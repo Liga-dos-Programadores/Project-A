@@ -21,7 +21,7 @@ module.exports = {
               message.reply('Linguagem adicionada.')
             } else {
               // Se houver um erro...
-              message.reply('Algo de errado não está certo. Nãoo consegui adicionar essa linguagem.')
+              message.reply('Algo de errado não está certo. Não consegui adicionar essa linguagem.')
             }
           } else {
             // Criamos a role no servidor
