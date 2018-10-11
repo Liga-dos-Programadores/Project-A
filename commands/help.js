@@ -9,9 +9,9 @@ exports.run = (client, message, args) => {
     color: 0xB1103C,
     title: 'Lista de Comandos Project: A',
     url: 'https://github.com/Liga-dos-Programadores/Project-A',
-    description: 'Todos os Comandos disponiveis',
+    description: 'Todos os comandos disponíveis',
     footer: {
-      text: 'Não se esqueça de checar nosso codigo fonte ;) ® 2018, A Liga dos Programadores.'
+      text: 'Não se esqueça de checar nosso código-fonte ;) ® 2018, A Liga dos Programadores.'
     },
     fields: []
   }
@@ -41,6 +41,6 @@ exports.conf = {
 exports.help = {
   name: 'help',
   category: 'Help',
-  description: 'Mostra todos os comandos disponiveis do bot.',
+  description: 'Mostra todos os comandos disponíveis do bot.',
   usage: 'help'
 }

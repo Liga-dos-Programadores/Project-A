@@ -21,7 +21,7 @@ module.exports = {
               message.reply('Linguagem adicionada.')
             } else {
               // Se houver um erro...
-              message.reply('Algo de errado nao esta certo, nao consegui adicionar essa linguagem.')
+              message.reply('Algo de errado não está certo. Não consegui adicionar essa linguagem.')
             }
           } else {
             // Criamos a role no servidor
@@ -32,13 +32,13 @@ module.exports = {
                 message.reply('Linguagem adicionada.')
               } else {
                 // Se houver um erro...
-                message.reply('Algo de errado nao esta certo, nao consegui adicionar essa linguagem.')
+                message.reply('Algo de errado não está certo. Não consegui adicionar essa linguagem.')
               }
             })
           }
         } else {
           // Linguagem existe
-          message.reply('Essa linguagem ja existe!')
+          message.reply('Essa linguagem já existe!')
         }
       } else if (args[0] === 'remlang') {
         // Checamos se a linguagem existe no arquivo de configuracao
@@ -54,7 +54,7 @@ module.exports = {
                 message.reply('Linguagem removida')
               } else {
                 // Se nao:
-                message.reply('Algo de errado nao esta certo, nao consegui remover essa linguagem.')
+                message.reply('Algo de errado não está certo. Não consegui remover essa linguagem.')
               }
             })
           } else {
@@ -64,16 +64,16 @@ module.exports = {
               message.reply('Linguagem removida')
             } else {
               // Se nao:
-              message.reply('Algo de errado nao esta certo, nao consegui remover essa linguagem.')
+              message.reply('Algo de errado não está certo. Nãoo consegui remover essa linguagem.')
             }
           }
         } else {
           // Linguagem existe
-          message.reply('Essa linguagem nao existe!')
+          message.reply('Essa linguagem não existe!')
         }
       }
     } else {
-      return message.reply(`?? Talvez isso possa ajuda-lo: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
+      return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
     }
   },
 
@@ -85,7 +85,7 @@ module.exports = {
     return {
       name: 'config',
       categorie: 'Moderação',
-      description: 'Altera as configuracoes do bot.',
+      description: 'Altera as configurações do bot.',
       usage: 'config [addlang (name|role)|remlang role]'
     }
   }
