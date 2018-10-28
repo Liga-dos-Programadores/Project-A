@@ -27,7 +27,7 @@ exports.run = (client, message, args) => {
   limit = Math.min(limit, 99)
 
   /** Seleciona todas as mensagens conforme o limite */
-  message.bulkDelete(limit)
+  message.channel.bulkDelete(limit)
     .then(messages => {
       message.channel.send(`${messages.size} mensagens foram deletadas.`)
         .then(message => setTimeout(() => message.delete(), 2000))
