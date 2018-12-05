@@ -32,8 +32,8 @@ module.exports = async (client, message) => {
   }
 
   if (message.channel.id === process.env.SUGESTOES) {
-    await message.react(client.emojis.find(emoji => emoji.name === 'arrow_up'))
-    await message.react(client.emojis.find(emoji => emoji.name === 'arrow_down'))
+    await message.react('⬆')
+    await message.react('⬇')
     return
   }
 
