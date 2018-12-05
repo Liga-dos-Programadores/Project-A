@@ -26,6 +26,7 @@ Se tudo der certo, crie um arquivo com o nome de **.env** seguindo o exemplo do 
 | GAME         | O que vai aparecer no Jogando... | sim          |
 | APRESENTACAO | ID do canal de apresentação      | sim          |
 | GREETCHANNEL | ID do canal de bem vindo         | sim          |
+| SUGESTOES    | ID do canal de sugestões         | sim          |
 
 Então agora você pode iniciar seu bot... utilizando
 

@@ -2,7 +2,7 @@
  * O Evento message é emitido toda vez que o bot recebe uma mensagem.
  * Podemos usar este evento como uma espécie de middleware para impedir vulnarabilidades ou outras coisas.
  */
-module.exports = (client, message) => {
+module.exports = async (client, message) => {
   /** É uma boa pratica ignorar outros bots. isso faz o bot se auto-ignorar também.
    * E Também não entrara em um loop de spam...
    */
@@ -22,12 +22,19 @@ module.exports = (client, message) => {
       let embed = {
         color: 0xB1103C,
         title: 'Como resetar seu status de apresentação:',
-        description: 'Olá! Caso você tenha errado a digitacao de algo em sua mensagem de apresentação, basta digitar o comando `p!reset` no chat de comandos do servidor para resetar a sua apresentação!'
+        description: 'Olá! Caso você tenha errado a digitação de algo em sua mensagem de apresentação, basta digitar o comando `p!reset` no chat de comandos do servidor para resetar a sua apresentação!'
       }
       message.author.send({ embed: embed })
         .catch(() => message.reply('Desculpe, mas eu não tenho permissões para enviar mensagens por DM para você!'))
       message.delete().catch(console.error)
     }
+    return
+  }
+
+  if (message.channel.id === process.env.SUGESTOES) {
+    await message.react(client.emojis.find(emoji => emoji.name === 'arrow_up'))
+    await message.react(client.emojis.find(emoji => emoji.name === 'arrow_down'))
+    return
   }
 
   /** Outra boa pratica é ignorar qualquer mensagem que não começe com o prefixo escolhido do bot.
