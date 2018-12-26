@@ -1,10 +1,10 @@
 <div align="center">
   <img src="https://i.imgur.com/pI0g7mg.png"><br>
   <img src="https://i.imgur.com/AxI9yNz.png"><br>
-  <b>Um Simples Bot para o https://discordapp.com</b><br><br>
+  <b>Um simples Bot para o https://discordapp.com</b><br><br>
 
   <p>
-    <a href="https://discord.gg/J78z3FV" target="_blank"><img src="https://discordapp.com/api/guilds/366404358440615951/embed.png" alt="Discord server"/></a>
+    <a href="https://discord.gg/J78z3FV" target="_blank"><img src="https://discordapp.com/api/guilds/366404358440615951/embed.png" alt="Discord Server"/></a>
   </p>
 </div>
 
@@ -23,16 +23,17 @@ Se tudo der certo, crie um arquivo com o nome de **.env** seguindo o exemplo do 
 | ------------ | -------------------------------- | ------------ |
 | AUTH_TOKEN   | Token de autenticação do seu bot | sim          |
 | PREFIX       | Prefixo dos comandos             | sim          |
-| GAME         | O que vai aparecer no Jogando... | sim          |
-| APRESENTACAO | ID do canal de apresentação      | sim          |
-| GREETCHANNEL | ID do canal de bem vindo         | sim          |
-| SUGESTOES    | ID do canal de sugestões         | sim          |
+| EMBED_COLOR  | Cor pré-definida em embeds       | sim          |
+| GAME         | O que vai aparecer no Jogando... | não          |
+| APRESENTACAO | ID do canal de apresentação      | não          |
+| GREETCHANNEL | ID do canal de bem vindo         | não          |
+| SUGESTOES    | ID do canal de sugestões         | não          |
 
 Então agora você pode iniciar seu bot... utilizando
 
 ```$ npm start```
 
-Caso a saida for esta então seu bot ja está completamente online...
+Caso a saida for esta então seu bot já está completamente online...
 
 ```
 log Carregando o total de 2 comandos.
@@ -44,14 +45,14 @@ log O Bot foi iniciado completamente com XX usuarios em XX servidores
 
 ## Links
 * [Servidor do Discord A Liga dos Programadores](https://discord.gg/J78z3FV)
-* [Project: A GitHub](https://github.com/katho162/ProjectA)
+* [Project: A GitHub](https://github.com/Liga-dos-Programadores/Project-A)
 * [Twitter](https://twitter.com/123katho)
 
 ## Doações
 Para fazer doações entre em contato em nosso servidor do discord.
 
 ## Contribuições
-Aceitarei Pull requests desde que tenham algum sentido e não sejam gambiarra. se quiser começar a participar de projetos open-source como este entre em contato em nosso servidor do discord.
+Aceitaremos Pull requests desde que tenham algum sentido e não sejam gambiarra. se quiser começar a participar de projetos open-source como este entre em contato em nosso servidor do Discord.
 
 ## Ajuda
-Caso tenha alguma dificuldade em entender este codigo ou de utilizado. também poderá nos contatar em nosso servidor do discord.
+Caso tenha alguma dificuldade em entender este codigo ou de utilizado, pode-nos contactar em nosso servidor do Discord.

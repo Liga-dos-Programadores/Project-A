@@ -1,7 +1,7 @@
 /**
  * THE MIT LICENSE.
  *
- * Copyright 2017 A Liga dos Programadores
+ * Copyright 2018 A Liga dos Programadores
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
  * to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
@@ -15,67 +15,19 @@
  * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
  * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+*/
 
-/** Inicia o dotenv */
+// Iniciar o dotenv
 require('dotenv').config()
 
-/** Cheque se a versão do node.js é a 8.0.0 ou acima */
-if (process.version.slice(1).split('.')[0] < 8) throw new Error('Node 8.0.0 or higher is required. Update Node on your system.')
-
-/** Carrega o discord.js */
-const Discord = require('discord.js')
-/** Carrega outros modulos uteis */
-const { promisify } = require('util')
-const readdir = promisify(require('fs').readdir)
-const Enmap = require('enmap')
-
-/** Instancia o Client do Discord. */
-const client = new Discord.Client()
-
-/** Instancia de uma nova collection de comandos. */
-client.commands = new Enmap()
-
-// Guarda o timestamp do inicio para medir o uptime
-client.startTime = Date.now()
-
-const init = async () => {
-  /** Carregamos os commandos como uma collection. */
-  const cmdFiles = await readdir('./commands/')
-  console.log('log', `Carregando o total de ${cmdFiles.length} comandos.`)
-  /** Para cada comando então é registrado na memoria,
-   *  e monstrado ao console que o comando foi carregado com sucesso. */
-  cmdFiles.forEach(f => {
-    try {
-      const props = require(`./commands/${f}`)
-      if (f.split('.').slice(-1)[0] !== 'js') return
-
-      console.log('log', `Carregando comando: ${props.help.name}`)
-      if (props.init) {
-        props.init(client)
-      }
-      client.commands.set(props.help.name, props)
-    } catch (e) {
-      console.log(`Impossivel executar comando ${f}: ${e}`)
-    }
-  })
-
-  /** Então carregamos o evento quase do mesmo modo que o processo dos comandos. */
-  const evtFiles = await readdir('./events/')
-  console.log('log', `Carregando o total de ${evtFiles.length} eventos`)
-  evtFiles.forEach(f => {
-    const eventName = f.split('.')[0]
-    const event = require(`./events/${f}`)
-
-    client.on(eventName, event.bind(null, client))
-  })
-
-  client.on('error', (err) => {
-    console.log('error', err)
-  })
-
-  /** Então finalmente iniciamos o Bot. */
-  client.login(process.env.AUTH_TOKEN)
+// Definir as opções de cliente
+const CLIENT_OPTIONS = {
+    'fetchAllMembers': true, // Inserir membros de todas as guilds na cache
+    'enableEveryone': false  // Desligar o @everyone e @here
 }
 
-init()
+// Definir o cliente com as opções definidas acima
+const { ProjectA } = require('./src/');
+const client = new ProjectA(CLIENT_OPTIONS);
+
+client.login().then(() => client.log('Iniciado com sucesso!', 'Discord')).catch(e => client.logError(e))
