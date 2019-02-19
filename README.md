@@ -9,15 +9,15 @@
 </div>
 
 ## Um projeto totalmente livre para começar a usar o discord.js
-Nós da Liga dos Programadores. sempre se preocupamos em ajudar entusiastas em programação ou pessoas que se interessam pelo assunto então decidimos criar projetos de codigo 100% livre para ajudar estudantes ou novatos na area a se familiarizarem com codigos uteis e interessantes!
-Então fizemos este projeto. para quem quer se aprofundar muito em bots para o discord e JavaScript. combinamos as melhores praticas do JavaScript para criar um bot estruturado simples e funcional. com coisas como Command Handlers, Event Handlers e um comando help bonito e automatico!
+Nós da Liga dos Programadores. sempre nos preocupamos em ajudar entusiastas em programação ou pessoas que se interessam pelo assunto, assim então decidimos criar projetos de codigo 100% livre para ajudar estudantes ou novatos na area a se familiarizarem com codigos uteis e interessantes!
+Fizemos este projeto, visando quem quer se aprofundar mais em bots para o discord e JavaScript. combinamos as melhores práticas do JavaScript para criar um bot estruturado simples e funcional. que possui funções como Command Handlers, Event Handlers e um comando help bonito e automático!
 
 ## Instalação
 Após ter clonado o repositorio e extraido todos arquivos. tenha certeza que possui o [npm](https://www.npmjs.com/) e o [node.js 8.0.0](https://nodejs.org/en/) ou mais recente. caso estiver com tudo pronto então execute o seguinte comando no diretorio dos arquivos.
 
 ```$ npm install```
 
-Se tudo der certo, crie um arquivo com o nome de **.env** seguindo o exemplo do **.env.example**
+Se tudo estiver certo, crie um arquivo com o nome de **.env** seguindo o exemplo do **.env.example**
 
 | Opção        | Descrição                        | Obrigatório? |
 | ------------ | -------------------------------- | ------------ |
@@ -28,11 +28,11 @@ Se tudo der certo, crie um arquivo com o nome de **.env** seguindo o exemplo do 
 | GREETCHANNEL | ID do canal de bem vindo         | sim          |
 | SUGESTOES    | ID do canal de sugestões         | sim          |
 
-Então agora você pode iniciar seu bot... utilizando
+Então agora você poderá iniciar seu bot... utilizando
 
 ```$ npm start```
 
-Caso a saida for esta então seu bot ja está completamente online...
+No caso a saída seja a seguinte, o bot ja estará completamente pronto e online...
 
 ```
 log Carregando o total de 2 comandos.
