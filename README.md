@@ -32,13 +32,13 @@ Então agora você poderá iniciar seu bot... utilizando
 
 ```$ npm start```
 
-No caso a saída seja a seguinte, o bot ja estará completamente pronto e online...
+Caso a saída seja a seguinte, o bot ja estará completamente pronto e online...
 
 ```
-log Carregando o total de 2 comandos.
-log Carregando comando: addlang
-log Carregando comando: help
-log Carregando o total de 2 eventos
+log Carregando o total de X comandos.
+log Carregando comando: x
+(...)
+log Carregando o total de X eventos
 log O Bot foi iniciado completamente com XX usuarios em XX servidores
 ```
 
