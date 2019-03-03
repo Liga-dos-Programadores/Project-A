@@ -31,7 +31,7 @@ class LanguageManager {
     // Se a linguagem existir (index != -1)
     if (idx !== -1) {
       // Removemos a linguagem da array
-      langs.splice(langs.indexOf(name), 1)
+      langs.splice(idx, 1)
     } else {
       // Se nao existir...
       return false
@@ -39,6 +39,40 @@ class LanguageManager {
     // Salvamos o arquivo
     fs.writeFileSync('languages.json', JSON.stringify(langs), 'utf8')
     return true
+  }
+
+  setMessage (id, channel) {
+    let emojis = require('../emojiRole.json')
+    emojis.id = id
+    emojis.channel = channel
+    fs.writeFileSync('emojiRole.json', JSON.stringify(emojis), 'utf8')
+  }
+
+  addEmoji (emoji, role) {
+    let emojis = require('../emojiRole.json')
+    emojis[emoji] = role
+    fs.writeFileSync('emojiRole.json', JSON.stringify(emojis), 'utf8')
+  }
+
+  removeEmoji (emoji) {
+    let emojis = require('../emojiRole.json')
+    if (!emojis[emoji]) return
+    delete emojis[emoji]
+    fs.writeFileSync('emojiRole.json', JSON.stringify(emojis), 'utf8')
+  }
+
+  async updateMsg (client) {
+    let emojis = require('../emojiRole.json')
+    const channel = client.channels.get(emojis.channel)
+    const message = await channel.fetchMessage(emojis.id)
+    const filtered = Object.keys(emojis).filter(key => (key !== 'id' && key !== 'channel'))
+    const content = filtered.map(emoji => {
+      const role = message.guild.roles.get(emojis[emoji])
+      const rolename = role.name
+      return `Reaja com ${client.emojis.get(emoji)} para obter o cargo **${rolename}**`
+    })
+    message.edit(content.join('\n'))
+    filtered.forEach(emoji => message.react(client.emojis.get(emoji)))
   }
 }
 
