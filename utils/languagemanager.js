@@ -4,18 +4,11 @@
 const fs = require('fs')
 
 class LanguageManager {
-  // Metodo que retorna o conteudo do arquivo de configuracao das linguagens
-  getLanguages () {
-    var langs = fs.readFileSync('languages.json', 'utf8')
-    return JSON.parse(langs)
-  }
   // Adiciona uma linguagem ao arquivo
   addLanguage (name) {
-    var langs = this.getLanguages()
+    var langs = require('../languages.json')
     // se incluir a linguagem a ser adicionada, rejeitamos a promise
-    if (langs.includes(name)) {
-      return false
-    }
+    if (langs.includes(name)) return false
     // Adicionamos a linguagem selecionada na array
     langs.push(name)
     // Salvamos o arquivo
@@ -25,54 +18,71 @@ class LanguageManager {
   // Remove uma linguagem do arquivo
   removeLanguage (name) {
     // Pegamos a array com as linguagens atuais
-    var langs = this.getLanguages()
+    var langs = require('../languages.json')
     // Pegamos o index do elemento a ser removido
     var idx = langs.indexOf(name)
-    // Se a linguagem existir (index != -1)
-    if (idx !== -1) {
-      // Removemos a linguagem da array
-      langs.splice(idx, 1)
-    } else {
-      // Se nao existir...
-      return false
-    }
+    // Se a linguagem não existir terminamos a execução
+    if (idx === -1) return false
+    // Se existir, removemos a entry da array
+    langs.splice(idx, 1)
     // Salvamos o arquivo
     fs.writeFileSync('languages.json', JSON.stringify(langs), 'utf8')
     return true
   }
-
+  // Configura a mensagem de reaction-role
   setMessage (id, channel) {
+    // Importamos o arquivo de configuração
     let emojis = require('../emojiRole.json')
+    // Setamos o ID da mensagem e do canal
     emojis.id = id
     emojis.channel = channel
+    // Salvamos o arquivo
     fs.writeFileSync('emojiRole.json', JSON.stringify(emojis), 'utf8')
   }
-
+  // Adiciona um emoji / role para a lista
   addEmoji (emoji, role) {
+    // Importamos o arquivo de configuração
     let emojis = require('../emojiRole.json')
-    emojis[emoji] = role
+    // Adicionamos o emoji ao objeto "emojis"
+    emojis.emojis[emoji] = role
+    // Salvamos o arquivo
     fs.writeFileSync('emojiRole.json', JSON.stringify(emojis), 'utf8')
   }
-
+  // Remove um emoji da lista
   removeEmoji (emoji) {
+    // Importamos o arquivo de configuração
     let emojis = require('../emojiRole.json')
-    if (!emojis[emoji]) return
-    delete emojis[emoji]
+    // Se não existir esse emoji, cancelamos a execução
+    if (!emojis.emojis[emoji]) return
+    // Deleta o emoji da array
+    delete emojis.emojis[emoji]
+    // Salva o arquivo
     fs.writeFileSync('emojiRole.json', JSON.stringify(emojis), 'utf8')
   }
-
+  // Função para atualizar a mensagem de reaction role
   async updateMsg (client) {
+    // Importamos o arquivo de configuração
     let emojis = require('../emojiRole.json')
+    // Pegamos o canal e a mensagem
     const channel = client.channels.get(emojis.channel)
     const message = await channel.fetchMessage(emojis.id)
-    const filtered = Object.keys(emojis).filter(key => (key !== 'id' && key !== 'channel'))
-    const content = filtered.map(emoji => {
+    // Aqui, nós geramos uma array com cada linha da mensagem de reaction role.
+    const content = emojis.emojis.map(emoji => {
+      // Pegamos a role
       const role = message.guild.roles.get(emojis[emoji])
+      // Pegamos o emoji
+      const actualEmoji = client.emojis.get(emoji)
+      // Se algum dos dois não existir, cancelamos a execução e removemos o emoji
+      if (!role || !emoji) return this.removeEmoji(emoji)
+      // Pegamos o nome da role
       const rolename = role.name
-      return `Reaja com ${client.emojis.get(emoji)} para obter o cargo **${rolename}**`
+      // Retornamos o conteudo da linha
+      return `Reaja com ${actualEmoji} para obter o cargo **${rolename}**`
     })
+    // Juntamos a array em uma string com o separador \n, que é um linebreak e editamos a mensagem
     message.edit(content.join('\n'))
-    filtered.forEach(emoji => message.react(client.emojis.get(emoji)))
+    // Reagimos na mensagem com cada emoji da lista
+    emojis.emojis.forEach(emoji => message.react(client.emojis.get(emoji)))
   }
 }
 
