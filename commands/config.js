@@ -9,7 +9,7 @@ module.exports = {
 
     if (!option) return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
 
-    const langs = langmgr.getLanguages()
+    const langs = require('../languages.json')
 
     console.log(option)
 
