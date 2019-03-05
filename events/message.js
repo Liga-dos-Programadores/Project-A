@@ -32,6 +32,7 @@ module.exports = async (client, message) => {
   }
 
   if (message.channel.id === process.env.SUGESTOES) {
+    if (message.content.startsWith('^')) return
     await message.react('⬆')
     await message.react('⬇')
     return
