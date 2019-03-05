@@ -15,7 +15,7 @@ module.exports = {
     if (args.length < 1) return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
 
     /** Então verificamos os argumentos e instanciamos o cargo que queremos pelo nome. */
-    let langs = langmgr.getLanguages()
+    let langs = require('../languages.json')
     let langName = langs.map(l => l.toLowerCase()).find(l => l === args.join(' ').toLowerCase())
     let role = langName && message.guild.roles.find(r => r.name.toLowerCase() === langName)
 
