@@ -4,7 +4,7 @@
   <b>Um Simples Bot para o https://discordapp.com</b><br><br>
 
   <p>
-    <a href="https://discord.gg/J78z3FV" target="_blank"><img src="https://discordapp.com/api/guilds/366404358440615951/embed.png" alt="Discord server"/></a>
+    <a href="https://discord.gg/DDmhAst" target="_blank"><img src="https://discordapp.com/api/guilds/366404358440615951/embed.png" alt="Discord server"/></a>
   </p>
 </div>
 
