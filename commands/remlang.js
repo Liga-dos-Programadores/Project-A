@@ -46,7 +46,7 @@ module.exports = {
       name: 'remlang',
       category: 'Moderação',
       description: 'Remove um cargo de alguma linguagem de programação a si próprio.',
-      usage: `remlang [${langmgr.getLanguages().join('|')}]`
+      usage: `remlang [${require('../languages.json').join('|')}]`
     }
   }
 

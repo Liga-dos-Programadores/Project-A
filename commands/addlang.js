@@ -47,7 +47,7 @@ module.exports = {
       name: 'addlang',
       category: 'Moderação',
       description: 'Adiciona um cargo de alguma linguagem de programação a si próprio.',
-      usage: `addlang [${langmgr.getLanguages().join('|')}]`
+      usage: `addlang [${require('../languages.json').join('|')}]`
     }
   }
 
