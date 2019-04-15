@@ -2,9 +2,6 @@
  * O Comando "addlang" adicionará os cargos aos membros.
  */
 
-const LanguageManager = require('../utils/languagemanager')
-const langmgr = new LanguageManager()
-
 module.exports = {
 
   /** Primeiro o metodo run(client, message, args) será executado pelo nosso arquivo message.js

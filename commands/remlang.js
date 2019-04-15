@@ -1,8 +1,6 @@
 /**
  * O Comando "remlang" removerá os cargos de programação dos membros.
  */
-const LanguageManager = require('../utils/languagemanager')
-const langmgr = new LanguageManager()
 
 module.exports = {
 

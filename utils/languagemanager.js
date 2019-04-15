@@ -67,9 +67,9 @@ class LanguageManager {
     const channel = client.channels.get(emojis.channel)
     const message = await channel.fetchMessage(emojis.id)
     // Aqui, nós geramos uma array com cada linha da mensagem de reaction role.
-    const content = emojis.emojis.map(emoji => {
+    const content = Object.keys(emojis.emojis).map(emoji => {
       // Pegamos a role
-      const role = message.guild.roles.get(emojis[emoji])
+      const role = message.guild.roles.get(emojis.emojis[emoji])
       // Pegamos o emoji
       const actualEmoji = client.emojis.get(emoji)
       // Se algum dos dois não existir, cancelamos a execução e removemos o emoji
@@ -82,7 +82,7 @@ class LanguageManager {
     // Juntamos a array em uma string com o separador \n, que é um linebreak e editamos a mensagem
     message.edit(content.join('\n'))
     // Reagimos na mensagem com cada emoji da lista
-    emojis.emojis.forEach(emoji => message.react(client.emojis.get(emoji)))
+    Object.keys(emojis.emojis).forEach(emoji => message.react(client.emojis.get(emoji)))
   }
 }
 
