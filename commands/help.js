@@ -39,6 +39,7 @@ module.exports = {
 
   help: {
     name: 'help',
+    aliases: ['ajuda'],
     category: 'Help',
     description: 'Mostra todos os comandos disponíveis do bot.',
     usage: 'help'

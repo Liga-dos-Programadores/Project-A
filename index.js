@@ -53,6 +53,7 @@ cmdFiles.forEach(f => {
       props.init(client)
     }
     client.commands.set(props.help.name, props)
+    if (props.help.aliases) props.help.aliases.forEach(alias => client.commands.set(alias, props))
   } catch (e) {
     console.log(`Impossivel executar comando ${f}: ${e}`)
   }
