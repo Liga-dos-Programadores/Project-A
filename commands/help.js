@@ -21,6 +21,7 @@ module.exports = {
      * A cada comando é adicionado as informações em um object na array fields[]
      */
     client.commands.forEach(command => {
+      if (command.alias) return
       embed.fields.push(
         {
           name: `**${process.env.PREFIX}${command.help.name}**`,
