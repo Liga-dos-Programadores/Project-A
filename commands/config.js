@@ -54,10 +54,9 @@ module.exports = {
   get help () {
     return {
       name: 'config',
-      categorie: 'Moderação',
+      category: 'Moderação',
       description: 'Altera as configurações do bot.',
       usage: 'config [addlang (name|role)|remlang role]'
     }
   }
-
 }

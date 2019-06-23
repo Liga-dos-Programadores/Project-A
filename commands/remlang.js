@@ -47,5 +47,4 @@ module.exports = {
       usage: `remlang [${require('../languages.json').join('|')}]`
     }
   }
-
 }

@@ -7,7 +7,14 @@
     "start": "node index.js"
   },
   "author": "Katho",
-  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Rafael \"Bee\" Pereira",
+      "email": "rafael@beecoding.net",
+      "url": "https://rafael.wtf"
+    }
+  ],
+  "license": "Unlicense",
   "dependencies": {
     "discord.js": "*",
     "dotenv": "^6.0.0",
