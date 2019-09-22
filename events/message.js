@@ -11,7 +11,7 @@ module.exports = async (client, message) => {
   // Checamos se a mensagem é do canal #apresente-se
   if (message.channel.id === process.env.APRESENTACAO) {
     // Checamos se o usuario tem a role "Apresentado"
-    let role = message.guild.roles.find('name', 'Apresentado')
+    const role = message.guild.roles.find('name', 'Apresentado')
     if (!message.member.roles.exists('name', role.name)) {
       // Se nao tiver, adicionamos ela
       message.member.addRole(role).catch(console.error)
@@ -19,7 +19,7 @@ module.exports = async (client, message) => {
     } else {
       // Se ja tiver, a mensagem e considerada como spam e é removida
       // Define um objeto especificando o embed
-      let embed = {
+      const embed = {
         color: 0xB1103C,
         title: 'Como resetar seu status de apresentação:',
         description: 'Olá! Caso você tenha errado a digitação de algo em sua mensagem de apresentação, basta digitar o comando `p!reset` no chat de comandos do servidor para resetar a sua apresentação!'
@@ -37,7 +37,7 @@ module.exports = async (client, message) => {
     await message.react('⬇')
     return
   }
-  
+
   if (message.channel.id === process.env.DESAFIOS) {
     await message.react('✅')
     return

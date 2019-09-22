@@ -13,13 +13,13 @@ module.exports = async (client, member) => {
 
   // Mensagem automatica de "bem-vindo"
   const message = {
-    'content': '',
-    'embed': {
-      'color': 15407128,
-      'description': `Olá ${member}, seja bem vindo(a) a Liga dos Programadores!`,
-      'author': {
-        'name': `${member.user.username}#${member.user.discriminator}`,
-        'icon_url': member.user.displayAvatarURL
+    content: '',
+    embed: {
+      color: 15407128,
+      description: `Olá ${member}, seja bem vindo(a) a Liga dos Programadores!`,
+      author: {
+        name: `${member.user.username}#${member.user.discriminator}`,
+        icon_url: member.user.displayAvatarURL
       }
     }
   }

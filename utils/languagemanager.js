@@ -15,6 +15,7 @@ class LanguageManager {
     fs.writeFileSync('languages.json', JSON.stringify(langs), 'utf8')
     return true
   }
+
   // Remove uma linguagem do arquivo
   removeLanguage (name) {
     // Pegamos a array com as linguagens atuais
@@ -29,29 +30,32 @@ class LanguageManager {
     fs.writeFileSync('languages.json', JSON.stringify(langs), 'utf8')
     return true
   }
+
   // Configura a mensagem de reaction-role
   setMessage (id, channel) {
     // Importamos o arquivo de configuração
-    let emojis = require('../emojiRole.json')
+    const emojis = require('../emojiRole.json')
     // Setamos o ID da mensagem e do canal
     emojis.id = id
     emojis.channel = channel
     // Salvamos o arquivo
     fs.writeFileSync('emojiRole.json', JSON.stringify(emojis), 'utf8')
   }
+
   // Adiciona um emoji / role para a lista
   addEmoji (emoji, role) {
     // Importamos o arquivo de configuração
-    let emojis = require('../emojiRole.json')
+    const emojis = require('../emojiRole.json')
     // Adicionamos o emoji ao objeto "emojis"
     emojis.emojis[emoji] = role
     // Salvamos o arquivo
     fs.writeFileSync('emojiRole.json', JSON.stringify(emojis), 'utf8')
   }
+
   // Remove um emoji da lista
   removeEmoji (emoji) {
     // Importamos o arquivo de configuração
-    let emojis = require('../emojiRole.json')
+    const emojis = require('../emojiRole.json')
     // Se não existir esse emoji, cancelamos a execução
     if (!emojis.emojis[emoji]) return
     // Deleta o emoji da array
@@ -59,10 +63,11 @@ class LanguageManager {
     // Salva o arquivo
     fs.writeFileSync('emojiRole.json', JSON.stringify(emojis), 'utf8')
   }
+
   // Função para atualizar a mensagem de reaction role
   async updateMsg (client) {
     // Importamos o arquivo de configuração
-    let emojis = require('../emojiRole.json')
+    const emojis = require('../emojiRole.json')
     // Pegamos o canal e a mensagem
     const channel = client.channels.get(emojis.channel)
     const message = await channel.fetchMessage(emojis.id)
