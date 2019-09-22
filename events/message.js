@@ -37,6 +37,11 @@ module.exports = async (client, message) => {
     await message.react('⬇')
     return
   }
+  
+  if (message.channel.id === process.env.DESAFIOS) {
+    await message.react('✅')
+    return
+  }
 
   /** Outra boa pratica é ignorar qualquer mensagem que não começe com o prefixo escolhido do bot.
    * OBS: O PREFIXO E PEGO ATRAVES DAS CONFIGURAÇÕES EM client.settings.
