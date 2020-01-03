@@ -33,8 +33,8 @@ module.exports = async (client, message) => {
 
   if (message.channel.id === process.env.SUGESTOES || message.channel.id === process.env.PROJETOS) {
     if (message.content.startsWith('^')) return
-    await message.react('⬆')
-    await message.react('⬇')
+    await message.react('<:upvote:662625034770186241>')
+    await message.react('<:downvote:662624803756441600>')
     return
   }
 
