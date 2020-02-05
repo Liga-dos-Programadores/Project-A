@@ -11,7 +11,7 @@ module.exports = async(client, message) => {
     // Checamos se a mensagem é do canal #apresente-se
     if (message.channel.id === process.env.APRESENTACAO) {
         // Checamos se o usuario tem a role "Apresentado"
-        let role = message.guild.roles.find('name', 'Apresentado')
+        let role = message.guild.roles.find('name', 'Membro')
         if (!message.member.roles.exists('name', role.name)) {
             // Se nao tiver, adicionamos ela
             message.member.addRole(role).catch(console.error)
@@ -33,8 +33,8 @@ module.exports = async(client, message) => {
 
     if (message.channel.id === process.env.SUGESTOES || message.channel.id === process.env.PROJETOS) {
         if (message.content.startsWith('^')) return
-        await message.react('⬆')
-        await message.react('⬇')
+        await message.react('662625034770186241')
+        await message.react('662624803756441600')
         return
     }
 
