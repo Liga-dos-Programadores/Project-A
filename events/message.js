@@ -31,12 +31,14 @@ module.exports = async(client, message) => {
         return
     }
 
-    if (message.channel.id === process.env.SUGESTOES || message.channel.id === process.env.PROJETOS) {
-        if (message.content.startsWith('^')) return
-        await message.react('662625034770186241')
-        await message.react('662624803756441600')
-        return
-    }
+
+  if (message.channel.id === process.env.SUGESTOES || message.channel.id === process.env.PROJETOS) {
+    if (message.content.startsWith('^')) return
+    await message.react('662625034770186241')
+    await message.react('662624803756441600')
+    return
+  }
+
 
     if (message.channel.id === process.env.DESAFIOS) {
         await message.react('✅')

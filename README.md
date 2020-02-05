@@ -44,9 +44,7 @@ log O Bot foi iniciado completamente com XX usuarios em XX servidores
 ```
 
 ## Links
-* [Servidor do Discord A Liga dos Programadores](https://discord.gg/J78z3FV)
-* [Project: A GitHub](https://github.com/katho162/ProjectA)
-* [Twitter](https://twitter.com/123katho)
+* [Servidor do Discord A Liga dos Programadores](https://discord.gg/YAqEyPu)
 
 ## Doações
 Para fazer doações entre em contato em nosso servidor do discord.
