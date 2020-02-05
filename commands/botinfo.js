@@ -16,7 +16,7 @@ module.exports = {
     // Criando embed que sera enviado para o usuário
     let embed = new Discord.RichEmbed()
       .setDescription('Informações sobre o Bot')
-      .setColor('#eb1818')
+      .setColor('#FF6C7B')
       .setThumbnail(botAvatar)
       .addField('Nome do bot', userName)
       .addField('Estou online a', moment().to(client.startTime, true))
