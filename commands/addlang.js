@@ -1,6 +1,4 @@
-/**
- * O Comando "addlang" adicionará os cargos aos membros.
- */
+/* O Comando "addlang" adicionará os cargos aos membros. */
 
 module.exports = {
 
@@ -9,7 +7,7 @@ module.exports = {
  */
   run: (client, message, args) => {
     /** Verificamos se o número de argumentos é válido. */
-    if (args.length < 1) return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
+    if (args.length < 1) return message.reply(`olhe os cargos que eu tenho\: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
 
     /** Então verificamos os argumentos e instanciamos o cargo que queremos pelo nome. */
     let langs = require('../languages.json')
@@ -17,9 +15,9 @@ module.exports = {
     let role = langName && message.guild.roles.find(r => r.name.toLowerCase() === langName)
 
     if (!role) {
-      const emoji = message.guild.emojis.find('name', 'thonk')
-      message.react(emoji || '🤔')
-      return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${process.env.PREFIX}addlang [${langs.join('|')}]\`\`\``)
+      const emoji = message.guild.emojis.find('name', 'woman_shrugging')
+      message.react(emoji || '🤷‍♀️')
+      return message.reply(`não tenho esse cargo, olhe quais eu tenho: \`\`\` ${langs.join(' | ')}\`\`\``)
     }
 
     /** Logo então atribuimos o cargo ao membro e mandamos uma mensagem como resposta
@@ -27,7 +25,7 @@ module.exports = {
      */
     if (!message.member.roles.has(role.id)) {
       message.member.addRole(role)
-      return message.reply(`*Beep boop!@* Agora você possui o cargo **${role.name}**`)
+      return message.reply(`*Beep boop! Agora você possui o cargo **${role.name}**`)
     } else {
       return message.reply(`Você já possui esse cargo!`)
     }

@@ -10,20 +10,22 @@ module.exports = {
     /** Verifica se o membro possui permissão para administrar mensagens. */
     if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('Você não pode fazer isto :c')
     /** Verifica se é a quantidade de argumentos correta
-       * Se nenhum argumento for passado então remova 100 mensagens
+       * Se nenhum argumento for passado então remova 200 mensagens
        * Se 1 argumento for passado então remove esse numero
        * Se mais de um argumento for passado então retorne a mensagem.
        */
-    var limit = 100
+      
+    var limit = 200
     if (args.length === 1) {
+      
       limit = parseInt(args[0])
     } else {
-      return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
+      return message.reply(`determine uma quantidade de mensagens para serem excluídas: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
     }
     /** Verifica se um numero foi passado como argumento. */
-    if (!Number.isInteger(limit)) return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
+    if (!Number.isInteger(limit)) return message.reply(`determine uma quantidade entre 1 a 200! \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
     /** Então irá aumentar um numero para a mensagem de comando ser apagada junto com as outras. */
-    limit++
+  
     /** Limita que o numero de mensagens seja maior que 100 */
     limit = Math.min(limit, 99)
 
@@ -44,7 +46,7 @@ module.exports = {
       name: 'bulk',
       category: 'Moderação',
       description: 'Apaga mensagens de um canal.',
-      usage: 'bulk [1 - 100]'
+      usage: 'bulk [1 - 200]'
     }
   }
 }
