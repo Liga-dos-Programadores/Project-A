@@ -12,14 +12,14 @@ module.exports = {
     if (args.length < 1) return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
 
     /** Então verificamos os argumentos e instanciamos o cargo que queremos pelo nome. */
-    let langs = require('../languages.json')
+    let langs = require('../cargos.json')
     let langName = langs.map(l => l.toLowerCase()).find(l => l === args.join(' ').toLowerCase())
     let role = langName && message.guild.roles.find(r => r.name.toLowerCase() === langName)
 
     if (!role) {
       const emoji = message.guild.emojis.find('name', 'thonk')
       message.react(emoji || '🤔')
-      return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${process.env.PREFIX}addlang [${langs.join('|')}]\`\`\``)
+      return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${process.env.PREFIX}addrole [${langs.join('|')}]\`\`\``)
     }
 
     /** Logo então removemos o cargo do membro e mandamos uma mensagem como resposta

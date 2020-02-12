@@ -1,10 +1,5 @@
-/* O Comando "addlang" adicionará os cargos aos membros. */
-
 module.exports = {
 
-  /** Primeiro o metodo run(client, message, args) será executado pelo nosso arquivo message.js
- * Que passará os argumentos atraves do middleware que programamos.
- */
   run: (client, message, args) => {
     /** Verificamos se o número de argumentos é válido. */
     if (args.length < 1) return message.reply(`olhe os cargos que eu tenho\: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
@@ -39,10 +34,10 @@ module.exports = {
   /** Aqui exportamos ajuda do comando como o seu nome categoria, descrição, etc... */
   get help () {
     return {
-      name: 'addlang',
+      name: 'addrole',
       category: 'Moderação',
-      description: 'Adiciona um cargo de alguma linguagem de programação a si próprio.',
-      usage: `addlang [${require('../languages.json').join('|')}]`
+      description: 'Adiciona um cargo',
+      usage: `addrole [${require('../languages.json').join('|')}]`
     }
   }
 

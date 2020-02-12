@@ -43,10 +43,10 @@ module.exports = {
 
   get help () {
     return {
-      name: 'bulk',
+      name: 'delete',
       category: 'Moderação',
       description: 'Apaga mensagens de um canal.',
-      usage: 'bulk [1 - 200]'
+      usage: 'delete [1 - 200]'
     }
   }
 }

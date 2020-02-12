@@ -1,27 +1,20 @@
-/**
- * O Comando "notify" adiciona o cargo de notificações aos membros
- */
-
 module.exports = {
 
-  /** Primeiro o metodo run(client, message, args) será executado pelo nosso arquivo message.js
- * Que passara os argumentos atraves do middleware que programamos.
- */
   run: (client, message, args) => {
     /** Verificamos se o numero de argumentos é o correto. */
     if (!(args.length === 0)) return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
 
     /** Então verificamos os argumentos e instanciamos o cargo que queremos pelo nome. */
-    let role = message.guild.roles.find('name', 'Novidades')
+    let role = message.guild.roles.find('Novidades')
 
     /** Logo então atribuimos o cargo ao membro e mandamos uma mensagem como resposta
      * Caso o membro ja possua o cargo então é enviada uma mensagem retornando.
      */
-    if (!message.member.roles.exists('name', role.name)) {
+    if (!message.member.roles.exists(role.name)) {
       message.member.addRole(role)
-      return message.reply(`*Beep boop!@* Agora você sempre será notificado quando houver notícias`)
+      return message.reply(`*beep boop! Agora você sempre será notificado quando houver novidades no servidor!`)
     } else {
-      return message.reply(`Você já possui este cargo!`)
+      return message.reply(`Ei! Você já possui este cargo.`)
     }
   },
 
@@ -33,10 +26,10 @@ module.exports = {
   /** Aqui exportamos ajuda do comando como o seu nome categoria descrição etc... */
   get help () {
     return {
-      name: 'notify',
-      category: 'Moderação',
-      description: 'Adiciona o cargo de notificações a si mesmo.',
-      usage: 'notify'
+      name: 'novidades',
+      category: 'Membros',
+      description: 'Adiciona o cargo de novidades a si mesmo.',
+      usage: 'novidades'
     }
   }
 }

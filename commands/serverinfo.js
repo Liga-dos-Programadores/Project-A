@@ -6,39 +6,30 @@ moment.locale('pt-br')
 module.exports = {
  
   run: function (client, message, args) {
-    const inline = true;
-    let botAvatar = client.user.displayAvatarURL
-    let date = client.user.createdAt
-    let userName = client.user.username
-    let servsize = client.guilds.size;
-    let usersize = client.users.size;
-    let status = {
-      online: "`🟢` Online",
-      offline: "`⚫` Offline"
-    };
+    let date = message.guild.createdAt
+    let joined = message.member.joinedAt
 
+    let region = {
+     "brazil": ":flag_br: Brazil",
+    };
+ 
     let embed = new Discord.RichEmbed()
       .setColor( client.displayHexColor === "#000000" ? "#ffffff" : client.displayHexColor)
-      .setThumbnail(botAvatar)
-      .setAuthor(`🤖 Minhas informações`)
-      .addField('**Meu nick**', userName)
-      .addField("**Meu ID**", client.user.id)
-      .addField("**Servidores**", `🛡 ${servsize}`, true)
-      .addField("**Usuários**", `${usersize}`, inline)
-      .addField('**Estou online a**', moment().to(client.startTime, true))
+      .setThumbnail(message.guild.iconURL)
+      .setAuthor(`🔍 Informações do servidor`)
+      .addField("**Nome**", message.guild.name, true)
+      .addField("**ID**", message.guild.id, true)
+      .addField("**Dono(a)**", `${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`)
+      .addField("**Região**", region[message.guild.region], true)
+      .addField("**Humanos | Bots**", `${message.guild.members.filter(member => !member.user.bot).size} | ${message.guild.members.filter(member => member.user.bot).size}`)
+      .addField("**Canais**", message.guild.channels.size, true)
+      .addField("**Cargos**", message.guild.roles.size, true)
       .addField('**Criado em**', formatDate('DD/MM/YYYY, às HH:mm:ss', date))
+      .addField("**Você entrou em**", formatDate('DD/MM/YYYY, às HH:mm:ss', joined))
       .setFooter(
         `2020 © ${client.user.username}. `
       )
       .setTimestamp();
-
-    if (client.user.presence.status)
-      embed.addField(
-      "**Status**",
-      `${status[client.user.presence.status]}`,
-      inline,
-      true
-    );
 
     // Aqui sera enviado o embed no canal que o usuário executo o comando
     message.channel.send(embed)
@@ -53,10 +44,10 @@ module.exports = {
      */
   get help () {
     return {
-      name: 'botinfo',
+      name: 'serverinfo',
       category: 'Membro',
-      description: 'Informação sobre o Bot',
-      usage: `botinfo`
+      description: 'Informação sobre o servidor',
+      usage: `serverinfo`
     }
   }
 }
