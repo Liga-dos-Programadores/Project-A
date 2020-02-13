@@ -7,7 +7,6 @@ module.exports = {
  
   run: function (client, message, args) {
    let inline = true
-   let resence = true
    const status = {
        online: " `🟢` Online",
        idle: " `🟠` Ausente",

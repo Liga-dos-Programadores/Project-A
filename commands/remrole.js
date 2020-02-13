@@ -1,5 +1,5 @@
 /**
- * O Comando "remlang" removerá os cargos de programação dos membros.
+ * O Comando "remrole" removerá os cargos de programação dos membros.
  */
 
 module.exports = {
@@ -12,14 +12,14 @@ module.exports = {
     if (args.length < 1) return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
 
     /** Então verificamos os argumentos e instanciamos o cargo que queremos pelo nome. */
-    let langs = require('../cargos.json')
-    let langName = langs.map(l => l.toLowerCase()).find(l => l === args.join(' ').toLowerCase())
-    let role = langName && message.guild.roles.find(r => r.name.toLowerCase() === langName)
+    let roles = require('../cargos.json')
+    let roleName = roles.map(l => l.toLowerCase()).find(l => l === args.join(' ').toLowerCase())
+    let role = roleName && message.guild.roles.find(r => r.name.toLowerCase() === roleName)
 
     if (!role) {
       const emoji = message.guild.emojis.find('name', 'thonk')
       message.react(emoji || '🤔')
-      return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${process.env.PREFIX}addrole [${langs.join('|')}]\`\`\``)
+      return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${process.env.PREFIX}addrole [${roles.join('|')}]\`\`\``)
     }
 
     /** Logo então removemos o cargo do membro e mandamos uma mensagem como resposta
@@ -41,10 +41,10 @@ module.exports = {
   /** Aqui exportamos ajuda do comando como o seu nome categoria descrição etc... */
   get help () {
     return {
-      name: 'remlang',
+      name: 'remrole',
       category: 'Moderação',
       description: 'Remove um cargo de alguma linguagem de programação a si próprio.',
-      usage: `remlang [${require('../languages.json').join('|')}]`
+      usage: `remrole [${require('../cargos.json').join('|')}]`
     }
   }
 }

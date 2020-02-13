@@ -1,6 +1,6 @@
-const Discord = require('discord.js')
+const Discord = require('discord.js');
+const moment = require('moment');
 
-const moment = require('moment')
 moment.locale('pt-br')
 
 module.exports = {
@@ -40,17 +40,11 @@ module.exports = {
       true
     );
 
-    // Aqui sera enviado o embed no canal que o usuário executo o comando
     message.channel.send(embed)
   },
-  /**
-     * Aqui podemos colocar mais algumas configurações do comando.
-     */
+ 
   conf: {},
 
-  /**
-     * Aqui exportamos ajuda do comando como o seu nome categoria, descrição, etc...
-     */
   get help () {
     return {
       name: 'botinfo',

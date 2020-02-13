@@ -12,14 +12,11 @@ module.exports = {
       url: 'https://github.com/Liga-dos-Programadores/Project-A',
       description: 'Todos os comandos disponíveis',
       footer: {
-        text: 'Não se esqueça de checar nosso código-fonte ;) ® 2018, A Liga dos Programadores.'
+        text: 'Não se esqueça de checar nosso código-fonte ;) ® 2020, A Liga dos Programadores.'
       },
       fields: []
     }
 
-    /** Laço de repetição em todos os comandos
-     * A cada comando é adicionado as informações em um object na array fields[]
-     */
     client.commands.forEach(command => {
       if (command.alias) return
       embed.fields.push(
@@ -30,7 +27,6 @@ module.exports = {
       )
     })
 
-    /** Então envia a mensagem embed para o usuario. */
     message.author.send({ embed: embed })
       .then(() => message.react('👌'))
       .catch(() => message.reply('Desculpe, mas eu não tenho permissões para enviar mensagens por DM para você!'))
