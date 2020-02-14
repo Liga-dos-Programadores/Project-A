@@ -1,9 +1,13 @@
-module.exports = {
-  run: async (client, message, args) => {
-    const msg = await message.channel.send(`🏓 Pinging....`);
+const Discord = require('discord.js');
 
-    msg.edit(`🏓 Pong!
-        A latência da API é: ${Math.round(client.ping)}ms`);
+module.exports = {
+
+  run: async (client, message, args) => {
+    let embed = new Discord.RichEmbed()
+        .setAuthor(`🏓 ${Math.round(client.ping)}ms`)
+        .setColor(message.member? message.member.displayColor : global.CLIENT_DEFAULT_COLOR);
+
+        message.channel.send(embed);
   },
 
   conf: {},
@@ -12,9 +16,9 @@ module.exports = {
     return {
       name: "ping",
       category: "fun",
-      description: "PONG! Mostra a api e a latência do bot",
+      description: "Mostra a latência do Bot",
       usage: "!ping",
       acessablebly: "Members",
-    }
+    };
   }
 };

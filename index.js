@@ -47,7 +47,7 @@ client.on('error', (err) => {
 
 client.on('raw', async dados => {
   if(dados.t !== "MESSAGE_REACTION_ADD" && dados.t !== "MESSAGE_REACTION_REMOVE") return
-  if(dados.d.message_id != "677244773983060011") return
+  if(dados.d.message_id != "677864807000571934") return
 
   let servidor = client.guilds.get("674227220981612544")
   let membro = servidor.members.get(dados.d.user_id)
