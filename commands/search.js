@@ -10,7 +10,7 @@ module.exports = {
     * Que passará os argumentos atraves do middleware que programamos.
     */
   run: function (client, message, args) {
-    if (args.length < 1) return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
+    if (args.length < 1) return message.reply(`talvez isso possa ajudá-lo(a): \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
 
     let result = ddg.search(args.join(' '), 1, 'pt-br')
 

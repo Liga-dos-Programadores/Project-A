@@ -1,6 +1,11 @@
 module.exports = {
 
   run: (client, message, args) => {
+
+    //Verificamos se o usuario tem perm para usar esse comando
+    if(!message.member.hasPermission(["MANAGE_MESSAGES", "ADMINISTRATOR"]))
+    return message.channel.send("> *Você não pode usar esse comando!*");
+
     /** Verificamos se o número de argumentos é válido. */
     if (args.length < 1) return message.reply(`olhe os cargos que eu tenho\: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
 
@@ -20,7 +25,7 @@ module.exports = {
      */
     if (!message.member.roles.has(role.id)) {
       message.member.addRole(role)
-      return message.reply(`*Beep boop! Agora você possui o cargo **${role.name}**`)
+      return message.reply(`*beep boop! Agora você possui o cargo **${role.name}**`)
     } else {
       return message.reply(`Você já possui esse cargo!`)
     }
@@ -34,7 +39,7 @@ module.exports = {
   /** Aqui exportamos ajuda do comando como o seu nome categoria, descrição, etc... */
   get help () {
     return {
-      name: 'addrole',
+      name: 'AddRole',
       category: 'Moderação',
       description: 'Adiciona um cargo',
       usage: `addrole [${require('../cargos.json').join('|')}]`

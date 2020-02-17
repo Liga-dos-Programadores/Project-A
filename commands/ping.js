@@ -15,7 +15,6 @@ module.exports = {
   get help () {
     return {
       name: "ping",
-      category: "fun",
       description: "Mostra a latência do Bot",
       usage: "!ping",
       acessablebly: "Members",

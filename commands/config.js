@@ -7,7 +7,7 @@ module.exports = {
     /** Verifica se o membro possui permissão para administrar roles. */
     if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply('Você não pode fazer isto :c')
 
-    if (!option) return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
+    if (!option) return message.reply(`talvez isso possa ajudá-lo(a): \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
 
     const roles = require('../cargos.json')
 
@@ -43,7 +43,7 @@ module.exports = {
       rolemgr.updateMsg(client)
       message.reply('Mensagem atualizada.')
     } else {
-      return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
+      return message.reply(`talvez isso possa ajudá-lo(a): \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
     }
   },
 

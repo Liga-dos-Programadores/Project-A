@@ -20,9 +20,9 @@ module.exports = {
     */
  get help () {
    return {
-     name: 'avatar',
+     name: 'Avatar',
      category: 'Membro',
-     description: 'Avatar',
+     description: 'Mostra o avatar do usuário ou de um bot.',
      usage: `avatar`
    };
  }
