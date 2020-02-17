@@ -35,7 +35,7 @@ module.exports = async (client, member) => {
   .setThumbnail(member.user.displayAvatarURL)
   .setColor("RANDOM")
   .setAuthor(`🎉 Bem-vindo(a) ao servidor!`)
-  .setTitle("Leia nossas regras para evitar confusões :)")
+  .setTitle("Leia nossas regras para evitar confusões")
   .setDescription(`${member}, para ter acesso aos outros canais vá em #seja_membro.`) 
   .setFooter(
     `2020 © Project M.`
