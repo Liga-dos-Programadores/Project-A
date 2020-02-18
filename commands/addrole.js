@@ -15,9 +15,9 @@ module.exports = {
     let role = roleName && message.guild.roles.find(r => r.name.toLowerCase() === roleName)
 
     if (!role) {
-      const emoji = message.guild.emojis.find('name', 'woman_shrugging')
-      message.react(emoji || '🤷‍♀️')
-      return message.reply(`não tenho esse cargo, olhe quais eu tenho: \`\`\` ${roles.join(' | ')}\`\`\``)
+      const emoji = message.guild.emojis.find('name', 'grey_question')
+      message.react(emoji || '❔')
+      return message.reply(`ou esse cargo não tem no servidor ou foi escrito de maneira errada!`)
     }
 
     /** Logo então atribuimos o cargo ao membro e mandamos uma mensagem como resposta
@@ -25,9 +25,9 @@ module.exports = {
      */
     if (!message.member.roles.has(role.id)) {
       message.member.addRole(role)
-      return message.reply(`*beep boop! Agora você possui o cargo **${role.name}**`)
+      return message.reply(`agora você possui o cargo **${role.name}** 👏`)
     } else {
-      return message.reply(`Você já possui esse cargo!`)
+      return message.reply(`você já possui esse cargo!`)
     }
   },
 
@@ -39,7 +39,7 @@ module.exports = {
   /** Aqui exportamos ajuda do comando como o seu nome categoria, descrição, etc... */
   get help () {
     return {
-      name: 'AddRole',
+      name: 'addrole',
       category: 'Moderação',
       description: 'Adiciona um cargo',
       usage: `addrole [${require('../cargos.json').join('|')}]`

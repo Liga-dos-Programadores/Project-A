@@ -27,9 +27,7 @@ module.exports = {
       .addField("**Usuários**", `${usersize}`, inline)
       .addField('**Estou online a**', moment().to(client.startTime, true))
       .addField('**Criado em**', formatDate('DD/MM/YYYY, às HH:mm:ss', date))
-      .setFooter(
-        `2020 © ${client.user.username}. `
-      )
+      .setFooter(`2020 © ${client.user.username}.`)
       .setTimestamp();
 
     if (client.user.presence.status)
@@ -47,9 +45,9 @@ module.exports = {
 
   get help () {
     return {
-      name: 'BotInfo',
+      name: 'botinfo',
       category: 'Membro',
-      description: 'Informação sobre o Bot',
+      description: 'Informação sobre o bot',
       usage: `botinfo`
     }
   }

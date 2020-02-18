@@ -8,11 +8,11 @@ module.exports = {
     /** Objeto embed que irá ser enviado. */
     let embed = {
       color: 0xB1103C,
-      title: 'Project: M',
-      url: 'https://github.com/marianamorais/Project-A',
-      description: 'Lista dos Comandos',
+      title: 'PROJECT: A',
+      url: 'https://github.com/Liga-dos-Programadores/Project-A',
+      description: `***Lista de comandos*** 🤖`,
       footer: {
-        text: 'Não se esqueça de checar nosso código-fonte ;) ® 2020, Liga dos Programadores.'
+        text: 'Não se esqueça de checar nosso código-fonte | 2020 ®Liga dos Programadores'
       },
       fields: []
     }
@@ -28,8 +28,8 @@ module.exports = {
     })
 
     message.author.send({ embed: embed })
-      .then(() => message.react('👌'))
-      .catch(() => message.reply('Desculpe, mas eu não tenho permissões para enviar mensagens por DM para você!'))
+      .then(() => message.react('⚡'))
+      .catch(() => message.reply(`eu não tenho permissões para enviar DM para você 😥`))
   },
 
   conf: {},
@@ -38,7 +38,7 @@ module.exports = {
     name: 'help',
     aliases: ['ajuda'],
     category: 'Help',
-    description: 'Mostra todos os comandos disponíveis do bot.',
+    description: 'Mostra todos os comandos disponíveis.',
     usage: 'help'
   }
 }

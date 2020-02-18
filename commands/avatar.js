@@ -20,7 +20,8 @@ module.exports = {
     */
  get help () {
    return {
-     name: 'Avatar',
+     name: 'avatar',
+     memberName: 'Avatar',
      category: 'Membro',
      description: 'Mostra o avatar do usuário ou de um bot.',
      usage: `avatar`

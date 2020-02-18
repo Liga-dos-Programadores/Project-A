@@ -2,7 +2,7 @@ module.exports = {
  run: (client, message, args) => {
 
   if(!message.member.hasPermission(["MANAGE_MESSAGES", "ADMINISTRATOR"]))
-  return message.channel.send("Você não pode usar esse comando!");
+  return message.channel.send("> Você não pode usar esse comando!");
 
   let argsresult;
   let mChannel = message.mentions.channels.first();
