@@ -1,5 +1,5 @@
 {
-  "name": "project-m",
+  "name": "project-a",
   "version": "1.0.0",
   "description": "Um bot para o discord.",
   "main": "index.js",
@@ -20,8 +20,4 @@
     "moment": "^2.22.0"
   },
   "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/marianamorais/Project-A.git"
-  }
 }
