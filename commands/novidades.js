@@ -1,5 +1,5 @@
 // **
-//  * O Comando "notify" adiciona o cargo de notificações aos membros
+//  * O Comando "novidades" adiciona o cargo de notificações aos membros
 //  */
 
 module.exports = {

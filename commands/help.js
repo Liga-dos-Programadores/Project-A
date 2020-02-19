@@ -8,9 +8,8 @@ module.exports = {
     /** Objeto embed que irá ser enviado. */
     let embed = {
       color: 0xB1103C,
-      title: 'PROJECT: A',
+      title: 'PROJECT: A - Lista de comandos',
       url: 'https://github.com/Liga-dos-Programadores/Project-A',
-      description: `***Lista de comandos*** 🤖`,
       footer: {
         text: 'Não se esqueça de checar nosso código-fonte | 2020 ®Liga dos Programadores'
       },
@@ -21,8 +20,9 @@ module.exports = {
       if (command.alias) return
       embed.fields.push(
         {
-          name: `**${command.help.name}**`,
-          value: `**Descrição**: ${command.help.description}\n**Como Usar**: ${process.env.PREFIX}${command.help.usage}`
+          name: `> **${command.help.name}**`,
+          value: `**Descrição**: ${command.help.description}\n**Como Usar**: ${process.env.PREFIX}${command.help.usage}`,
+          category:`${command.help.category}`,
         }
       )
     })

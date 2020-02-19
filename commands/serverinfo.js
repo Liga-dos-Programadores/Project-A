@@ -1,3 +1,7 @@
+/**
+ * O Comando "serverinfo" mostrará informações do servidor
+ */
+
 const Discord = require('discord.js')
 
 const moment = require('moment')

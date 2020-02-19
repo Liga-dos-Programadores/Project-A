@@ -1,10 +1,14 @@
+/**
+ * O Comando "botinfo"mostrará informações do bot
+ */
+
 const Discord = require('discord.js');
 const moment = require('moment');
 
 moment.locale('pt-br')
 
 module.exports = {
- 
+
   run: function (client, message, args) {
     const inline = true;
     let botAvatar = client.user.displayAvatarURL
@@ -18,7 +22,7 @@ module.exports = {
     };
 
     let embed = new Discord.RichEmbed()
-      .setColor( client.displayHexColor === "#000000" ? "#ffffff" : client.displayHexColor)
+      .setColor(client.displayHexColor === "#000000" ? "#ffffff" : client.displayHexColor)
       .setThumbnail(botAvatar)
       .setAuthor(`🤖 Minhas informações`)
       .addField('**Meu nick**', userName)
@@ -32,18 +36,18 @@ module.exports = {
 
     if (client.user.presence.status)
       embed.addField(
-      "**Status**",
-      `${status[client.user.presence.status]}`,
-      inline,
-      true
-    );
+        "**Status**",
+        `${status[client.user.presence.status]}`,
+        inline,
+        true
+      );
 
     message.channel.send(embed)
   },
- 
+
   conf: {},
 
-  get help () {
+  get help() {
     return {
       name: 'botinfo',
       category: 'Membro',
@@ -59,7 +63,7 @@ module.exports = {
  * @param {Date=} [date]
  * @return {string}
  */
-function formatDate (template, date) {
+function formatDate(template, date) {
   var specs = 'YYYY:MM:DD:HH:mm:ss'.split(':')
   date = new Date(date || Date.now() - new Date().getTimezoneOffset() * 6e4)
   return date.toISOString().split(/[-:.TZ]/).reduce(function (template, item, i) {
