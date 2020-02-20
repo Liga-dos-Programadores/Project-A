@@ -19,8 +19,17 @@ module.exports = async (client, member) => {
   .setAuthor(`👋 Bem-vindo(a) ao servidor!`)
   .setTitle("Leia nossas regras para evitar confusões")
   .setDescription(`${member}, para ter acesso aos outros canais vá em #seja_membro.`) 
-  .setFooter(`2020 ©Project A`)
+  .setFooter(`2020 ©Liga dos Programadores`)
   .setTimestamp()
 
+  let join = new Discord.RichEmbed()
+  .setThumbnail(member.user.displayAvatarURL)
+  .setColor("RANDOM")
+  .setAuthor(`✨ Um novo membro entrou no servidor!`)
+  .setDescription(`${member} acabou de entrar.`) 
+  .setFooter(`2020 ©Liga dos Programadores`)
+  .setTimestamp()
+
+  member.guild.channels.get(process.env.JOINCHANNEL).send(join).catch()
   member.guild.channels.get(process.env.GREETCHANNEL).send(message).catch()
 }
