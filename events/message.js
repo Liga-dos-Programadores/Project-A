@@ -23,12 +23,12 @@ module.exports = async (client, message) => {
       let embed = {
         color: 16739451,
         title: 'Como resetar seu status de apresentação:',
-        description: 'Olá! Caso você tenha errado a digitação de algo em sua mensagem de apresentação, basta digitar o comando `p!reset` no chat de comandos do servidor para resetar a sua apresentação!'
+        description: '**Hey**, caso você tenha errado a digitação de algo em sua mensagem de apresentação, basta digitar o comando `p!reset` no *chat de comandos do servidor* para resetar a sua apresentação!'
       }
       message.author.send({
           embed: embed
         })
-        .catch(() => message.reply('Desculpe, mas eu não tenho permissões para enviar mensagens por DM para você!'))
+        .catch(() => message.reply('me desculpe, mas eu não tenho permissões para enviar DM para você!'))
       message.delete().catch(console.error)
     }
     return

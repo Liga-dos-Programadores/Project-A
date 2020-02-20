@@ -33,13 +33,13 @@ module.exports = {
   /**
     * Aqui exportamos ajuda do comando como o seu nome categoria, descrição, etc...
     */
-  get help () {
-    return {
-      name: 'search',
-      aliases: ['buscar, pesquisar'],
-      category: 'Utilitário',
-      description: 'Pesquisar alguma coisa no DuckDuckGo',
-      usage: `search [Como fazer um bot]`
-    }
-  }
+  // get help () {
+  //   return {
+  //     name: 'search',
+  //     aliases: ['buscar, pesquisar'],
+  //     category: 'Utilitário',
+  //     description: 'Pesquisar alguma coisa no DuckDuckGo',
+  //     usage: `search [Como fazer um bot]`
+  //   }
+  // }
 }
