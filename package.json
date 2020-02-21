@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js"
   },
-  "author": "Katho",
+  "author": "Liga dos Programadores",
   "contributors": [
     "Rafael \"Bee\" Pereira <rafael@beecoding.net> (https://rafael.wtf)",
     "Álvaro Filho (https://alvarofilho.github.io/)"
