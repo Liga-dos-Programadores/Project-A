@@ -15,9 +15,9 @@ module.exports = {
   get help () {
     return {
       name: "ping",
-      description: "Mostra a latência do Bot",
+      description: "Mostra a latência do bot.",
       usage: "!ping",
-      acessablebly: "Members",
+      caregory: "Membros",
     };
   }
 };

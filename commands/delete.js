@@ -3,7 +3,7 @@ module.exports = {
   
     if (!message.member) return
 
-    if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('Você não pode fazer isso!')
+    if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('você não tem permissão para usar esse comando!')
       
     var limit = 200
     if (args.length === 1) {

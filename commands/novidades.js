@@ -36,8 +36,8 @@ module.exports = {
     return {
       name: 'novidades',
       category: 'Member',
-      description: 'Adiciona o cargo de notificações a si mesmo.',
-      usage: 'notify'
+      description: 'Adiciona o cargo de *Novidades* a si mesmo.',
+      usage: 'novidades'
     }
   }
 }

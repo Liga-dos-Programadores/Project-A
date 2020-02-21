@@ -21,8 +21,7 @@ module.exports = {
       embed.fields.push(
         {
           name: `> **${command.help.name}**`,
-          value: `**Descrição**: ${command.help.description}\n**Como Usar**: ${process.env.PREFIX}${command.help.usage}`,
-          category:`${command.help.category}`,
+          value: `**Descrição**: ${command.help.description}\n**Como Usar**: ${process.env.PREFIX}${command.help.usage}\n**Categoria**: ${command.help.category}`,
         }
       )
     })
@@ -36,9 +35,8 @@ module.exports = {
 
   help: {
     name: 'help',
-    aliases: ['ajuda'],
-    category: 'Help',
-    description: 'Mostra todos os comandos disponíveis.',
+    category: 'Membro',
+    description: 'Mostra todos os comandos disponíveis no bot.',
     usage: 'help'
   }
 }
