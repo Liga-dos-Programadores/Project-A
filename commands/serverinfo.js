@@ -19,7 +19,7 @@ module.exports = {
  
     let embed = new Discord.RichEmbed()
       .setColor( client.displayHexColor === "#000000" ? "#ffffff" : client.displayHexColor)
-      .setThumbnail(message.guild.iconURL)
+      // .setThumbnail(message.guild.iconURL)
       .setAuthor(`🔍 Informações do servidor`)
       .addField("**Nome**", message.guild.name, true)
       .addField("**ID**", message.guild.id, true)
