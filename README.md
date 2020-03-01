@@ -1,16 +1,19 @@
 <div align="center">
   <img src="https://i.imgur.com/pI0g7mg.png"><br>
   <img src="https://i.imgur.com/AxI9yNz.png"><br>
-  <b>Um Simples Bot para o https://discordapp.com</b><br><br>
+ </div>
+ 
+  <div align="center"">
+    <a href="https://discord.gg/DDmhAst" target="_blank"><img src="https://img.shields.io/discord/366404358440615951?label=Servidor&logo=discord" alt="Discord server"/></a>
+  
+  <a href="https://discord.js.org/#/" target="_blank"><img src="https://img.shields.io/badge/Biblioteca-discord.js-%23738adb" alt="Biblioteca"/></a>
+  </div>
 
-  <p>
-    <a href="https://discord.gg/DDmhAst" target="_blank"><img src="https://discordapp.com/api/guilds/366404358440615951/embed.png" alt="Discord server"/></a>
-  </p>
-</div>
 
-## Um projeto totalmente livre para começar a usar o discord.js
-Nós da Liga dos Programadores. sempre nos preocupamos em ajudar entusiastas em programação ou pessoas que se interessam pelo assunto, assim então decidimos criar projetos de codigo 100% livre para ajudar estudantes ou novatos na area a se familiarizarem com codigos uteis e interessantes!
-Fizemos este projeto, visando quem quer se aprofundar mais em bots para o discord e JavaScript. combinamos as melhores práticas do JavaScript para criar um bot estruturado simples e funcional. que possui funções como Command Handlers, Event Handlers e um comando help bonito e automático!
+## Um projeto totalmente livre
+<p>Nós da Liga dos Programadores sempre nos preocupamos em ajudar entusiastas em programação ou pessoas que se interessam pelo assunto, assim então decidimos criar projetos de codigo 100% livre para ajudar estudantes ou novatos na area a se familiarizarem com codigos uteis e interessantes!</p><b>
+  
+<p>Fizemos este projeto, visando quem quer se aprofundar mais em bots para o Discord e JavaScript. Combinamos as melhores práticas do JavaScript para criar um bot estruturado simples e funcional que possui funções como Command Handlers, Event Handlers e um comando help bonito e automático!</p>
 
 ## Instalação
 Após ter clonado o repositorio e extraido todos arquivos. tenha certeza que possui o [npm](https://www.npmjs.com/) e o [node.js 8.0.0](https://nodejs.org/en/) ou mais recente. caso estiver com tudo pronto então execute o seguinte comando no diretorio dos arquivos.
@@ -23,11 +26,11 @@ Se tudo estiver certo, crie um arquivo com o nome de **.env** seguindo o exemplo
 | ------------ | -------------------------------- | ------------ |
 | AUTH_TOKEN   | Token de autenticação do seu bot | sim          |
 | PREFIX       | Prefixo dos comandos             | sim          |
-| GAME         | O que vai aparecer no Jogando... | sim          |
-| APRESENTACAO | ID do canal de apresentação      | sim          |
-| GREETCHANNEL | ID do canal de bem vindo         | sim          |
-| SUGESTOES    | ID do canal de sugestões         | sim          |
-| DESAFIOS     | ID do canal de desafios          | sim          |
+| GAME         | O que vai aparecer no Jogando... | não          |
+| APRESENTACAO | ID do canal de apresentação      | não          |
+| GREETCHANNEL | ID do canal de bem vindo         | não          |
+| SUGESTOES    | ID do canal de sugestões         | não          |
+| DESAFIOS     | ID do canal de desafios          | não          |
 
 Então agora você poderá iniciar seu bot... utilizando
 
@@ -44,13 +47,13 @@ log O Bot foi iniciado completamente com XX usuarios em XX servidores
 ```
 
 ## Links
-* [Servidor do Discord A Liga dos Programadores](https://discord.gg/YAqEyPu)
+* [Servidor da Liga dos Programadores](https://discord.gg/YAqEyPu)
 
 ## Doações
-Para fazer doações entre em contato em nosso servidor do discord.
+Para fazer doações entre em contato em nosso servidor do Discord.
 
 ## Contribuições
-Aceitarei Pull requests desde que tenham algum sentido e não sejam gambiarra. se quiser começar a participar de projetos open-source como este entre em contato em nosso servidor do discord.
+Aceitaremos Pull Requests desde que tenham algum sentido e não sejam gambiarra. Se quiser começar a participar de projetos open-source como este entre em contato em nosso servidor do Discord.
 
 ## Ajuda
-Caso tenha alguma dificuldade em entender este codigo ou de utilizado. também poderá nos contatar em nosso servidor do discord.
+Caso tenha alguma dificuldade em entender este codigo ou por onde começar também poderá nos contatar em nosso servidor do Discord.
