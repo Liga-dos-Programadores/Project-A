@@ -11,9 +11,9 @@
 
 
 ## Um projeto totalmente livre
-<p>Nós da Liga dos Programadores sempre nos preocupamos em ajudar entusiastas em programação ou pessoas que se interessam pelo assunto, assim então decidimos criar projetos de codigo 100% livre para ajudar estudantes ou novatos na area a se familiarizarem com codigos uteis e interessantes!</p><b>
+Nós da Liga dos Programadores sempre nos preocupamos em ajudar entusiastas em programação ou pessoas que se interessam pelo assunto, assim então decidimos criar projetos de codigo 100% livre para ajudar estudantes ou novatos na area a se familiarizarem com codigos uteis e interessantes!
   
-<p>Fizemos este projeto, visando quem quer se aprofundar mais em bots para o Discord e JavaScript. Combinamos as melhores práticas do JavaScript para criar um bot estruturado simples e funcional que possui funções como Command Handlers, Event Handlers e um comando help bonito e automático!</p>
+Fizemos este projeto, visando quem quer se aprofundar mais em bots para o Discord e JavaScript. Combinamos as melhores práticas do JavaScript para criar um bot estruturado simples e funcional que possui funções como Command Handlers, Event Handlers e um comando help bonito e automático!
 
 ## Instalação
 Após ter clonado o repositorio e extraido todos arquivos. tenha certeza que possui o [npm](https://www.npmjs.com/) e o [node.js 8.0.0](https://nodejs.org/en/) ou mais recente. caso estiver com tudo pronto então execute o seguinte comando no diretorio dos arquivos.
