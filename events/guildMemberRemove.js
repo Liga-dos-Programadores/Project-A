@@ -10,7 +10,7 @@ module.exports = async (client, member) => {
   .setThumbnail(member.user.displayAvatarURL)
   .setColor("RANDOM")
   .setAuthor(`👤 Um membro saiu do servidor!`)
-  .setDescription(`${member}, acabou de sair.`) 
+  .setDescription(`${member} acabou de sair.`) 
   .setFooter(`2020 ©Liga dos Programadores`)
   .setTimestamp()
 
