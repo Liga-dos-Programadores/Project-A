@@ -1,5 +1,5 @@
 /**
- * O Comando "avatar" mostrará a imagem de perfil do usuário
+ * O Comando "avatar" mostrará a imagem de perfil do usuário ou do bot
  */
 
 module.exports = {

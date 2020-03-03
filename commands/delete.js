@@ -1,3 +1,8 @@
+/**
+ * O Comando "delete" apagará determinada quantidade de mensagens
+ * Apenas quem tem permissão poderá usar esse comando
+ */
+
 module.exports = {
   run: (client, message, args) => {
   

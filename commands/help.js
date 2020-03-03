@@ -1,6 +1,6 @@
 /**
  * O Comando Help envia uma mensagem de ajuda.
- * Cotendo comandos e outras informações.
+ * Contendo comandos e outras informações.
  */
 
 module.exports = {
