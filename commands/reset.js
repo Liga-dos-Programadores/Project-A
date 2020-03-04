@@ -42,9 +42,9 @@ module.exports = {
   get help () {
     return {
       name: 'reset',
-      category: '',
+      category: 'Membro',
       description: 'Reseta o status de apresentação do usuário.',
-      category: 'Membro'
+      
     }
   }
 }

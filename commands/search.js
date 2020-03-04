@@ -39,7 +39,7 @@ module.exports = {
   get help () {
     return {
       name: 'search',
-      category: 'Utilitário',
+      category: 'Moderação',
       description: 'Pesquisar alguma coisa no DuckDuckGo',
       usage: `search [Como fazer um bot]`
     }

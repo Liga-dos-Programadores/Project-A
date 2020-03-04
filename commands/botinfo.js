@@ -56,7 +56,6 @@ module.exports = {
     }
   }
 }
-
 /**
  * Formata a data passada para o padrão do Brasil.
  * @param {string} template

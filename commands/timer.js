@@ -27,10 +27,10 @@ module.exports = {
     onlyguilds: true
   },
 
-  // help: {
-  //   name: 'timer',
-  //   category: '',
-  //   description: 'Apaga uma mensagem enviada por você após X segundos.',
-  //   usage: 'timer [segundos]'
-  // }
+  help: {
+    name: 'timer',
+    category: '',
+    description: 'Apaga uma mensagem enviada por você após X segundos.',
+    usage: 'timer [segundos]'
+  }
 }

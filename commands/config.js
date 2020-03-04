@@ -51,12 +51,12 @@ module.exports = {
     onlyguilds: true
   },
 
-  // get help () {
-  //   return {
-  //     name: 'config',
-  //     category: 'Moderação',
-  //     description: 'Altera as configurações do bot.',
-  //     usage: 'config [addrole (name|role)|remrole role]'
-  //   }
-  // }
+  get help () {
+    return {
+      name: 'config',
+      category: 'Moderação',
+      description: 'Altera as configurações do bot.',
+      usage: 'config [addrole (name|role)|remrole role]'
+    }
+  }
 }
