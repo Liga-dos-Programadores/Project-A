@@ -17,6 +17,10 @@ module.exports = {
     var limit = 100
     if (args.length === 1) {
       limit = parseInt(args[0])
+              if(limit >= 100){
+          return message.reply("Ops Amiguinho não é possivel fazer isto!")
+          //break;
+        }
     } else {
       return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
     }
