@@ -9,6 +9,7 @@ const Discord = require('discord.js')
 /** Carrega outros modulos uteis */
 const { readdirSync } = require('fs')
 const Enmap = require('enmap')
+const config = require('./config.json');
 
 /** Instancia o Client do Discord. */
 const client = new Discord.Client()
@@ -58,4 +59,4 @@ client.on('error', (err) => {
 })
 
 /** Então finalmente iniciamos o Bot. */
-client.login(process.env.AUTH_TOKEN)
+client.login(config.token)

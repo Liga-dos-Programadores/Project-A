@@ -1,3 +1,4 @@
+const config = require('../config.json');
 /**
  * O Evento message é emitido toda vez que o bot recebe uma mensagem.
  * Podemos usar este evento como uma espécie de middleware para impedir vulnarabilidades ou outras coisas.
@@ -46,10 +47,10 @@ module.exports = async (client, message) => {
   /** Outra boa pratica é ignorar qualquer mensagem que não começe com o prefixo escolhido do bot.
      * OBS: O PREFIXO E PEGO ATRAVES DAS CONFIGURAÇÕES EM client.settings.
      */
-  if (message.content.indexOf(process.env.PREFIX) !== 0) return
+  if (message.content.indexOf(config.prefix) !== 0) return
 
   /** Então nós separamos o nome do comando de seus argumentos que são passados ao comando em si. */
-  const args = message.content.slice(process.env.PREFIX.length).trim().split(/ +/g)
+  const args = message.content.slice(config.prefix.length).trim().split(/ +/g)
   const command = args.shift().toLowerCase()
 
   /** Então se o comando existir ele irá ser executado.
