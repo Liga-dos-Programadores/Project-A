@@ -5,7 +5,7 @@ require('dotenv').config()
 const Discord = require('discord.js')
 const { readdirSync } = require('fs')
 const Enmap = require('enmap')
-const client = new Discord.Client() 
+const client = new Discord.Client()
 
 client.commands = new Enmap()
 client.startTime = Date.now()
@@ -46,28 +46,27 @@ client.on('error', (err) => {
 })
 
 client.on('raw', async dados => {
-  if(dados.t !== "MESSAGE_REACTION_ADD" && dados.t !== "MESSAGE_REACTION_REMOVE") return
-  if(dados.d.message_id != "677864807000571934") return
+  if (dados.t !== 'MESSAGE_REACTION_ADD' && dados.t !== 'MESSAGE_REACTION_REMOVE') return
+  if (dados.d.message_id != '677864807000571934') return
 
-  let servidor = client.guilds.get("674227220981612544")
+  let servidor = client.guilds.get('674227220981612544')
   let membro = servidor.members.get(dados.d.user_id)
 
   let cargo = servidor.roles.get('674702830442905601')
 
-  if(dados.t === "MESSAGE_REACTION_ADD") {
-    if(dados.d.emoji.id === "674620037402722355") {
-      if (membro.roles.has(cargo)) return ("Você já tem esse cargo")
+  if (dados.t === 'MESSAGE_REACTION_ADD') {
+    if (dados.d.emoji.id === '674620037402722355') {
+      if (membro.roles.has(cargo)) return ('Você já tem esse cargo')
       membro.addRole(cargo)
-    } 
+    }
   }
 
-  if(dados.t === "MESSAGE_REACTION_REMOVE") {
-    if(dados.d.emoji.id === "674620037402722355") {
+  if (dados.t === 'MESSAGE_REACTION_REMOVE') {
+    if (dados.d.emoji.id === '674620037402722355') {
       if (membro.roles.has(cargo)) return
       membro.removeRole(cargo)
-    } 
+    }
   }
-
-});
+})
 
 client.login(process.env.AUTH_TOKEN) /* Inicia o Bot. */

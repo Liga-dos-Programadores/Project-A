@@ -4,42 +4,42 @@ const moment = require('moment')
 moment.locale('pt-br')
 
 module.exports = {
- 
+
   run: function (client, message, args) {
-   let inline = true
-   const status = {
-       online: " `🟢` Online",
-       idle: " `🟠` Ausente",
-       dnd: " `🔴` Não pertubar",
-       offline: " `⚫️` Offline"
-     }
-       
-const member = message.mentions.members.first() || message.guild.members.get(args[0]) || message.member;
-let target = message.mentions.users.first() || message.author
-let joined = message.member.joinedAt
+    let inline = true
+    const status = {
+      online: ' `🟢` Online',
+      idle: ' `🟠` Ausente',
+      dnd: ' `🔴` Não pertubar',
+      offline: ' `⚫️` Offline'
+    }
 
-if (member.user.bot === true) {
-   bot = " `🤖` Sim";
- } else {
-   bot = " `🙂` Não";
- }
+    const member = message.mentions.members.first() || message.guild.members.get(args[0]) || message.member
+    let target = message.mentions.users.first() || message.author
+    let joined = message.member.joinedAt
 
-           let embed = new Discord.RichEmbed()
-               //.setAuthor(member.user.username)
-               .setThumbnail((target.displayAvatarURL))
-               .setColor("RANDOM")
-               .setAuthor(`🔍 Informações do usuário`)
-               .addField("**Tag**", `${member.user.tag}`, inline)
-               .addField("**ID**", member.user.id, inline)
-               .addField("**Nickname**", `${member.nickname !== null ? `Nickname: ${member.nickname}` : "Nenhum"}`, true)
-               .addField("**Bot**", `${bot}`,inline, true)
-               .addField("**Status**", `${status[member.user.presence.status]}`, inline, true)
-               .addField("**Jogando**", `${member.user.presence.game ? `${member.user.presence.game.name}` : " Nada"}`,inline, true)
-               .addField("**Cargos**", `${member.roles.filter(r => r.id !== message.guild.id).map(roles => `\`${roles.name}\``).join(" **|** ") || "Nenhum cargo"}`, true)
-               .addField("**Entrou no Discord em**", formatDate('DD/MM/YYYY, às HH:mm:ss', member.user.createdAt))
-               .addField("**Entrou no servidor em**", formatDate('DD/MM/YYYY, às HH:mm:ss', joined))
-               .setFooter(`2020 © Liga dos Programadores.`)
-               .setTimestamp()
+    if (member.user.bot === true) {
+      bot = ' `🤖` Sim'
+    } else {
+      bot = ' `🙂` Não'
+    }
+
+    let embed = new Discord.RichEmbed()
+      // .setAuthor(member.user.username)
+      .setThumbnail((target.displayAvatarURL))
+      .setColor('RANDOM')
+      .setAuthor(`🔍 Informações do usuário`)
+      .addField('**Tag**', `${member.user.tag}`, inline)
+      .addField('**ID**', member.user.id, inline)
+      .addField('**Nickname**', `${member.nickname !== null ? `Nickname: ${member.nickname}` : 'Nenhum'}`, true)
+      .addField('**Bot**', `${bot}`, inline, true)
+      .addField('**Status**', `${status[member.user.presence.status]}`, inline, true)
+      .addField('**Jogando**', `${member.user.presence.game ? `${member.user.presence.game.name}` : ' Nada'}`, inline, true)
+      .addField('**Cargos**', `${member.roles.filter(r => r.id !== message.guild.id).map(roles => `\`${roles.name}\``).join(' **|** ') || 'Nenhum cargo'}`, true)
+      .addField('**Entrou no Discord em**', formatDate('DD/MM/YYYY, às HH:mm:ss', member.user.createdAt))
+      .addField('**Entrou no servidor em**', formatDate('DD/MM/YYYY, às HH:mm:ss', joined))
+      .setFooter(`2020 © Liga dos Programadores.`)
+      .setTimestamp()
     message.channel.send(embed)
   },
   /**

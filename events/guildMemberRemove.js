@@ -5,14 +5,13 @@ const Discord = require('discord.js')
  */
 
 module.exports = async (client, member) => {
-
   let message = new Discord.RichEmbed()
-  .setThumbnail(member.user.displayAvatarURL)
-  .setColor("RANDOM")
-  .setAuthor(`👤 Um membro saiu do servidor!`)
-  .setDescription(`${member} acabou de sair.`) 
-  .setFooter(`2020 ©Liga dos Programadores`)
-  .setTimestamp()
+    .setThumbnail(member.user.displayAvatarURL)
+    .setColor('RANDOM')
+    .setAuthor(`👤 Um membro saiu do servidor!`)
+    .setDescription(`${member} acabou de sair.`)
+    .setFooter(`2020 ©Liga dos Programadores`)
+    .setTimestamp()
 
   member.guild.channels.get(process.env.LEAVECHANNEL).send(message).catch()
 }

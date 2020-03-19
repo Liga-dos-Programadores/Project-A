@@ -21,7 +21,7 @@ module.exports = {
       embed.fields.push(
         {
           name: `> **${command.help.name}**`,
-          value: `**Descrição**: ${command.help.description}\n**Como Usar**: ${process.env.PREFIX}${command.help.usage}\n**Categoria**: ${command.help.category}`,
+          value: `**Descrição**: ${command.help.description}\n**Como Usar**: ${process.env.PREFIX}${command.help.usage}\n**Categoria**: ${command.help.category}`
         }
       )
     })

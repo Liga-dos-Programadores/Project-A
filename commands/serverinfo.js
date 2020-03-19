@@ -8,30 +8,30 @@ const moment = require('moment')
 moment.locale('pt-br')
 
 module.exports = {
- 
+
   run: function (client, message, args) {
     let date = message.guild.createdAt
     let joined = message.member.joinedAt
 
     let region = {
-     "brazil": ":flag_br: Brazil",
-    };
- 
+      'brazil': ':flag_br: Brazil'
+    }
+
     let embed = new Discord.RichEmbed()
-      .setColor( client.displayHexColor === "#000000" ? "#ffffff" : client.displayHexColor)
+      .setColor(client.displayHexColor === '#000000' ? '#ffffff' : client.displayHexColor)
       // .setThumbnail(message.guild.iconURL)
       .setAuthor(`🔍 Informações do servidor`)
-      .addField("**Nome**", message.guild.name, true)
-      .addField("**ID**", message.guild.id, true)
-      .addField("**Dono(a)**", `${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`)
-      .addField("**Região**", region[message.guild.region], true)
-      .addField("**Humanos | Bots**", `${message.guild.members.filter(member => !member.user.bot).size} | ${message.guild.members.filter(member => member.user.bot).size}`)
-      .addField("**Canais**", message.guild.channels.size, true)
-      .addField("**Cargos**", message.guild.roles.size, true)
+      .addField('**Nome**', message.guild.name, true)
+      .addField('**ID**', message.guild.id, true)
+      .addField('**Dono(a)**', `${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`)
+      .addField('**Região**', region[message.guild.region], true)
+      .addField('**Humanos | Bots**', `${message.guild.members.filter(member => !member.user.bot).size} | ${message.guild.members.filter(member => member.user.bot).size}`)
+      .addField('**Canais**', message.guild.channels.size, true)
+      .addField('**Cargos**', message.guild.roles.size, true)
       .addField('**Criado em**', formatDate('DD/MM/YYYY, às HH:mm:ss', date))
-      .addField("**Você entrou em**", formatDate('DD/MM/YYYY, às HH:mm:ss', joined))
+      .addField('**Você entrou em**', formatDate('DD/MM/YYYY, às HH:mm:ss', joined))
       .setFooter(`2020 © Liga dos Programadores.`)
-      .setTimestamp();
+      .setTimestamp()
 
     // Aqui sera enviado o embed no canal que o usuário executo o comando
     message.channel.send(embed)

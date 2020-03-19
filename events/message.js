@@ -15,7 +15,7 @@ module.exports = async (client, message) => {
     if (!message.member.roles.exists('name', role.name)) {
       // Se nao tiver, adicionamos ela
       message.member.addRole(role).catch(console.error)
-      const emoji = message.guild.emojis.find(emoji => emoji.name === 'liga');
+      const emoji = message.guild.emojis.find(emoji => emoji.name === 'liga')
       message.react(emoji)
     } else {
       // Se ja tiver, a mensagem e considerada como spam e é removida
@@ -26,8 +26,8 @@ module.exports = async (client, message) => {
         description: '**Hey**, caso você tenha errado a digitação de algo em sua mensagem de apresentação, basta digitar o comando `p!reset` no *chat de comandos do servidor* para resetar a sua apresentação!'
       }
       message.author.send({
-          embed: embed
-        })
+        embed: embed
+      })
         .catch(() => message.reply('me desculpe, mas eu não tenho permissões para enviar DM para você!'))
       message.delete().catch(console.error)
     }

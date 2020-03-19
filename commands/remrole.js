@@ -8,9 +8,7 @@ module.exports = {
  * Que passará os argumentos atraves do middleware que programamos.
  */
   run: (client, message, args) => {
-
-    if(!message.member.hasPermission(["MANAGE_MESSAGES", "ADMINISTRATOR"]))
-      return message.channel.send("> *Você não pode usar esse comando!*");
+    if (!message.member.hasPermission(['MANAGE_MESSAGES', 'ADMINISTRATOR'])) { return message.channel.send('> *Você não pode usar esse comando!*') }
 
     /** Verificamos se o número de argumentos é válido. */
     if (args.length < 1) return message.reply(`talvez isso possa ajudá-lo(a): \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)

@@ -1,6 +1,6 @@
 // Comando resposanvel pela administracao do bot
-const rolemanager = require('../utils/rolemanager');
-const rolemgr = new rolemanager();
+const rolemanager = require('../utils/rolemanager')
+const rolemgr = new rolemanager()
 
 module.exports = {
   run: async (client, message, [ option, value, value2 ]) => {
