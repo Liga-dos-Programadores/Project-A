@@ -36,7 +36,8 @@ module.exports = {
       name: 'delete',
       category: 'Moderação',
       description: 'Apaga mensagens de um canal.',
-      usage: 'delete [1 - 200]'
+      usage: 'delete [1 - 200]',
+      admin: true
     }
   }
 }

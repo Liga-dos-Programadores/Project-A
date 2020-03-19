@@ -12,7 +12,7 @@ module.exports = {
     if (!message.member.hasPermission(['MANAGE_MESSAGES', 'ADMINISTRATOR'])) { return message.channel.send('> *Você não pode usar esse comando!*') }
 
     /** Verificamos se o número de argumentos é válido. */
-    if (args.length < 1) return message.reply(`olhe os cargos que eu tenho\: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
+    if (args.length < 1) return message.reply(`olhe os cargos que eu tenho: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
 
     /** Então verificamos os argumentos e instanciamos o cargo que queremos pelo nome. */
     let roles = require('../cargos.json')
@@ -48,7 +48,8 @@ module.exports = {
       name: 'addrole',
       description: 'Adiciona um cargo',
       category: 'Moderação',
-      usage: `addrole [${require('../cargos.json').join('|')}]`
+      usage: `addrole [${require('../cargos.json').join('|')}]`,
+      admin: true
     }
   }
 }

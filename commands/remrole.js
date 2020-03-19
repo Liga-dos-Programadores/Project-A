@@ -46,7 +46,8 @@ module.exports = {
       name: 'remrole',
       category: 'Moderação',
       description: 'Remove um cargo de si próprio.',
-      usage: `remrole [${require('../cargos.json').join('|')}]`
+      usage: `remrole [${require('../cargos.json').join('|')}]`,
+      admin: true
     }
   }
 }

@@ -56,7 +56,8 @@ module.exports = {
       name: 'config',
       category: 'Moderação',
       description: 'Altera as configurações do bot.',
-      usage: 'config [addrole (name|role)|remrole role]'
+      usage: 'config [addrole (name|role)|remrole role]',
+      admin: true
     }
   }
 }

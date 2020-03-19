@@ -16,7 +16,11 @@ module.exports = {
       fields: []
     }
 
-    client.commands.forEach(command => {
+    let commands = client.commands
+
+    if (message.member === null || !message.member.hasPermission('ADMINISTRATOR')) commands = commands.filter(c => !c.help.admin)
+
+    commands.forEach(command => {
       if (command.alias) return
       embed.fields.push(
         {

@@ -22,7 +22,8 @@ module.exports = {
       name: 'say',
       category: 'Moderação',
       description: 'Faz o bot enviar tal mensagem.',
-      usage: 'say'
+      usage: 'say',
+      admin: true
     }
   }
 
