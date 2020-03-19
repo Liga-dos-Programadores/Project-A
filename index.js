@@ -41,32 +41,4 @@ evtFiles.forEach(f => {
   client.on(eventName, event.bind(null, client))
 })
 
-client.on('error', (err) => {
-  console.log('error', err)
-})
-
-client.on('raw', async dados => {
-  if (dados.t !== 'MESSAGE_REACTION_ADD' && dados.t !== 'MESSAGE_REACTION_REMOVE') return
-  if (dados.d.message_id != '677864807000571934') return
-
-  let servidor = client.guilds.get('674227220981612544')
-  let membro = servidor.members.get(dados.d.user_id)
-
-  let cargo = servidor.roles.get('674702830442905601')
-
-  if (dados.t === 'MESSAGE_REACTION_ADD') {
-    if (dados.d.emoji.id === '674620037402722355') {
-      if (membro.roles.has(cargo)) return ('Você já tem esse cargo')
-      membro.addRole(cargo)
-    }
-  }
-
-  if (dados.t === 'MESSAGE_REACTION_REMOVE') {
-    if (dados.d.emoji.id === '674620037402722355') {
-      if (membro.roles.has(cargo)) return
-      membro.removeRole(cargo)
-    }
-  }
-})
-
 client.login(process.env.AUTH_TOKEN) /* Inicia o Bot. */
