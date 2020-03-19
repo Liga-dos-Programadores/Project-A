@@ -1,49 +1,49 @@
 // Comando resposanvel pela administracao do bot
-const Langmgr = require('../utils/languagemanager')
-const langmgr = new Langmgr()
+const rolemanager = require('../utils/rolemanager');
+const rolemgr = new rolemanager();
 
 module.exports = {
   run: async (client, message, [ option, value, value2 ]) => {
     /** Verifica se o membro possui permissão para administrar roles. */
     if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply('Você não pode fazer isto :c')
 
-    if (!option) return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
+    if (!option) return message.reply(`talvez isso possa ajudá-lo(a): \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
 
-    const langs = require('../languages.json')
+    const roles = require('../cargos.json')
 
     console.log(option)
 
-    if (option === 'addlang' || option === 'remlang') {
-      const shouldAdd = option === 'addlang'
-      const exists = langs.includes(value)
+    if (option === 'addrole' || option === 'remrole') {
+      const shouldAdd = option === 'addrole'
+      const exists = roles.includes(value)
       if (shouldAdd) {
-        if (exists) return message.reply('Essa linguagem já existe!')
+        if (exists) return message.reply('Esse cargo já existe!')
         if (!message.guild.roles.find('name', value)) await message.guild.createRole({ value })
-        if (!langmgr.addLanguage(value)) return message.reply('Algo de errado não está certo. Não consegui adicionar essa linguagem.')
-        message.reply('Linguagem adicionada.')
+        if (!rolemgr.addrole(value)) return message.reply('Algo de errado não está certo. Não consegui adicionar esse cargo.')
+        message.reply('Cargo removido.')
       } else {
-        if (!exists) return message.reply('Essa linguagem não existe!')
+        if (!exists) return message.reply('Esse cargo não existe!')
         const role = message.guild.roles.find('name', value)
         if (role) await role.delete()
-        if (!langmgr.removeLanguage(value)) return message.reply('Algo de errado não está certo. Não consegui remover essa linguagem.')
-        message.reply('Linguagem removida.')
+        if (!rolemgr.removerole(value)) return message.reply('Algo de errado não está certo. Não consegui remover esse cargo.')
+        message.reply('Cargo removido.')
       }
     } else if (option === 'rrmsg') {
       const rrmsg = await message.channel.send('Esta será a mensagem de role reaction.')
-      langmgr.setMessage(rrmsg.id, message.channel.id)
+      rolemgr.setMessage(rrmsg.id, message.channel.id)
     } else if (option === 'rradd') {
-      langmgr.addEmoji(value, value2)
-      langmgr.updateMsg(client)
+      rolemgr.addEmoji(value, value2)
+      rolemgr.updateMsg(client)
       message.reply('Emoji adicionado.')
     } else if (option === 'rrrem') {
-      langmgr.removeEmoji(value)
-      langmgr.updateMsg(client)
+      rolemgr.removeEmoji(value)
+      rolemgr.updateMsg(client)
       message.reply('Emoji removido.')
     } else if (option === 'rrupd') {
-      langmgr.updateMsg(client)
+      rolemgr.updateMsg(client)
       message.reply('Mensagem atualizada.')
     } else {
-      return message.reply(`?? Talvez isso possa ajudá-lo: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
+      return message.reply(`talvez isso possa ajudá-lo(a): \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
     }
   },
 
@@ -56,7 +56,7 @@ module.exports = {
       name: 'config',
       category: 'Moderação',
       description: 'Altera as configurações do bot.',
-      usage: 'config [addlang (name|role)|remlang role]'
+      usage: 'config [addrole (name|role)|remrole role]'
     }
   }
 }

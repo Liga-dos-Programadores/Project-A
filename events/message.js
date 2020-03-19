@@ -4,8 +4,8 @@
  */
 module.exports = async (client, message) => {
   /** É uma boa pratica ignorar outros bots. isso faz o bot se auto-ignorar também.
-     * E Também não entrara em um loop de spam...
-     */
+   * E Também não entrara em um loop de spam...
+   */
   if (message.author.bot) return
 
   // Checamos se a mensagem é do canal #apresente-se
@@ -15,17 +15,20 @@ module.exports = async (client, message) => {
     if (!message.member.roles.exists('name', role.name)) {
       // Se nao tiver, adicionamos ela
       message.member.addRole(role).catch(console.error)
-      message.react('👍')
+      const emoji = message.guild.emojis.find(emoji => emoji.name === 'liga');
+      message.react(emoji)
     } else {
       // Se ja tiver, a mensagem e considerada como spam e é removida
       // Define um objeto especificando o embed
       let embed = {
-        color: 0xB1103C,
+        color: 16739451,
         title: 'Como resetar seu status de apresentação:',
-        description: 'Olá! Caso você tenha errado a digitação de algo em sua mensagem de apresentação, basta digitar o comando `p!reset` no chat de comandos do servidor para resetar a sua apresentação!'
+        description: '**Hey**, caso você tenha errado a digitação de algo em sua mensagem de apresentação, basta digitar o comando `p!reset` no *chat de comandos do servidor* para resetar a sua apresentação!'
       }
-      message.author.send({ embed: embed })
-        .catch(() => message.reply('Desculpe, mas eu não tenho permissões para enviar mensagens por DM para você!'))
+      message.author.send({
+          embed: embed
+        })
+        .catch(() => message.reply('me desculpe, mas eu não tenho permissões para enviar DM para você!'))
       message.delete().catch(console.error)
     }
     return
@@ -44,8 +47,8 @@ module.exports = async (client, message) => {
   }
 
   /** Outra boa pratica é ignorar qualquer mensagem que não começe com o prefixo escolhido do bot.
-     * OBS: O PREFIXO E PEGO ATRAVES DAS CONFIGURAÇÕES EM client.settings.
-     */
+   * OBS: O PREFIXO E PEGO ATRAVES DAS CONFIGURAÇÕES EM client.settings.
+   */
   if (message.content.indexOf(process.env.PREFIX) !== 0) return
 
   /** Então nós separamos o nome do comando de seus argumentos que são passados ao comando em si. */
@@ -53,8 +56,8 @@ module.exports = async (client, message) => {
   const command = args.shift().toLowerCase()
 
   /** Então se o comando existir ele irá ser executado.
-     * Além disso o console também exibira o comando executado e quem o executou.
-     */
+   * Além disso o console também exibira o comando executado e quem o executou.
+   */
   const cmd = client.commands.get(command)
   if (!cmd) return
 

@@ -1,6 +1,6 @@
 /**
  * O Comando Help envia uma mensagem de ajuda.
- * Cotendo comandos e outras informações.
+ * Contendo comandos e outras informações.
  */
 
 module.exports = {
@@ -8,41 +8,35 @@ module.exports = {
     /** Objeto embed que irá ser enviado. */
     let embed = {
       color: 0xB1103C,
-      title: 'Lista de Comandos Project: A',
+      title: 'PROJECT: A - Lista de comandos',
       url: 'https://github.com/Liga-dos-Programadores/Project-A',
-      description: 'Todos os comandos disponíveis',
       footer: {
-        text: 'Não se esqueça de checar nosso código-fonte ;) ® 2018, A Liga dos Programadores.'
+        text: 'Não se esqueça de checar nosso código-fonte | 2020 ®Liga dos Programadores'
       },
       fields: []
     }
 
-    /** Laço de repetição em todos os comandos
-     * A cada comando é adicionado as informações em um object na array fields[]
-     */
     client.commands.forEach(command => {
       if (command.alias) return
       embed.fields.push(
         {
-          name: `**${process.env.PREFIX}${command.help.name}**`,
-          value: `**Descrição**: ${command.help.description}\n**Como Usar**: ${process.env.PREFIX}${command.help.usage}`
+          name: `> **${command.help.name}**`,
+          value: `**Descrição**: ${command.help.description}\n**Como Usar**: ${process.env.PREFIX}${command.help.usage}\n**Categoria**: ${command.help.category}`,
         }
       )
     })
 
-    /** Então envia a mensagem embed para o usuario. */
     message.author.send({ embed: embed })
-      .then(() => message.react('👌'))
-      .catch(() => message.reply('Desculpe, mas eu não tenho permissões para enviar mensagens por DM para você!'))
+      .then(() => message.react('⚡'))
+      .catch(() => message.reply(`eu não tenho permissões para enviar DM para você 😥`))
   },
 
   conf: {},
 
   help: {
     name: 'help',
-    aliases: ['ajuda'],
-    category: 'Help',
-    description: 'Mostra todos os comandos disponíveis do bot.',
+    category: 'Membro',
+    description: 'Mostra todos os comandos disponíveis no bot.',
     usage: 'help'
   }
 }
