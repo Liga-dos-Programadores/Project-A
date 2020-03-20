@@ -46,6 +46,10 @@ log Carregando o total de X eventos
 log O Bot foi iniciado completamente com XX usuarios em XX servidores
 ```
 
+Caso seja necessário, use o seguinte comando para instalar o dotenv:
+
+```$ npm install dotenv```
+
 ## Links
 * [Servidor da Liga dos Programadores](https://discord.gg/YAqEyPu)
 
