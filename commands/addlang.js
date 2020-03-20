@@ -1,5 +1,5 @@
 /**
- * O Comando "addlang" adicionará os cargos aos membros.
+ * O Comando "addlang" adicionará os cargos aos membros (lembre-se que você deve criar um cargo com o nome da linguagem que for adicionar).
  */
 
 module.exports = {
