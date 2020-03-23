@@ -20,7 +20,11 @@ Após ter clonado o repositorio e extraido todos arquivos. tenha certeza que pos
 
 ```$ npm install```
 
-Se tudo estiver certo, crie um arquivo com o nome de **.env** seguindo o exemplo do **.env.example**
+Se tudo estiver certo, crie um arquivo com o nome de **.env** seguindo o exemplo do **.env.example** com o seguinte comando:
+
+Para Windows: `$ copy .env.example .env`
+
+Para Linux: `$ cp .env.example .env`
 
 | Opção        | Descrição                        | Obrigatório? |
 | ------------ | -------------------------------- | ------------ |
