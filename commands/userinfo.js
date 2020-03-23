@@ -16,16 +16,9 @@ module.exports = {
 
     const member = message.mentions.members.first() || message.guild.members.get(args[0]) || message.member
     let target = message.mentions.users.first() || message.author
-    let joined = message.member.joinedAt
-
-    if (member.user.bot === true) {
-      bot = ' `🤖` Sim'
-    } else {
-      bot = ' `🙂` Não'
-    }
+    let bot = member.user.bot ? '`🤖` Sim' : ' `🙂` Não'
 
     let embed = new Discord.RichEmbed()
-      // .setAuthor(member.user.username)
       .setThumbnail((target.displayAvatarURL))
       .setColor('RANDOM')
       .setAuthor(`🔍 Informações do usuário`)
@@ -37,7 +30,7 @@ module.exports = {
       .addField('**Jogando**', `${member.user.presence.game ? `${member.user.presence.game.name}` : ' Nada'}`, inline, true)
       .addField('**Cargos**', `${member.roles.filter(r => r.id !== message.guild.id).map(roles => `\`${roles.name}\``).join(' **|** ') || 'Nenhum cargo'}`, true)
       .addField('**Entrou no Discord em**', formatDate('DD/MM/YYYY, às HH:mm:ss', member.user.createdAt))
-      .addField('**Entrou no servidor em**', formatDate('DD/MM/YYYY, às HH:mm:ss', joined))
+      .addField('**Entrou no servidor em**', formatDate('DD/MM/YYYY, às HH:mm:ss', member.joinedAt))
       .setFooter(`2020 © Liga dos Programadores.`)
       .setTimestamp()
     message.channel.send(embed)
