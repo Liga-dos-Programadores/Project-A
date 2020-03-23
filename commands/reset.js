@@ -17,21 +17,21 @@ module.exports = {
           // se existirem mensagens do usuario...
           usrMessages.deleteAll() // remove todas as mensagens
           message.member.removeRole(message.guild.roles.find('name', 'Apresentado')) // remove o cargo/role
-          message.reply('Sua apresentação foi removida!') // envia uma mensagem
+          message.reply('sua apresentação foi removida!') // envia uma mensagem
         } else {
           // se nao existirem mensagens do usuario...
           message.member.removeRole(message.guild.roles.find('name', 'Apresentado')) // remove o cargo/role
-          message.reply(`Não encontrei nenhuma mensagem sua no ${channel}, então apenas removi sua role.`) // envia uma mensagem
+          message.reply(`não encontrei nenhuma mensagem sua no ${channel}.`) // envia uma mensagem
         }
       } else {
         // Verifica se existe o emoji especial do servidor (:thonk:) e se nao existir substitui pelo :thinking:
         const specialemoji = message.guild.emojis.find('name', 'thonk')
-        message.reply(`Não consegui encontrar o canal de apresentacoes ${specialemoji || '🤔'}`)
+        message.reply(`não consegui encontrar o canal de apresentacoes ${specialemoji || '🤔'}`)
       }
     } else {
       // Verifica se existe o emoji especial do servidor (:thonk:) e se nao existir substitui pelo :thinking:
       const specialemoji = message.guild.emojis.find('name', 'thonk')
-      message.reply(`${specialemoji || '🤔'} Voce ainda não se apresentou!`)
+      message.reply(`${specialemoji || '🤔'} voce ainda não se apresentou!`)
     }
   },
 
@@ -42,9 +42,8 @@ module.exports = {
   get help () {
     return {
       name: 'reset',
-      category: '',
-      description: 'Reseta o status de apresentação do usuário',
-      usage: 'reset'
+      category: 'Membro',
+      description: 'Reseta o status de apresentação do usuário.'
     }
   }
 }

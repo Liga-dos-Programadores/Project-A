@@ -1,48 +1,62 @@
-const Discord = require('discord.js')
+/**
+ * O Comando "botinfo"mostrará informações do bot
+ */
 
+const Discord = require('discord.js')
 const moment = require('moment')
+
 moment.locale('pt-br')
 
 module.exports = {
-  /**
-     * Primeiro o metodo run(client, message, args) será executado pelo nosso arquivo message.js
-     * Que passará os argumentos atraves do middleware que programamos.
-     */
+
   run: function (client, message, args) {
+    const inline = true
     let botAvatar = client.user.displayAvatarURL
     let date = client.user.createdAt
     let userName = client.user.username
+    let servsize = client.guilds.size
+    let usersize = client.users.size
+    let status = {
+      online: '`🟢` Online',
+      offline: '`⚫` Offline'
+    }
 
-    // Criando embed que sera enviado para o usuário
     let embed = new Discord.RichEmbed()
-      .setDescription('Informações sobre o Bot')
-      .setColor('#eb1818')
+      .setColor(client.displayHexColor === '#000000' ? '#ffffff' : client.displayHexColor)
       .setThumbnail(botAvatar)
-      .addField('Nome do bot', userName)
-      .addField('Estou online a', moment().to(client.startTime, true))
-      .addField('Criado em', formatDate('DD/MM/YYYY, às HH:mm:ss', date))
+      .setAuthor(`🤖 Minhas informações`)
+      .addField('**Meu nick**', userName)
+      .addField('**Meu ID**', client.user.id)
+      .addField('**Servidores**', `🛡 ${servsize}`, true)
+      .addField('**Usuários**', `${usersize}`, inline)
+      .addField('**Estou online a**', moment().to(client.startTime, true))
+      .addField('**Criado em**', formatDate('DD/MM/YYYY, às HH:mm:ss', date))
+      .setFooter(`2020 © ${client.user.username}.`)
+      .setTimestamp()
 
-    // Aqui sera enviado o embed no canal que o usuário executo o comando
+    if (client.user.presence.status) {
+      embed.addField(
+        '**Status**',
+        `${status[client.user.presence.status]}`,
+        inline,
+        true
+      )
+    }
+
     message.channel.send(embed)
   },
-  /**
-     * Aqui podemos colocar mais algumas configurações do comando.
-     */
+
   conf: {},
 
-  /**
-     * Aqui exportamos ajuda do comando como o seu nome categoria, descrição, etc...
-     */
   get help () {
     return {
       name: 'botinfo',
-      category: 'Moderação',
-      description: 'Informação sobre o Bot',
+      category: 'Membro',
+      description: 'Mostra informações do bot.',
       usage: `botinfo`
     }
   }
 }
-
 /**
  * Formata a data passada para o padrão do Brasil.
  * @param {string} template
