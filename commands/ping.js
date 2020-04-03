@@ -17,7 +17,7 @@ module.exports = {
       name: 'ping',
       description: 'Mostra a latência do bot.',
       usage: '!ping',
-      caregory: 'Membros'
+      category: 'Info'
     }
   }
 }

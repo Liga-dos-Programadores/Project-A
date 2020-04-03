@@ -46,9 +46,9 @@ module.exports = {
   get help () {
     return {
       name: 'userinfo',
-      category: 'Membro',
-      description: 'Informação sobre o usuario',
-      usage: `userinfo`
+      category: 'Info',
+      description: 'Mostra informações sobre o usuário.',
+      usage: `!userinfo`
     }
   }
 }

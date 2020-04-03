@@ -1,17 +1,21 @@
 /**
  * O Comando Help envia uma mensagem de ajuda.
- * Contendo comandos e outras informações.
+ * Contendo as informações dos comandos.
  */
 
+const Discord = require('discord.js');
+
 module.exports = {
+  
   run: (client, message, args) => {
     /** Objeto embed que irá ser enviado. */
     let embed = {
       color: 0xB1103C,
-      title: 'PROJECT: A - Lista de comandos',
-      url: 'https://github.com/Liga-dos-Programadores/Project-A',
+      title: 'Minha lista de comandos',
+      description: "[Clique aqui para ir até o repositório onde estou =)](https://github.com/Liga-dos-Programadores/Project-A)",
+      timestamp: new Date(),
       footer: {
-        text: 'Não se esqueça de checar nosso código-fonte | 2020 ®Liga dos Programadores'
+        text: '2020 ®Liga dos Programadores'
       },
       fields: []
     }
@@ -22,15 +26,16 @@ module.exports = {
 
     commands.forEach(command => {
       if (command.alias) return
-      embed.fields.push(
-        {
-          name: `> **${command.help.name}**`,
-          value: `**Descrição**: ${command.help.description}\n**Como Usar**: ${process.env.PREFIX}${command.help.usage}\n**Categoria**: ${command.help.category}`
-        }
-      )
+      embed.fields.push({
+        name: `**!${command.help.name}**`,
+        value: `*Descrição*: ${command.help.description}
+        *Categoria*: ${command.help.category}\n`
+      })
     })
 
-    message.author.send({ embed: embed })
+    message.author.send({
+        embed: embed
+      })
       .then(() => message.react('⚡'))
       .catch(() => message.reply(`eu não tenho permissões para enviar DM para você 😥`))
   },
@@ -39,8 +44,8 @@ module.exports = {
 
   help: {
     name: 'help',
-    category: 'Membro',
-    description: 'Mostra todos os comandos disponíveis no bot.',
-    usage: 'help'
+    category: 'Ajuda',
+    description: 'Mostra todos os comandos disponíveis do bot.',
+    usage: '!help'
   }
-}
+};

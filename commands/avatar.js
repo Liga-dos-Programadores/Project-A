@@ -4,6 +4,9 @@
 
 module.exports = {
 
+  /** Primeiro o metodo run(client, message, args) será executado pelo nosso arquivo message.js
+   * Que passará os argumentos atraves do middleware que programamos.
+  */
   run: function (client, message, args) {
     if (!message.mentions.users.size) {
       return message.channel.send(
@@ -25,9 +28,9 @@ module.exports = {
   get help () {
     return {
       name: 'avatar',
-      category: 'Membro',
+      category: 'Info',
       description: 'Mostra o avatar do usuário ou de um bot.',
-      usage: `avatar`
+      usage: `!avatar`
     }
   }
 }

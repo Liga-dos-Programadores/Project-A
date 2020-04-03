@@ -29,9 +29,9 @@ module.exports = {
   get help () {
     return {
       name: 'howtoask',
-      category: 'Membro',
-      description: 'Tutorial de como fazer uma pergunta',
-      usage: `howtoask`
+      category: 'Ajuda',
+      description: 'Template de como fazer uma pergunta.',
+      usage: `!howtoask`
     }
   }
 }

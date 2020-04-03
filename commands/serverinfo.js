@@ -47,9 +47,9 @@ module.exports = {
   get help () {
     return {
       name: 'serverinfo',
-      category: 'Membro',
+      category: 'Info',
       description: 'Informação sobre o servidor',
-      usage: `serverinfo`
+      usage: `!serverinfo`
     }
   }
 }
