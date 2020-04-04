@@ -3,7 +3,7 @@
  */
 
 module.exports = {
-  run: async (client, message, [ time ]) => {
+  run: async (client, message, [time]) => {
     if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('você não tem permissão para usar esse comando!')
 
     await message.delete()

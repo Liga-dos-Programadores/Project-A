@@ -3,7 +3,7 @@ module.exports = {
     if (!message.member.hasPermission(['MANAGE_MESSAGES', 'ADMINISTRATOR'])) { return message.channel.send('> Você não pode usar esse comando!') }
 
     let argsresult
-    let mChannel = message.mentions.channels.first()
+    const mChannel = message.mentions.channels.first()
 
     message.delete()
     if (mChannel) {

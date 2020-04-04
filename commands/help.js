@@ -3,16 +3,16 @@
  * Contendo as informações dos comandos.
  */
 
-const Discord = require('discord.js');
+const Discord = require('discord.js')
 
 module.exports = {
-  
+
   run: (client, message, args) => {
     /** Objeto embed que irá ser enviado. */
-    let embed = {
+    const embed = {
       color: 0xB1103C,
       title: 'Minha lista de comandos',
-      description: "[Clique aqui para ir até o repositório onde estou =)](https://github.com/Liga-dos-Programadores/Project-A)",
+      description: '[Clique aqui para ir até o repositório onde estou =)](https://github.com/Liga-dos-Programadores/Project-A)',
       timestamp: new Date(),
       footer: {
         text: '2020 ®Liga dos Programadores'
@@ -34,10 +34,10 @@ module.exports = {
     })
 
     message.author.send({
-        embed: embed
-      })
+      embed: embed
+    })
       .then(() => message.react('⚡'))
-      .catch(() => message.reply(`eu não tenho permissões para enviar DM para você 😥`))
+      .catch(() => message.reply('eu não tenho permissões para enviar DM para você 😥'))
   },
 
   conf: {},
@@ -48,4 +48,4 @@ module.exports = {
     description: 'Mostra todos os comandos disponíveis do bot.',
     usage: '!help'
   }
-};
+}

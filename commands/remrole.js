@@ -14,9 +14,9 @@ module.exports = {
     if (args.length < 1) return message.reply(`talvez isso possa ajudá-lo(a): \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
 
     /** Então verificamos os argumentos e instanciamos o cargo que queremos pelo nome. */
-    let roles = require('../cargos.json')
-    let roleName = roles.map(l => l.toLowerCase()).find(l => l === args.join(' ').toLowerCase())
-    let role = roleName && message.guild.roles.find(r => r.name.toLowerCase() === roleName)
+    const roles = require('../cargos.json')
+    const roleName = roles.map(l => l.toLowerCase()).find(l => l === args.join(' ').toLowerCase())
+    const role = roleName && message.guild.roles.find(r => r.name.toLowerCase() === roleName)
 
     if (!role) {
       const emoji = message.guild.emojis.find('name', 'thonk')
@@ -28,7 +28,7 @@ module.exports = {
      * Caso o membro não possua o cargo então é enviada uma mensagem retornando.
      */
     if (!message.member.roles.has(role.id)) {
-      return message.reply(`Você não possui esse cargo!`)
+      return message.reply('Você não possui esse cargo!')
     } else {
       message.member.removeRole(role)
       return message.reply(`**beep boop!** Agora você não possui mais o cargo **${role.name}**`)

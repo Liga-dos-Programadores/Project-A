@@ -17,14 +17,14 @@ module.exports = {
     if (args.length < 1) return message.reply(`olhe os cargos que eu tenho: \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``)
 
     /** Então verificamos os argumentos e instanciamos o cargo que queremos pelo nome. */
-    let roles = require('../cargos.json')
-    let roleName = roles.map(l => l.toLowerCase()).find(l => l === args.join(' ').toLowerCase())
-    let role = roleName && message.guild.roles.find(r => r.name.toLowerCase() === roleName)
+    const roles = require('../cargos.json')
+    const roleName = roles.map(l => l.toLowerCase()).find(l => l === args.join(' ').toLowerCase())
+    const role = roleName && message.guild.roles.find(r => r.name.toLowerCase() === roleName)
 
     if (!role) {
       const emoji = message.guild.emojis.find('name', 'grey_question')
       message.react(emoji || '❔')
-      return message.reply(`ou esse cargo não tem no servidor ou foi escrito de maneira errada!`)
+      return message.reply('ou esse cargo não tem no servidor ou foi escrito de maneira errada!')
     }
 
     /** Logo então atribuimos o cargo ao membro e mandamos uma mensagem como resposta
@@ -35,7 +35,7 @@ module.exports = {
       message.member.addRole(role)
       return message.reply(`agora você possui o cargo **${role.name}** 👏`)
     } else {
-      return message.reply(`você já possui esse cargo!`)
+      return message.reply('você já possui esse cargo!')
     }
   },
 
@@ -45,7 +45,7 @@ module.exports = {
   },
 
   // Aqui exportamos ajuda do comando como o seu nome categoria, descrição, etc.
-  get help() {
+  get help () {
     return {
       name: 'addrole',
       description: 'Adiciona um cargo',

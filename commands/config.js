@@ -3,7 +3,7 @@ const rolemanager = require('../utils/rolemanager')
 const rolemgr = new rolemanager()
 
 module.exports = {
-  run: async (client, message, [ option, value, value2 ]) => {
+  run: async (client, message, [option, value, value2]) => {
     /** Verifica se o membro possui permissão para administrar roles. */
     if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply('Você não pode fazer isto :c')
 

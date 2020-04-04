@@ -27,7 +27,7 @@ class roleManager {
   }
 
   setMessage (id, channel) {
-    let emojis = require('../emojiRole.json')
+    const emojis = require('../emojiRole.json')
 
     emojis.id = id
     emojis.channel = channel
@@ -36,7 +36,7 @@ class roleManager {
   }
 
   addEmoji (emoji, role) {
-    let emojis = require('../emojiRole.json')
+    const emojis = require('../emojiRole.json')
 
     emojis.emojis[emoji] = role
 
@@ -44,7 +44,7 @@ class roleManager {
   }
 
   removeEmoji (emoji) {
-    let emojis = require('../emojiRole.json')
+    const emojis = require('../emojiRole.json')
 
     if (!emojis.emojis[emoji]) return
 
@@ -54,7 +54,7 @@ class roleManager {
   }
 
   async updateMsg (client) {
-    let emojis = require('../emojiRole.json')
+    const emojis = require('../emojiRole.json')
 
     const channel = client.channels.get(emojis.channel)
     const message = await channel.fetchMessage(emojis.id)
