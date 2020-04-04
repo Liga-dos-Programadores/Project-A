@@ -42,8 +42,8 @@ module.exports = {
   get help () {
     return {
       name: 'reset',
-      category: 'Membro',
-      description: 'Reseta o status de apresentação do usuário.'
+      category: 'Ajuda',
+      description: 'Reseta o status de apresentação.'
     }
   }
 }

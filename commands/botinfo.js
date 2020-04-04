@@ -11,20 +11,20 @@ module.exports = {
 
   run: function (client, message, args) {
     const inline = true
-    let botAvatar = client.user.displayAvatarURL
-    let date = client.user.createdAt
-    let userName = client.user.username
-    let servsize = client.guilds.size
-    let usersize = client.users.size
-    let status = {
+    const botAvatar = client.user.displayAvatarURL
+    const date = client.user.createdAt
+    const userName = client.user.username
+    const servsize = client.guilds.size
+    const usersize = client.users.size
+    const status = {
       online: '`🟢` Online',
       offline: '`⚫` Offline'
     }
 
-    let embed = new Discord.RichEmbed()
+    const embed = new Discord.RichEmbed()
       .setColor(client.displayHexColor === '#000000' ? '#ffffff' : client.displayHexColor)
       .setThumbnail(botAvatar)
-      .setAuthor(`🤖 Minhas informações`)
+      .setAuthor('🤖 Minhas informações')
       .addField('**Meu nick**', userName)
       .addField('**Meu ID**', client.user.id)
       .addField('**Servidores**', `🛡 ${servsize}`, true)
@@ -51,9 +51,9 @@ module.exports = {
   get help () {
     return {
       name: 'botinfo',
-      category: 'Membro',
+      category: 'Info',
       description: 'Mostra informações do bot.',
-      usage: `botinfo`
+      usage: 'botinfo'
     }
   }
 }
