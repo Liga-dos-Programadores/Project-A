@@ -49,7 +49,7 @@ module.exports = {
       name: 'serverinfo',
       category: 'Info',
       description: 'Informação sobre o servidor',
-      usage: '!serverinfo'
+      usage: 'serverinfo'
     }
   }
 }

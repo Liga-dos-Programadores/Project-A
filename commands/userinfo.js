@@ -48,7 +48,7 @@ module.exports = {
       name: 'userinfo',
       category: 'Info',
       description: 'Mostra informações sobre o usuário.',
-      usage: '!userinfo'
+      usage: 'userinfo'
     }
   }
 }

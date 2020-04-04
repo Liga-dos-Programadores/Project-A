@@ -31,7 +31,7 @@ module.exports = {
       name: 'howtoask',
       category: 'Ajuda',
       description: 'Template de como fazer uma pergunta.',
-      usage: '!howtoask'
+      usage: 'howtoask'
     }
   }
 }

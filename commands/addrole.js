@@ -50,7 +50,7 @@ module.exports = {
       name: 'addrole',
       description: 'Adiciona um cargo',
       category: 'Moderação',
-      usage: `!addrole [${require('../cargos.json').join('|')}]`,
+      usage: `addrole [${require('../cargos.json').join('|')}]`,
       admin: true
     }
   }

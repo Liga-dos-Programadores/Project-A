@@ -3,8 +3,6 @@
  * Contendo as informações dos comandos.
  */
 
-const Discord = require('discord.js')
-
 module.exports = {
 
   run: (client, message, args) => {
@@ -46,6 +44,6 @@ module.exports = {
     name: 'help',
     category: 'Ajuda',
     description: 'Mostra todos os comandos disponíveis do bot.',
-    usage: '!help'
+    usage: 'help'
   }
 }

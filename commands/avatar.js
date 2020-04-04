@@ -30,7 +30,7 @@ module.exports = {
       name: 'avatar',
       category: 'Info',
       description: 'Mostra o avatar do usuário ou de um bot.',
-      usage: '!avatar'
+      usage: 'avatar'
     }
   }
 }

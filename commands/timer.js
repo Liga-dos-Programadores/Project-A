@@ -30,6 +30,6 @@ module.exports = {
     name: 'timer [segundos]',
     category: 'Útil',
     description: 'Apaga uma mensagem enviada por você após X segundos.',
-    usage: '!timer [segundos]'
+    usage: 'timer [segundos]'
   }
 }
