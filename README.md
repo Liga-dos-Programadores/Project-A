@@ -36,11 +36,11 @@ Para Linux: `$ cp .env.example .env`
 | SUGESTOES    | ID do canal de sugestões         | não          |
 | DESAFIOS     | ID do canal de desafios          | não          |
 
-Então agora você poderá iniciar seu bot... utilizando
+Então agora você poderá iniciar seu bot utilizando:
 
 ```$ npm start```
 
-Caso a saída seja a seguinte, o bot ja estará completamente pronto e online...
+Caso a saída seja a seguinte, o bot ja estará online =)
 
 ```
 log Carregando o total de X comandos.
@@ -60,4 +60,4 @@ Para fazer doações entre em contato em nosso servidor do Discord.
 Aceitaremos Pull Requests desde que tenham algum sentido e não sejam gambiarra. Se quiser começar a participar de projetos open-source como este entre em contato em nosso servidor do Discord.
 
 ## Ajuda
-Caso tenha alguma dificuldade em entender este codigo ou por onde começar também poderá nos contatar em nosso servidor do Discord.
+Caso tenha alguma dificuldade em entender este código ou por onde começar nos contate em nosso servidor do Discord.
