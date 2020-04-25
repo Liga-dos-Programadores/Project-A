@@ -11,6 +11,8 @@ module.exports = {
       */
     run: function (client, message, args) {
 
+      if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('você não tem permissão para usar esse comando!');
+
       // Criando embed que será enviado para o usuário
       let embed = new RichEmbed()
 
