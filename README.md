@@ -50,7 +50,7 @@ log O Bot foi iniciado completamente com XX usuarios em XX servidores
 ```
 
 ## Links
-* [Servidor da Liga dos Programadores](https://discord.gg/YAqEyPu)
+* [Servidor da Liga dos Programadores](https://discord.gg/fmnxSYR)
 
 ## Doações
 Para fazer doações entre em contato em nosso servidor do Discord.
