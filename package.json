@@ -1,24 +1,23 @@
 {
   "name": "project-a",
   "version": "1.0.0",
-  "description": "Um simples bot para o discord.",
+  "description": "Um bot para o discord.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "author": "Katho",
+  "author": "Liga dos Programadores",
   "contributors": [
-    {
-      "name": "Rafael \"Bee\" Pereira",
-      "email": "rafael@beecoding.net",
-      "url": "https://rafael.wtf"
-    }
+    "Rafael \"Bee\" Pereira <rafael@beecoding.net> (https://rafael.wtf)",
+    "Álvaro Filho (https://alvarofilho.github.io/)"
   ],
   "license": "Unlicense",
   "dependencies": {
-    "discord.js": "*",
-    "dotenv": "^6.0.0",
-    "enmap": "*",
-    "moment": "^2.22.0"
-  }
+    "discord.js": "^11.5.1",
+    "dotenv": "^8.2.0",
+    "duck-duck-scrape": "^1.0.3",
+    "enmap": "^5.2.4",
+    "moment": "^2.24.0"
+  },
+  "devDependencies": {}
 }

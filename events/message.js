@@ -11,33 +11,36 @@ module.exports = async (client, message) => {
   // Checamos se a mensagem é do canal #apresente-se
   if (message.channel.id === process.env.APRESENTACAO) {
     // Checamos se o usuario tem a role "Apresentado"
-    let role = message.guild.roles.find('name', 'Apresentado')
+    const role = message.guild.roles.find('name', 'Apresentado')
     if (!message.member.roles.exists('name', role.name)) {
       // Se nao tiver, adicionamos ela
       message.member.addRole(role).catch(console.error)
-      message.react('👍')
+      const emoji = message.guild.emojis.find(emoji => emoji.name === 'liga')
+      message.react(emoji)
     } else {
       // Se ja tiver, a mensagem e considerada como spam e é removida
       // Define um objeto especificando o embed
-      let embed = {
-        color: 0xB1103C,
+      const embed = {
+        color: 16739451,
         title: 'Como resetar seu status de apresentação:',
-        description: 'Olá! Caso você tenha errado a digitação de algo em sua mensagem de apresentação, basta digitar o comando `p!reset` no chat de comandos do servidor para resetar a sua apresentação!'
+        description: '**Hey**, caso você tenha errado a digitação de algo em sua mensagem de apresentação, basta digitar o comando `p!reset` no *chat de comandos do servidor* para resetar a sua apresentação!'
       }
-      message.author.send({ embed: embed })
-        .catch(() => message.reply('Desculpe, mas eu não tenho permissões para enviar mensagens por DM para você!'))
+      message.author.send({
+        embed: embed
+      })
+        .catch(() => message.reply('me desculpe, mas eu não tenho permissões para enviar DM para você!'))
       message.delete().catch(console.error)
     }
     return
   }
 
-  if (message.channel.id === process.env.SUGESTOES) {
+  if (message.channel.id === process.env.SUGESTOES || message.channel.id === process.env.PROJETOS) {
     if (message.content.startsWith('^')) return
-    await message.react('⬆')
-    await message.react('⬇')
+    await message.react('662625034770186241')
+    await message.react('662624803756441600')
     return
   }
-  
+
   if (message.channel.id === process.env.DESAFIOS) {
     await message.react('✅')
     return

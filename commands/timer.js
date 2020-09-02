@@ -3,7 +3,9 @@
  */
 
 module.exports = {
-  run: async (client, message, [ time ]) => {
+  run: async (client, message, [time]) => {
+    if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('você não tem permissão para usar esse comando!')
+
     await message.delete()
     const messages = await message.channel.fetchMessages({ limit: 100 })
     const userMessages = messages.filter((m) => m.author === message.author && m.deletable)
@@ -25,8 +27,8 @@ module.exports = {
   },
 
   help: {
-    name: 'timer',
-    category: '',
+    name: 'timer [segundos]',
+    category: 'Útil',
     description: 'Apaga uma mensagem enviada por você após X segundos.',
     usage: 'timer [segundos]'
   }

@@ -1,47 +1,48 @@
 /**
  * O Comando Help envia uma mensagem de ajuda.
- * Cotendo comandos e outras informações.
+ * Contendo as informações dos comandos.
  */
 
 module.exports = {
+
   run: (client, message, args) => {
     /** Objeto embed que irá ser enviado. */
-    let embed = {
+    const embed = {
       color: 0xB1103C,
-      title: 'Lista de Comandos Project: A',
-      url: 'https://github.com/Liga-dos-Programadores/Project-A',
-      description: 'Todos os comandos disponíveis',
+      title: 'Minha lista de comandos',
+      description: '[Clique aqui para ir até o repositório onde estou =)](https://github.com/Liga-dos-Programadores/Project-A)',
+      timestamp: new Date(),
       footer: {
-        text: 'Não se esqueça de checar nosso código-fonte ;) ® 2018, A Liga dos Programadores.'
+        text: '2020 ®Liga dos Programadores'
       },
       fields: []
     }
 
-    /** Laço de repetição em todos os comandos
-     * A cada comando é adicionado as informações em um object na array fields[]
-     */
-    client.commands.forEach(command => {
+    let commands = client.commands
+
+    if (message.member === null || !message.member.hasPermission('ADMINISTRATOR')) commands = commands.filter(c => !c.help.admin)
+
+    commands.forEach(command => {
       if (command.alias) return
-      embed.fields.push(
-        {
-          name: `**${process.env.PREFIX}${command.help.name}**`,
-          value: `**Descrição**: ${command.help.description}\n**Como Usar**: ${process.env.PREFIX}${command.help.usage}`
-        }
-      )
+      embed.fields.push({
+        name: `**!${command.help.name}**`,
+        value: `*Descrição*: ${command.help.description}
+        *Categoria*: ${command.help.category}\n`
+      })
     })
 
-    /** Então envia a mensagem embed para o usuario. */
-    message.author.send({ embed: embed })
-      .then(() => message.react('👌'))
-      .catch(() => message.reply('Desculpe, mas eu não tenho permissões para enviar mensagens por DM para você!'))
+    message.author.send({
+      embed: embed
+    })
+      .then(() => message.react('⚡'))
+      .catch(() => message.reply('eu não tenho permissões para enviar DM para você 😥'))
   },
 
   conf: {},
 
   help: {
     name: 'help',
-    aliases: ['ajuda'],
-    category: 'Help',
+    category: 'Ajuda',
     description: 'Mostra todos os comandos disponíveis do bot.',
     usage: 'help'
   }
