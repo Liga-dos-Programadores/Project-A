@@ -3,7 +3,11 @@ const Discord = require('discord.js')
 const moment = require('moment')
 moment.locale('pt-br')
 
+
 module.exports = {
+  
+    
+   
 
   run: function (client, message, args) {
     const inline = true
@@ -13,25 +17,29 @@ module.exports = {
       dnd: ' `🔴` Não pertubar',
       offline: ' `⚫️` Offline'
     }
+    message.delete()
 
-    const member = message.mentions.members.first() || message.guild.members.get(args[0]) || message.member
+    const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member
     const target = message.mentions.users.first() || message.author
     const bot = member.user.bot ? '`🤖` Sim' : ' `🙂` Não'
+    let nickname = member.nickname !== undefined && member.nickname !== null ? member.nickname : "Nenhum";
+    let jogando = member.user.presence.game !== undefined && member.user.presence.game.name !== null ? member.user.presence.game.name : "Nada";
 
-    const embed = new Discord.RichEmbed()
-      .setThumbnail((target.displayAvatarURL))
-      .setColor('RANDOM')
+    const embed = new Discord.MessageEmbed()
+      
+      .setThumbnail(member.user.avatarURL())
+      .setColor('ORANGE')
       .setAuthor('🔍 Informações do usuário')
       .addField('**Tag**', `${member.user.tag}`, inline)
       .addField('**ID**', member.user.id, inline)
       .addField('**Nickname**', `${member.nickname !== null ? `Nickname: ${member.nickname}` : 'Nenhum'}`, true)
       .addField('**Bot**', `${bot}`, inline, true)
       .addField('**Status**', `${status[member.user.presence.status]}`, inline, true)
-      .addField('**Jogando**', `${member.user.presence.game ? `${member.user.presence.game.name}` : ' Nada'}`, inline, true)
-      .addField('**Cargos**', `${member.roles.filter(r => r.id !== message.guild.id).map(roles => `\`${roles.name}\``).join(' **|** ') || 'Nenhum cargo'}`, true)
+       // .addField('**Jogando**', `${member.user.presence.game ? `${member.user.presence.game.name}` : `Nada`}`, inline, true)
+      .addField('**Cargos**', `${message.member.roles.cache.filter(r => r.id !== message.guild.id).map(roles => `\`${roles.name}\``).join(' **|** ') || 'Nenhum cargo'}`, true)
       .addField('**Entrou no Discord em**', formatDate('DD/MM/YYYY, às HH:mm:ss', member.user.createdAt))
       .addField('**Entrou no servidor em**', formatDate('DD/MM/YYYY, às HH:mm:ss', member.joinedAt))
-      .setFooter('2020 © Liga dos Programadores.')
+      .setFooter('Liga dos Programadores © - 2020')
       .setTimestamp()
     message.channel.send(embed)
   },
@@ -43,12 +51,15 @@ module.exports = {
   /**
      * Aqui exportamos ajuda do comando como o seu nome categoria, descrição, etc...
      */
-  get help () {
-    return {
+
+     get help () {
+      return {
       name: 'userinfo',
       category: 'Info',
       description: 'Mostra informações sobre o usuário.',
-      usage: 'userinfo'
+      usage: 'userinfo',
+      aliases: ['info, user, membro']
+
     }
   }
 }
@@ -64,5 +75,6 @@ function formatDate (template, date) {
   date = new Date(date || Date.now() - new Date().getTimezoneOffset() * 6e4)
   return date.toISOString().split(/[-:.TZ]/).reduce(function (template, item, i) {
     return template.split(specs[i]).join(item)
+  
   }, template)
 }
