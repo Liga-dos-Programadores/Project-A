@@ -2,9 +2,18 @@
   "name": "project-a",
   "version": "2.0.0",
   "description": "Um bot para o servidor Liga Dos Programadores no discord.",
-  "main": "index.js",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
   "scripts": {
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "check": "gts check",
+    "clean": "gts clean",
+    "compile": "tsc",
+    "fix": "gts fix",
+    "prepare": "npm run compile",
+    "pretest": "npm run compile",
+    "posttest": "npm run check",
+    "start": "node build/index.js"
   },
   "author": "Liga dos Programadores",
   "contributors": [
@@ -12,6 +21,16 @@
     "Álvaro Filho (https://alvarofilho.github.io/)"
   ],
   "license": "Unlicense",
-  "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/node": "^13.11.1",
+    "gts": "^2.0.2",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "@types/require-all": "^3.0.1",
+    "@types/ws": "^7.2.6",
+    "discord.js": "^12.3.1",
+    "dotenv": "^8.2.0",
+    "require-all": "^3.0.0"
+  }
 }
