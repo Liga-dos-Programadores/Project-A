@@ -1,7 +1,7 @@
 {
   "name": "project-a",
-  "version": "1.0.0",
-  "description": "Um bot para o discord.",
+  "version": "2.0.0",
+  "description": "Um bot para o servidor Liga Dos Programadores no discord.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -12,12 +12,6 @@
     "Álvaro Filho (https://alvarofilho.github.io/)"
   ],
   "license": "Unlicense",
-  "dependencies": {
-    "discord.js": "^11.5.1",
-    "dotenv": "^8.2.0",
-    "duck-duck-scrape": "^1.0.3",
-    "enmap": "^5.2.4",
-    "moment": "^2.24.0"
-  },
+  "dependencies": {},
   "devDependencies": {}
 }
