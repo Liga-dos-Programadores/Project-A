@@ -3,7 +3,12 @@ const https = require('https')
 
 const api = 'https://aws.random.cat/meow'
 const titles = [
-  'Lindo gatinho', 'Meow!', '🐱'
+  'Lindo gatinho',
+  'Meow!',
+  'Pare de procrastinar.',
+  'Aproveitando bem o dia!',
+  'Sim.',
+  'A mimir?'
 ]
 
 function randomTitle() {
@@ -18,8 +23,8 @@ module.exports = {
 
   run: async (client, message, args) => {
     
-    http.get(api, {}, (res) => {
-      let data = '';
+    https.get(api, {}, (res) => {
+      let data = ''
       
       // If it wasn't successful
       if (res.statusCode != '200') {
@@ -35,14 +40,13 @@ module.exports = {
         let response = JSON.parse(data)
         
         const embed = new Discord.RichEmbed()
-          .setTitle(randomTitle())
+          .setTitle(randomTitle() + ' 🐱')
           .setImage(response.file)
           .setColor(message.member ? message.member.displayColor : global.CLIENT_DEFAULT_COLOR)
 
         message.channel.send(embed)
       })
     }).on('error', (error) => console.log(error))
-    
     
   },
 
