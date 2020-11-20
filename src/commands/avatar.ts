@@ -1,21 +1,21 @@
-import { CommandContext } from '../framework/command';
+import {CommandContext} from '../framework/command';
 
 export default class {
-    name = 'avatar';
+  name = 'avatar';
 
-    async run(ctx: CommandContext, args: string[]) {
-        const message = ctx.message;
+  async run(ctx: CommandContext) {
+    const message = ctx.message;
 
-        if (!message.mentions.users.size) {
-            return message.channel.send(
-                `> **Seu** avatar 🖼 ${message.author.displayAvatarURL()}`
-            )
-        }
-
-        const avatarList = message.mentions.users.map(
-            user => `> **${user.username}'s** avatar 🖼 ${user.displayAvatarURL()}`
-        )
-
-        return message.channel.send(avatarList)
+    if (!message.mentions.users.size) {
+      return message.channel.send(
+        `> **Seu** avatar 🖼 ${message.author.displayAvatarURL()}`
+      );
     }
+
+    const avatarList = message.mentions.users.map(
+      user => `> **${user.username}'s** avatar 🖼 ${user.displayAvatarURL()}`
+    );
+
+    return message.channel.send(avatarList);
+  }
 }
