@@ -1,10 +1,11 @@
 import { TextChannel } from 'discord.js';
-import { CommandContext, Args } from '../framework/command';
+import { parse } from 'path';
+import { CommandContext } from '../framework/command';
 
 export default class {
     name = 'delete';
 
-    async run(ctx: CommandContext, args: Args) {
+    async run(ctx: CommandContext, args: string[]) {
         const message = ctx.message;
 
         if (!message.member)
@@ -12,9 +13,11 @@ export default class {
         if (!message.member.hasPermission('MANAGE_MESSAGES'))
             return await message.reply('você não tem permissão para usar esse comando!')
 
-        let limit = parseInt(args.getString("n"));
-        if (!Number.isInteger(limit))
-            return await message.reply(`Não é número`)
+        let limit = 100;
+
+        if (args.length > 0) limit = parseInt(args[0])
+
+        if (!Number.isInteger(limit)) return await message.reply(`Não é número`)
 
         limit = Math.min(limit, 99);
 

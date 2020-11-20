@@ -1,9 +1,9 @@
-import { CommandContext, Args } from '../framework/command';
+import { CommandContext } from '../framework/command';
 
 export default class {
     name = 'avatar';
 
-    async run(ctx: CommandContext, args: Args) {
+    async run(ctx: CommandContext, args: string[]) {
         const message = ctx.message;
 
         if (!message.mentions.users.size) {

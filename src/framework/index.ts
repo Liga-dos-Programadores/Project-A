@@ -1,47 +1,13 @@
 import requireAll from 'require-all';
 import {Client, Message} from 'discord.js';
 
-import {Command, CommandContext, Args, ArgsError} from './command';
+import {Command, CommandContext} from './command';
 
 const COMMAND_REGEX = /^\w(?:[\w-]*\w)*$/;
 
 type Constructor<T> = {
     new (): T;
 };
-
-class ArgsBuilder {
-    currentCommand = '';
-    currentArgs: string[] = [];
-    args = new Map<string, string[]>();
-
-    registerState() {
-        let currentArgs = this.currentArgs;
-        if (currentArgs.length === 0) currentArgs = [''];
-        this.args.set(this.currentCommand, currentArgs);
-        this.currentArgs = [];
-    }
-
-    append(slice: string): ArgsBuilder {
-        if (slice.startsWith('--')) {
-            const param = slice.slice(2);
-
-            // TODO: Properly handle nameless param
-            if (param === '') throw 'bah';
-
-            this.registerState();
-            this.currentCommand = param;
-        } else {
-            this.currentArgs.push(slice);
-        }
-
-        return this;
-    }
-
-    build(): Args {
-        this.registerState();
-        return new Args(this.args);
-    }
-}
 
 export class CommandManager {
     commands: Map<string, Command> = new Map();
@@ -56,26 +22,18 @@ export class CommandManager {
         if (!messageContent.startsWith(this.prefix)) return;
 
         const content = messageContent.slice(this.prefix.length);
-        const slices = content.split(' ').filter(it => it !== '');
+        const args = content.split(' ').filter(it => it !== '');
 
-        const ident = slices.shift();
-        if (ident === undefined) return;
+        const name = args.shift();
+        if (!name) return;
 
-        const command = this.commands.get(ident);
-        if (command === undefined)
-            return this.onMessageErrorNotFound({client, message}, ident);
-
-        const args = slices.reduce(
-            (acc, it) => acc.append(it),
-            new ArgsBuilder()
-        );
+        const command = this.commands.get(name);
+        if (!command) return this.onMessageErrorNotFound({client, message}, name);
 
         try {
-            await command.run({client, message}, args.build());
+            await command.run({client, message}, args);
         } catch (e) {
-            if (e instanceof ArgsError)
-                return this.onMessageErrorInvalidArgs({client, message}, e);
-            else throw e;
+            throw e;
         }
     }
 
@@ -83,10 +41,6 @@ export class CommandManager {
     // TODO: Better defaults
     onMessageErrorNotFound(ctx: CommandContext, ident: string) {
         console.log('onMessageErrorNotFound', ctx.message.id, ident);
-    }
-
-    onMessageErrorInvalidArgs(ctx: CommandContext, error: ArgsError) {
-        console.log('onMessageErrorInvalidArgs', ctx.message.id, error.message);
     }
 
     async registerAll(dirname: string) {
