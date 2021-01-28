@@ -3,9 +3,9 @@ const Discord = require('discord.js')
 module.exports = {
 
   run: async (client, message, args) => {
-    const embed = new Discord.RichEmbed()
-      .setAuthor(`🏓 ${Math.round(client.ping)}ms`)
-      .setColor(message.member ? message.member.displayColor : global.CLIENT_DEFAULT_COLOR)
+    const embed = new Discord.MessageEmbed()
+      .setColor("#29C9FC")
+      .setAuthor(`🏓 ${Math.round(client.ws.ping)} ms`)
 
     message.channel.send(embed)
   },

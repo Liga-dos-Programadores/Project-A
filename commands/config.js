@@ -1,4 +1,5 @@
-// Comando resposanvel pela administracao do bot
+// Comando responsável pela administração do bot
+
 const rolemanager = require('../utils/rolemanager')
 const rolemgr = new rolemanager()
 

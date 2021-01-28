@@ -1,19 +1,19 @@
 module.exports = {
   run: (client, message, args) => {
-    if (!message.member.hasPermission(['MANAGE_MESSAGES', 'ADMINISTRATOR'])) { return message.channel.send('> Você não pode usar esse comando!') }
+    if(message.member.permissions.missing(['MANAGE_MESSAGES'])) return message.channel.send('> Você não pode usar esse comando!');
 
-    let argsresult
-    const mChannel = message.mentions.channels.first()
+    let msg;
+        let textChannel = message.mentions.channels.first()
+        message.delete()
 
-    message.delete()
-    if (mChannel) {
-      argsresult = args.slice(1).join(' ')
-      mChannel.send(argsresult)
-    } else {
-      argsresult = args.join(' ')
-      message.channel.send(argsresult)
-    }
-  },
+        if(textChannel) {
+            msg = args.slice(1).join(" ");
+            textChannel.send(msg)
+        } else {
+            msg = args.join(" ");
+            message.channel.send(msg)
+        }
+      },
 
   conf: {},
 
@@ -23,7 +23,6 @@ module.exports = {
       category: 'Moderação',
       description: 'Faz o bot enviar tal mensagem.',
       usage: 'say',
-      admin: true
     }
   }
 

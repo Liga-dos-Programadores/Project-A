@@ -1,4 +1,4 @@
-if (process.version.slice(1).split('.')[0] < 8) throw new Error('Node 8.0.0 or higher is required. Update Node on your system.')
+if (process.version.slice(1).split('.')[0] < 8) throw new Error('Node 8.0 ou superior é necessário. Atualize o Node em seu sistema')
 
 require('dotenv').config()
 

@@ -1,6 +1,6 @@
 /**
  * O Comando "serverinfo" mostrará informações do servidor
- */
+*/
 
 const Discord = require('discord.js')
 
@@ -14,23 +14,24 @@ module.exports = {
     const joined = message.member.joinedAt
 
     const region = {
-      brazil: ':flag_br: Brazil'
+      brazil: ':flag_br: Brasil'
     }
 
-    const embed = new Discord.RichEmbed()
-      .setColor(client.displayHexColor === '#000000' ? '#ffffff' : client.displayHexColor)
-      // .setThumbnail(message.guild.iconURL)
+    const embed = new Discord.MessageEmbed()
+      .setColor("#29C9FC")
+      .setThumbnail(message.guild.iconURL)
       .setAuthor('🔍 Informações do servidor')
+      .setThumbnail(`${message.guild.iconURL({ dynamic: true })}?size=1024`)
       .addField('**Nome**', message.guild.name, true)
       .addField('**ID**', message.guild.id, true)
       .addField('**Dono(a)**', `${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`)
       .addField('**Região**', region[message.guild.region], true)
-      .addField('**Humanos | Bots**', `${message.guild.members.filter(member => !member.user.bot).size} | ${message.guild.members.filter(member => member.user.bot).size}`)
-      .addField('**Canais**', message.guild.channels.size, true)
-      .addField('**Cargos**', message.guild.roles.size, true)
+      .addField('**Humanos | Bots**', `${message.guild.members.cache.filter(member => !member.user.bot).size} | ${message.guild.members.cache.filter(member => member.user.bot).size}`)
+      .addField('**Canais**', message.guild.channels.cache.size, true)
+      .addField('**Cargos**', message.guild.roles.cache.size, true)
       .addField('**Criado em**', formatDate('DD/MM/YYYY, às HH:mm:ss', date))
       .addField('**Você entrou em**', formatDate('DD/MM/YYYY, às HH:mm:ss', joined))
-      .setFooter('2020 © Liga dos Programadores.')
+      .setFooter('2021 © Liga dos Programadores.')
       .setTimestamp()
 
     // Aqui sera enviado o embed no canal que o usuário executo o comando
