@@ -8,11 +8,11 @@ require('dotenv').config();
 module.exports = {
 
 	/**
-    * Primeiro o metodo run(client, message, args) será executado pelo nosso arquivo message.js
-    * Que passará os argumentos atraves do middleware que programamos.
+	* Primeiro o metodo run(client, message, args) será executado pelo nosso arquivo message.js
+	* Que passará os argumentos atraves do middleware que programamos.
   */
 
-	run: function(client, message) {
+	run: function (client, message) {
 
 		// Criando embed que sera enviado para o usuário
 
@@ -29,12 +29,12 @@ module.exports = {
 	},
 
 	/**
-    * Aqui podemos colocar mais algumas configurações do comando.
+	* Aqui podemos colocar mais algumas configurações do comando.
   */
 	conf: {},
 
 	/**
-    * Aqui exportamos ajuda do comando como o seu nome categoria, descrição, etc...
+	* Aqui exportamos ajuda do comando como o seu nome categoria, descrição, etc...
   */
 	get help() {
 		return {

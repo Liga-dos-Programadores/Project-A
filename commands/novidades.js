@@ -7,9 +7,9 @@ require('dotenv').config();
 
 module.exports = {
 
-/** Primeiro o metodo run(client, message, args) será executado pelo arquivo message.js
-  * Que passara os argumentos atraves do middleware.
-*/
+	/** Primeiro o metodo run(client, message, args) será executado pelo arquivo message.js
+	  * Que passara os argumentos atraves do middleware.
+	*/
 
 	run: (client, message) => {
 
@@ -53,7 +53,7 @@ module.exports = {
 	},
 
 	conf: {
-	// Comando deve ser usado apenas dentro de um servidor
+		// Comando deve ser usado apenas dentro de um servidor
 		onlyguilds: true,
 	},
 
