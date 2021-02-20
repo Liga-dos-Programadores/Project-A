@@ -2,43 +2,57 @@ if (process.version.slice(1).split('.')[0] < 8) throw new Error('Node 8.0 ou sup
 
 require('dotenv').config()
 
-const Discord = require('discord.js')
-const { readdirSync } = require('fs')
+const { Client, Collection } = require('discord.js')
+const { readdirSync, lstatSync } = require('fs')
 const Enmap = require('enmap')
-const client = new Discord.Client()
+const client = new Client()
 
-client.commands = new Enmap()
+client.commands = new Collection()
 client.startTime = Date.now()
 
-const cmdFiles = readdirSync('./commands/')
-console.log('log', `Carregando o total de ${cmdFiles.length} comandos.`)
+loadCommands(client.commands, './commands');
+loadEvents('./events');
+/* 
+	* Carrega commandos que estão na pasta **commands** e em grupos de subpastas
+*/
+function loadCommands(collection, directory) {
+	const cmdFiles = readdirSync(directory);
+	console.log('log', `Carregando o total de ${cmdFiles.length} comandos em ${directory}`)
 
-cmdFiles.forEach(f => {
-  try {
-    const props = require(`./commands/${f}`)
-    if (f.split('.').slice(-1)[0] !== 'js') return
+	for (const file of cmdFiles) {
+		try {
+			const path = `${directory}/${file}`;
 
-    console.log('log', `Carregando comando: ${props.help.name}`)
+			if (file.endsWith('.js')) {
+				const command = require(path);
 
-    if (props.init) props.init(client)
+				console.log('log', `Carregando comando: ${command.help.name}`)
 
-    client.commands.set(props.help.name, props)
-    if (props.help.aliases) {
-      props.alias = true
-      props.help.aliases.forEach(alias => client.commands.set(alias, props))
-    }
-  } catch (e) {
-    console.log(`Impossivel executar comando ${f}: ${e}`)
-  }
-})
+				collection.set(command.help.name, command);
 
-const evtFiles = readdirSync('./events/')
-console.log('log', `Carregando o total de ${evtFiles.length} eventos`)
-evtFiles.forEach(f => {
-  const eventName = f.split('.')[0]
-  const event = require(`./events/${f}`)
+				if (command.help.aliases)
+					command.help.aliases.forEach(alias => collection.set(alias, command))
+			}
+			else if (lstatSync(path).isDirectory()) {
+				loadCommands(collection, path);
+			}
+		}
+		catch (e) {
+			console.log(`Impossivel executar comando ${file}: ${e}`)
+		}
+	}
+};
 
-  client.on(eventName, event.bind(null, client))
-})
+function loadEvents(directory) {
+	const eventFiles = readdirSync(directory)
+	console.log('log', `Carregando o total de ${eventFiles.length} eventos`)
+	for (let file of eventFiles) {
+		const eventName = file.split('.')[0]
+		const event = require(`./events/${file}`)
+
+		client.on(eventName, event.bind(null, client))
+	}
+}
+
 
 client.login(process.env.AUTH_TOKEN) /* Inicia o Bot. */

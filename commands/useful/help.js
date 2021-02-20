@@ -1,34 +1,21 @@
 /** O Comando "Help" envia uma mensagem de ajuda contendo as informações dos comandos. */
 
-const Discord = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 require('dotenv').config();
 
 module.exports = {
 
 	run: (client, message) => {
 
-		if (message.channel.type !== 'dm') {
-			const error = new Discord.RichEmbed()
-				.setColor(process.env.COLOR)
-				.setAuthor('Não foi possível')
-				.setDescription(`${message.author}, não consigo enviar mensagem para você, ative suas mensagens diretas!`)
-				.setThumbnail(client.user.avatarURL())
-				.setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
-				.setTimestamp();
-			message.channel.send(error);
-		}
+		const sucess = new MessageEmbed()
+			.setColor(process.env.COLOR)
+			.setAuthor('Minha lista de comandos 💡')
+			.setDescription(` ${message.author}, enviei meus comandos em seu privado!`)
+			.setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
+			.setTimestamp();
+		message.channel.send(sucess);
 
-		if (message.channel.type === 'dm') {
-			const sucess = new Discord.RichEmbed()
-				.setColor(process.env.COLOR)
-				.setAuthor('Minha lista de comandos 💡')
-				.setDescription(` ${message.author}, enviei meus comandos em seu privado!`)
-				.setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
-				.setTimestamp();
-			message.channel.send(sucess);
-		}
-
-		const embedList = new Discord.RichEmbed()
+		const embedList = new MessageEmbed()
 			.setColor(process.env.COLOR)
 			.setAuthor('Minha lista de comandos 💡')
 			.setDescription('Para saber sobre cada um, reaja ao emoji de cada categoria.')
@@ -40,7 +27,6 @@ module.exports = {
 			.setTimestamp();
 
 		message.author.send(embedList)
-			.catch(message.channel.send(error))
 			.then(async msg => {
 				await msg.react('📋');
 				await msg.react('💻');
@@ -48,21 +34,20 @@ module.exports = {
 				await msg.react('🔒');
 				await msg.react('↩');
 
-				const info = (reaction, user) => reaction.emoji.name === '📋' && user.id === message.author.id;
-				const codando = (reaction, user) => reaction.emoji.name === '💻' && user.id === message.author.id;
-				const uteis = (reaction, user) => reaction.emoji.name === '⚙️' && user.id === message.author.id;
-				const mod = (reaction, user) => reaction.emoji.name === '🔹' && user.id === message.author.id;
-				const back = (reaction, user) => reaction.emoji.name === '🔙' && user.id === message.author.id;
+				const info = (reaction, user) => reaction.emoji.name === '📋';
+				const codando = (reaction, user) => reaction.emoji.name === '💻';
+				const uteis = (reaction, user) => reaction.emoji.name === '⚙️';
+				const mod = (reaction, user) => reaction.emoji.name === '🔹';
+				const back = (reaction, user) => reaction.emoji.name === '🔙';
 
 				const infoL = msg.createReactionCollector(info);
 				const codandoL = msg.createReactionCollector(codando);
 				const uteisL = msg.createReactionCollector(uteis);
 				const modL = msg.createReactionCollector(mod);
-
 				const backL = msg.createReactionCollector(back);
 
 				backL.on('collect', () => {
-					const embedBack = new Discord.RichEmbed()
+					const embedBack = new MessageEmbed()
 						.setColor(process.env.COLOR)
 						.setAuthor('Minha lista de comandos 💡')
 						.setDescription('Para saber sobre cada um, reaja ao emoji de cada categoria.')
@@ -77,77 +62,78 @@ module.exports = {
 				});
 
 				infoL.on('collect', () => {
-					const embedInfo = new Discord.RichEmbed()
+					const embedInfo = new MessageEmbed()
 						.setColor(process.env.COLOR)
 						.setAuthor('Minha lista de comandos 💡')
 						.setDescription(`⭐ **Info**
-            !avatar - Exibe o avatar.
-            !botinfo - Mostra informações do bot.
-            !serverinfo - Mostra informações do servidor.
-            !ping - Mostra latência do bot.
-            !invite - Mostra o rank de convites.
-            !notify - Recebe o cargo novidades/ Remove o cargo.
-            !userinfo - Mostra informações do usuário.
-          `)
+							!avatar - Exibe o avatar.
+							!botinfo - Mostra informações do bot.
+							!serverinfo - Mostra informações do servidor.
+							!ping - Mostra latência do bot.
+							!invite - Mostra o rank de convites.
+							!notify - Recebe o cargo novidades/ Remove o cargo.
+							!userinfo - Mostra informações do usuário.
+						`)
 						.setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
 						.setTimestamp();
 					msg.edit(embedInfo);
 				});
 
 				codandoL.on('collect', () => {
-					const embedCod = new Discord.RichEmbed()
+					const embedCod = new MessageEmbed()
 						.setColor(process.env.COLOR)
 						.setAuthor('Minha lista de comandos 💡')
 						.setDescription(`⭐ **Info**
-            !avatar - Exibe o avatar.
-            !botinfo - Mostra informações do bot.
-            !serverinfo - Mostra informações do servidor.
-            !ping - Mostra latência do bot.
-            !invite - Mostra o rank de convites.
-            !notify - Recebe o cargo novidades/ Remove o cargo.
-            !userinfo - Mostra informações do usuário.
-          `)
+							!avatar - Exibe o avatar.
+							!botinfo - Mostra informações do bot.
+							!serverinfo - Mostra informações do servidor.
+							!ping - Mostra latência do bot.
+							!invite - Mostra o rank de convites.
+							!notify - Recebe o cargo novidades/ Remove o cargo.
+							!userinfo - Mostra informações do usuário.
+						`)
 						.setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
 						.setTimestamp();
 					msg.edit(embedCod);
 				});
 
 				uteisL.on('collect', () => {
-					const embedUtil = new Discord.RichEmbed()
+					const embedUtil = new MessageEmbed()
 						.setColor(process.env.COLOR)
 						.setAuthor('Minha lista de comandos 💡')
 						.setDescription(`⭐ **Info**
-            !avatar - Exibe o avatar.
-            !botinfo - Mostra informações do bot.
-            !serverinfo - Mostra informações do servidor.
-            !ping - Mostra latência do bot.
-            !invite - Mostra o rank de convites.
-            !notify - Recebe o cargo novidades/ Remove o cargo.
-            !userinfo - Mostra informações do usuário.
-          `)
+							!avatar - Exibe o avatar.
+							!botinfo - Mostra informações do bot.
+							!serverinfo - Mostra informações do servidor.
+							!ping - Mostra latência do bot.
+							!invite - Mostra o rank de convites.
+							!notify - Recebe o cargo novidades/ Remove o cargo.
+							!userinfo - Mostra informações do usuário.
+						`)
 						.setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
 						.setTimestamp();
 					msg.edit(embedUtil);
 				});
 
 				modL.on('collect', () => {
-					const embedMod = new Discord.RichEmbed()
+					const embedMod = new MessageEmbed()
 						.setColor(process.env.COLOR)
 						.setAuthor('Minha lista de comandos 💡')
 						.setDescription(`⭐ **Info**
-            !avatar - Exibe o avatar.
-            !botinfo - Mostra informações do bot.
-            !serverinfo - Mostra informações do servidor.
-            !ping - Mostra latência do bot.
-            !invite - Mostra o rank de convites.
-            !notify - Recebe o cargo novidades/ Remove o cargo.
-            !userinfo - Mostra informações do usuário.
-          `)
+							!avatar - Exibe o avatar.
+							!botinfo - Mostra informações do bot.
+							!serverinfo - Mostra informações do servidor.
+							!ping - Mostra latência do bot.
+							!invite - Mostra o rank de convites.
+							!notify - Recebe o cargo novidades/ Remove o cargo.
+							!userinfo - Mostra informações do usuário.
+						`)
 						.setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
 						.setTimestamp();
 					msg.edit(embedMod);
 				});
-			});
+			})
+			.catch(error => message.channel.send(error));
 	},
 
 	conf: {},

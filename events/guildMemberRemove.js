@@ -1,11 +1,11 @@
-const Discord = require('discord.js')
+const { RichEmbed } = require('discord.js')
 
 /**
  * O evento guildMemberAdd é emitido após um membro entrar (ser adicionado em uma guild).
  */
 
-module.exports = async (client, member) => {
-  const message = new Discord.RichEmbed()
+module.exports = (client, member) => {
+  const message = new RichEmbed()
     .setThumbnail(member.user.displayAvatarURL)
     .setColor('RANDOM')
     .setAuthor('👤 Um membro saiu do servidor!')
