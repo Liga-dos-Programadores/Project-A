@@ -3,12 +3,16 @@
    */
 
 module.exports = async (client) => {
-  console.log(`Eu estou online agora, meu nome é ${client.user.username}. Há ${client.users.size} usuario(s) em ${client.guilds.size} servidor(es)!`)
+  
+  console.log(`Eu estou online agora, meu nome é ${client.user.username}. Há ${client.users.cache.size} usuário(s) online em ${client.guilds.cache.size} servidor(es)!`)
 
-  client.user.setPresence({
-    status: 'online',
-    game: {
-      name: process.env.GAME
-    }
-  })
+  let activities = [
+    `${process.env.PREFIX}ajuda`,
+    `${client.users.cache.size} usuários onlines!`,
+  ],
+
+  i = 0;
+  setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`, {
+    type: "WATCHING"
+  }), 3000);
 }

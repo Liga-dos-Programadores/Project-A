@@ -7,13 +7,13 @@ const Discord = require("discord.js");
 module.exports = {
 
 /** Primeiro o metodo run(client, message, args) será executado pelo arquivo message.js
-   * Que passará os argumentos atraves do middleware.
+  * Que passará os argumentos atraves do middleware.
 */
 
   run: function (client, message, args) {
    let member = message.mentions.users.first() || message.author
 
-    const embed = new Discord.MessageEmbed()
+		const embed = new Discord.MessageEmbed()
     .setTitle(`Avatar de ${member.username}`)
     .setImage(member.displayAvatarURL({ format: 'png', dynamic: true, size: 1024 }))
     .setColor("#29C9FC")

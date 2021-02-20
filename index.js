@@ -1,44 +1,34 @@
-if (process.version.slice(1).split('.')[0] < 8) throw new Error('Node 8.0 ou superior é necessário. Atualize o Node em seu sistema')
+const {Collection, Client, Discord} = require('discord.js')
+const fs = require('fs')
+const client = new Client({
+    disableEveryone: true
+})
+const prefix = process.env.PREFIX
 
-require('dotenv').config()
+client.commands = new Collection();
+client.aliases = new Collection();
+client.categories = fs.readdirSync("./commands/");
 
-const Discord = require('discord.js')
-const { readdirSync } = require('fs')
-const Enmap = require('enmap')
-const client = new Discord.Client()
+["command"].forEach(handler => {
+    require(`./handlers/${handler}`)(client);
+}); 
 
-client.commands = new Enmap()
-client.startTime = Date.now()
-
-const cmdFiles = readdirSync('./commands/')
-console.log('log', `Carregando o total de ${cmdFiles.length} comandos.`)
-
-cmdFiles.forEach(f => {
-  try {
-    const props = require(`./commands/${f}`)
-    if (f.split('.').slice(-1)[0] !== 'js') return
-
-    console.log('log', `Carregando comando: ${props.help.name}`)
-
-    if (props.init) props.init(client)
-
-    client.commands.set(props.help.name, props)
-    if (props.help.aliases) {
-      props.alias = true
-      props.help.aliases.forEach(alias => client.commands.set(alias, props))
-    }
-  } catch (e) {
-    console.log(`Impossivel executar comando ${f}: ${e}`)
-  }
+client.on('ready', () => {
+    client.user.setActivity(`${process.env.PREFIX}help`)
+    console.log(`${client.user.username} ✅`)
+})
+client.on('message', async message =>{
+    if(message.author.bot) return;
+    if(!message.content.startsWith(prefix)) return;
+    if(!message.guild) return;
+    if(!message.member) message.member = await message.guild.fetchMember(message);
+    const args = message.content.slice(process.env.PREFIX.length).trim().split(/ +/g);
+    const cmd = args.shift().toLowerCase();
+    if(cmd.length == 0 ) return;
+    let command = client.commands.get(cmd)
+    if(!command) command = client.commands.get(client.aliases.get(cmd));
+    if(command) command.run(client, message, args) 
 })
 
-const evtFiles = readdirSync('./events/')
-console.log('log', `Carregando o total de ${evtFiles.length} eventos`)
-evtFiles.forEach(f => {
-  const eventName = f.split('.')[0]
-  const event = require(`./events/${f}`)
-
-  client.on(eventName, event.bind(null, client))
-})
-
-client.login(process.env.AUTH_TOKEN) /* Inicia o Bot. */
+/** Se não tiver bugs e o token estiver acessível bot irá ligar */
+client.login(process.env.AUTH_TOKEN);

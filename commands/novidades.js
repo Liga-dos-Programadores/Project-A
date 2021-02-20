@@ -16,6 +16,7 @@ module.exports = {
 		/** Verificamos os argumentos e instanciamos o cargo que queremos pelo nome. */
 
 		const role = message.guild.roles.cache.has(process.env.NOVIDADES);
+		let member = message.mentions.users.first() || message.author
 
 		if (!role) {
 			const notifyEmbed1 = new Discord.MessageEmbed()
@@ -26,7 +27,7 @@ module.exports = {
 			message.channel.send(notifyEmbed1);
 		}
 		else if (!message.member.roles.cache.has(role.id)) {
-			member.roles.cache.add((role.id));
+			member.roles.cache.add(role.id);
 
 			const notifyEmbed2 = new Discord.MessageEmbed()
 				.setColor("#29C9FC")

@@ -8,12 +8,9 @@
     "dev": "nodemon ."
   },
   "author": "Liga dos Programadores",
-  "contributors": [
-    "Rafael \"Bee\" Pereira <rafael@beecoding.net> (https://rafael.wtf)",
-    "Álvaro Filho (https://alvarofilho.github.io/)"
-  ],
-  "license": "Unlicense",
+  "license": "MIT",
   "dependencies": {
+    "ascii-table": "^0.0.9",
     "canvacord": "^5.0.8",
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
@@ -21,9 +18,15 @@
     "enmap": "^5.2.4",
     "figlet": "^1.5.0",
     "file-system": "^2.2.2",
-    "moment": "^2.24.0",
-    "nodemon": "^2.0.7",
+    "moment": "^2.29.1",
     "weather-js": "^2.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^7.20.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "nodemon": "^2.0.7"
+  }
 }
