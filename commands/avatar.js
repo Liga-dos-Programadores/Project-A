@@ -4,35 +4,21 @@
 
 const { MessageEmbed } = require("discord.js");
 
-<<<<<<< HEAD
 module.exports = {
 
 /** Primeiro o metodo run(client, message, args) será executado pelo arquivo message.js
   * Que passará os argumentos atraves do middleware.
-=======
-module.exports = { /** Primeiro o metodo run(client, message, args) será executado pelo arquivo message.js
-   * Que passará os argumentos atraves do middleware.
->>>>>>> 833ad58dfa8ccf3972d0b3e9d62cf44b243fad5c
 */
 
     run: function (_client, message, _args) {
         const member = message.mentions.users.first() || message.author;
 
-<<<<<<< HEAD
 		const embed = new Discord.MessageEmbed()
     .setTitle(`Avatar de ${member.username}`)
     .setImage(member.displayAvatarURL({ format: 'png', dynamic: true, size: 1024 }))
     .setColor("#29C9FC")
     .setFooter('2021 © Liga dos Programadores.')
     .setTimestamp()
-=======
-        const embed = new MessageEmbed()
-            .setTitle(`Avatar de ${member.username}`)
-            .setImage(member.displayAvatarURL({ format: 'png', dynamic: true, size: 1024 }))
-            .setColor("#29C9FC")
-            .setFooter('2021 © Liga dos Programadores.')
-            .setTimestamp()
->>>>>>> 833ad58dfa8ccf3972d0b3e9d62cf44b243fad5c
 
         message.channel.send(embed);
     },

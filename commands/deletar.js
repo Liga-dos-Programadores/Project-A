@@ -3,8 +3,8 @@
  * Apenas quem tem permissão poderá usar esse comando.
 */
 
-module.exports = {
-  run: (client, message, args) => {
+// module.exports = {
+//   run: (client, message, args) => {
     // if(!message.member.hasPermission("MENAGE_MESSAGES")) return message.reply("> **Você não tem permissão para isso!**");
 
     // const deleteCount = parseInt(args[0], 10);
@@ -17,30 +17,30 @@ module.exports = {
     //   message.channel.send(`${args[0]} mensagens deletadas.`)
     //   .catch(error => console.log(`Não foi possível deletar mensagens devido a: ${error}`));
     
-    message.delete();
+//     message.delete();
     
-    const amount = args.join(" ");
+//     const amount = args.join(" ");
 
-    if(!amount) return message.reply('> **Por favor coloque determinada quantidade de mensagem para eu deletar.**')
-    if(amount > 100) return message.reply(`você não pode deletar menos de 100 mensagens!`)
-    if(amount < 1) return message.reply(`você precisa deletar pelo menos uma mensagem.`)
+//     if(!amount) return message.reply('> **Por favor coloque determinada quantidade de mensagem para eu deletar.**')
+//     if(amount > 100) return message.reply(`você não pode deletar menos de 100 mensagens!`)
+//     if(amount < 1) return message.reply(`você precisa deletar pelo menos uma mensagem.`)
 
-    await message.channel.messages.fetch({limit: amount}).then(messages => {
-      message.channel.bulkDelete(messages
-    )});
-  },
+//     await message.channel.messages.fetch({limit: amount}).then(messages => {
+//       message.channel.bulkDelete(messages
+//     )});
+//   },
 
-  conf: {
-    onlyguilds: true
-  },
+//   conf: {
+//     onlyguilds: true
+//   },
 
-  get help () {
-    return {
-      name: 'deletar',
-      category: 'Moderação',
-      description: 'Apaga mensagens de um canal.',
-      usage: 'deletar [1 - 100]',
-      admin: true
-    }
-  }
-}
+//   get help () {
+//     return {
+//       name: 'deletar',
+//       category: 'Moderação',
+//       description: 'Apaga mensagens de um canal.',
+//       usage: 'deletar [1 - 100]',
+//       admin: true
+//     }
+//   }
+// }
