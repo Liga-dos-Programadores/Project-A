@@ -2,6 +2,7 @@
  * O Comando "avatar" mostrará a imagem de perfil do usuário ou do bot
 */
 
+const Discord = require("discord.js");
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
@@ -10,13 +11,13 @@ module.exports = {
   * Que passará os argumentos atraves do middleware.
 */
 
-    run: function (_client, message, _args) {
+    run: function (client, message, _args) {
         const member = message.mentions.users.first() || message.author;
 
-		const embed = new Discord.MessageEmbed()
+	const embed = new Discord.MessageEmbed()
     .setTitle(`Avatar de ${member.username}`)
     .setImage(member.displayAvatarURL({ format: 'png', dynamic: true, size: 1024 }))
-    .setColor("#29C9FC")
+    .setColor(process.env.COLOR)
     .setFooter('2021 © Liga dos Programadores.')
     .setTimestamp()
 

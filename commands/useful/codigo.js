@@ -1,5 +1,5 @@
 /**
-  * O Comando "snippet" vai enviar uma mensagem ao usuário mostrando como deve ser enviado exemplo de linhas de código.
+  * O Comando "codigo" vai enviar uma mensagem ao usuário mostrando como deve ser enviado uma linha de código.
 */
 
 const Discord = require('discord.js');
@@ -8,14 +8,11 @@ require('dotenv').config();
 module.exports = {
 
 	/**
-	* Primeiro o metodo run(client, message, args) será executado pelo nosso arquivo message.js
-	* Que passará os argumentos atraves do middleware que programamos.
+		* Primeiro o metodo run(client, message, args) será executado pelo nosso arquivo message.js
+		* Que passará os argumentos atraves do middleware que programamos.
   */
 
 	run: function (client, message) {
-
-		// Criando embed que sera enviado para o usuário
-
 		const snippetEmbed = new Discord.MessageEmbed()
 			.setColor("#29C9FC")
 			.setAuthor('💻 Snippet de código')
@@ -23,25 +20,23 @@ module.exports = {
 			.setImage('https://i.imgur.com/i5b7pYf.png')
 			// .setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
 			.setTimestamp();
-
-		// Aqui será enviado o embed no canal que o usuário executo o comando
 		message.channel.send(snippetEmbed);
 	},
 
 	/**
-	* Aqui podemos colocar mais algumas configurações do comando.
+		* Aqui podemos colocar mais algumas configurações do comando.
   */
 	conf: {},
 
 	/**
-	* Aqui exportamos ajuda do comando como o seu nome categoria, descrição, etc...
+		* Aqui exportamos ajuda do comando como o seu nome categoria, descrição, etc...
   */
 	get help() {
 		return {
-			name: 'snippet',
-			category: 'Ajuda',
-			description: 'Template de como fazer uma pergunta.',
-			usage: 'snippet',
+			name: 'codigo',
+			category: 'Útil',
+			description: 'Como deve sr enviando uma linha de código.',
+			usage: 'codigo',
 		};
 	},
 };

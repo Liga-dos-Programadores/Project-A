@@ -15,7 +15,7 @@ module.exports = {
     const embed = new Discord.MessageEmbed()
     .setTitle('A comunidade')
     .setDescription('🔗 site fjdsfsd')
-    .setColor("#29C9FC")
+    .setColor(process.env.COLOR)
     .setFooter('2021 © Liga dos Programadores.')
 		.setTimestamp();
   message.channel.send(embed);

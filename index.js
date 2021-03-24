@@ -13,12 +13,14 @@ const client = new Client();
 client.commands = new Collection();
 client.startTime = Date.now();
 
-// TODO: Treat errors in those functions //
+// TODO: Tratar erros nas funções//
+
 loadCommands(client.commands, "./commands");
 loadEvents("./events", client);
+
 /*
  * Carrega commandos que estão na pasta **commands** e em grupos de subpastas
- */
+*/
 function loadCommands(collection, directory) {
   const cmdFiles = readdirSync(directory);
   console.log(
@@ -61,4 +63,5 @@ function loadEvents(directory, client) {
   }
 }
 
-client.login(process.env.AUTH_TOKEN); /* Inicia o Bot. */
+/* Inicia o Bot caso tenha o token */
+client.login(process.env.AUTH_TOKEN); 

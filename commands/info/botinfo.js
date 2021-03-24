@@ -12,8 +12,6 @@ module.exports = {
     const inline = true;
     const date = client.user.createdAt;
     const userName = client.user.username;
-    const servsize = client.guilds.cache.size;
-    const usersize = client.users.cache.size;
     const status = {
       online: "`🟢` Online",
       offline: "`⚫` Offline",
@@ -22,13 +20,11 @@ module.exports = {
 
 
     const embed = new Discord.MessageEmbed()
-      .setColor("#29C9FC")
+      .setColor(process.env.COLOR)
       .setThumbnail(`${client.user.avatarURL({ dynamic: true })}?size=1024`)
       .setAuthor("🤖 Minhas informações")
       .addField("**Meu nome**", userName)
       .addField("**Meu ID**", client.user.id)
-      .addField("**Servidores**", `${servsize}`, true)
-      .addField("**Usuários**", `${usersize}`, inline)
       .addField("**Estou online a**", moment().to(client.startTime, true))
       .addField("**Fui criado em**", formatDate("DD/MM/YYYY, às HH:mm:ss", date))
       .addField('🔗 **Meu código fonte**', link)
