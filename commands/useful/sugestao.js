@@ -14,19 +14,20 @@ module.exports = {
 	run: async function(client, message, args) {
 
 		const msg = args.join(' ');
+
 		if (!msg) {
-			message.channel.send(`${message.author}, digite: \`\`!sugestion [sua sugestão]\`\` :mailbox_with_no_mail:`);
+			message.channel.send(`${message.author}, digite: \`\`!sugestao[sua sugestão]\`\` :mailbox_with_no_mail:`);
 			return undefined;
 		}
 
-		const embed = new Discord.RichEmbed()
+		const embed = new Discord.MessageEmbed()
 			.setAuthor(`📩 Sugestão de: ${message.author.username}`, message.author.displayAvatarURL())
 			.setDescription(`${msg}`)
 			.setColor(process.env.COLOR)
-			.setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
+			.setFooter('2021 © Liga dos Programadores', process.env.SERVERIMAGE)
 			.setTimestamp();
 
-		client.channels.get(process.env.SUGESTIONSCHANNEL).send(embed)
+			client.channels.cache.get(process.env.SUGESTOES).send(embed)
 			.then((m) => {
 				m.react('👍');
 				m.react('👎');
@@ -43,9 +44,9 @@ module.exports = {
 
 	get help() {
 		return {
-			name: 'sugestion',
+			name: 'sugestao',
 			description: 'Pega a sugestão do usuário.',
-			usage: 'sugestion',
+			usage: 'sugestao',
 		};
 	},
 };

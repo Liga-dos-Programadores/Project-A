@@ -16,7 +16,7 @@ module.exports = {
 		const snippetEmbed = new Discord.MessageEmbed()
 			.setColor("#29C9FC")
 			.setAuthor('💻 Snippet de código')
-			.setDescription('**Ao enviar um snippet (trecho de código), siga o modelo da imagem.**\nPara mais informações você pode acessar: [Formatação Discord](https://support.discord.com/hc/pt-br/artAicles/210298617-Noções-básicas-de-marcação-de-texto-Formatação-do-chat-negrito-itálico-e-sublinhado-). Troque `js` por outro tipo de linguagem.')
+			.setDescription('**Ao enviar um snippet (trecho de código), siga o modelo da imagem.**\nPara mais informações você pode acessar: [Formatação Discord](https://support.discord.com/hc/pt-br/artAicles/210298617-Noções-básicas-de-marcação-de-texto-Formatação-do-chat-negrito-itálico-e-sublinhado-).')
 			.setImage('https://i.imgur.com/i5b7pYf.png')
 			// .setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
 			.setTimestamp();
@@ -35,8 +35,8 @@ module.exports = {
 		return {
 			name: 'codigo',
 			category: 'Útil',
-			description: 'Como deve ser enviando uma linha de código.',
-			usage: '',
+			description: 'Como deve sr enviando uma linha de código.',
+			usage: 'codigo',
 		};
 	},
 };

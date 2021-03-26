@@ -3,34 +3,39 @@
 */
 
 const Discord = require('discord.js')
-
 const moment = require('moment')
 moment.locale('pt-br')
 
 module.exports = {
 
   run: function (client, message, args) {
+
+    const roles = message.guild.roles.cache.sort((a,b) => b.position - a.position).map(role => role.toString());
+    const members = message.guild.members.cache;
+    const channels = message.guild.channels.cache;
     const date = message.guild.createdAt
     const joined = message.member.joinedAt
-
     const region = {
       brazil: ':flag_br: Brasil'
     }
 
     const embed = new Discord.MessageEmbed()
-      .setColor("#29C9FC")
-      .setThumbnail(message.guild.iconURL)
+      .setColor(process.env.COLOR)
+      .setThumbnail(message.guild.iconURL({ dynamic: true }))
       .setAuthor('🔍 Informações do servidor')
       .setThumbnail(`${message.guild.iconURL({ dynamic: true })}?size=1024`)
       .addField('**Nome**', message.guild.name, true)
       .addField('**ID**', message.guild.id, true)
-      .addField('**Dono(a)**', `${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`)
+      .addField('**Dono(a)**', `${message.guild.owner.user.username}`, true)
       .addField('**Região**', region[message.guild.region], true)
-      .addField('**Humanos | Bots**', `${message.guild.members.cache.filter(member => !member.user.bot).size} | ${message.guild.members.cache.filter(member => member.user.bot).size}`)
-      .addField('**Canais**', message.guild.channels.cache.size, true)
-      .addField('**Cargos**', message.guild.roles.cache.size, true)
-      .addField('**Criado em**', formatDate('DD/MM/YYYY, às HH:mm:ss', date))
-      .addField('**Você entrou em**', formatDate('DD/MM/YYYY, às HH:mm:ss', joined))
+      .addField('**Membro(s)**', message.guild.memberCount, true)
+      .addField('**Bot(s)**', `${members.filter(member => member.user.bot).size}`, true)
+      .addField('**Boost**', `${message.guild.premiumSubscriptionCount || '0'}`, true)
+      .addField('**Canais de texto**', `${channels.filter(channel => channel.type === 'text').size}`, true)
+      .addField('**Canais de voz**', channels.filter(channel => channel.type === 'voice').size, true)
+      .addField('**Criado em**', formatDate('DD/MM/YYYY, às HH:mm:ss', date), true)
+      .addField('**Você entrou em**', formatDate('DD/MM/YYYY, às HH:mm:ss', joined), true)
+      .addField('**Cargos**', `[${roles.lenght -1}]`, roles.lenght <10 ? roles.join(`, `) : roles.lenght >10 ? this.client.utils.trimArray(roles) : 'Nenhum cargo')
       .setFooter('2021 © Liga dos Programadores.')
       .setTimestamp()
 

@@ -4,7 +4,7 @@ module.exports = {
 	run: async (client, message) => {
 		const memberRole = message.member.roles.cache.get(process.env.ID_ROLE_APRESENTACAO)
 		if (!memberRole)
-			return message.reply("🤔 voce ainda não se apresentou!");
+			return message.reply("voce ainda não se apresentou!");
 
 		// Registra e checa se o canal Apresente-se existe
 		const channel = message.guild.channels.cache.get(process.env.APRESENTACAO);
@@ -43,9 +43,10 @@ module.exports = {
 
 	get help() {
 		return {
-			name: 'reset',
+			name: 'resetar',
 			category: 'Ajuda',
 			description: 'Reseta o status de apresentação.',
+			usage: 'resetar'
 		};
 	},
 };

@@ -6,49 +6,53 @@ const Discord = require('discord.js');
 require('dotenv').config();
 
 module.exports = {
+	run: (client, message, args) => {
+		const notifyRole = message.guild.roles.cache.get(process.env.NOVIDADES);
 
-	/** Primeiro o metodo run(client, message, args) será executado pelo arquivo message.js
-	  * Que passara os argumentos atraves do middleware.
-	*/
-
-	run: (client, message) => {
-
-		/** Verificamos os argumentos e instanciamos o cargo que queremos pelo nome. */
-
-		const role = message.guild.roles.cache.has(process.env.NOVIDADES);
-		let member = message.mentions.users.first() || message.author
-
-		if (!role) {
+		if(!notifyRole) {
 			const notifyEmbed1 = new Discord.MessageEmbed()
 				.setColor("#29C9FC")
-				.setAuthor('Esse cargo não existe no servidor!')
-				.setFooter('2021 © Liga dos Programadores.')
+				.setAuthor('Não foi encontrado o id do cargo ou ele não existe no servidor!')
+				.setFooter('2021 © Liga dos Programadores')
 				.setTimestamp()
 			message.channel.send(notifyEmbed1);
-		}
-		else if (!message.member.roles.cache.has(role.id)) {
-			member.roles.cache.add(role.id);
+		} 
+		
+		else if(!message.member.roles.cache.has(notifyRole) ) {
+			message.member.roles.add(notifyRole)
 
 			const notifyEmbed2 = new Discord.MessageEmbed()
 				.setColor("#29C9FC")
-				.setAuthor('Adicionou cargo novidades 🔔')
+				.setAuthor('Você adicionou o cargo Novidades 🔔')
 				.setDescription('*Agora você receberá notificações quando houver notícias da comunidade!*')
-				.setFooter('2021 © Liga dos Programadores.')
+				.setFooter('2021 © Liga dos Programadores')
 				.setTimestamp();
 
 			message.channel.send(notifyEmbed2);
 		}
-		else {
-			message.member.roles.cache.remove(role.id);
+		
+		else if(message.member.roles.cache.has(notifyRole)) {
+			message.member.roles.remove(notifyRole);
 
 			const notifyEmbed3 = new Discord.MessageEmbed()
 				.setColor("#29C9FC")
-				.setAuthor('Removeu cargo novidades 🔕')
+				.setAuthor('Você removeu cargo novidades 🔕')
 				.setDescription('*Voce removeu o cargo, não irá receber mais notificações da comunidade.*')
-				.setFooter('2021 © Liga dos Programadores.')
+				.setFooter('2021 © Liga dos Programadores')
 				.setTimestamp()
 
 			message.channel.send(notifyEmbed3);
+		}
+
+		else {
+			const notifyEmbedError = new Discord.MessageEmbed()
+			.setColor("#29C9FC")
+			.setAuthor('Ocorreu algum erro!')
+			.setDescription('*Ocorreu algum erro. Contate a staff do servidor.*')
+			.setFooter('2021 © Liga dos Programadores')
+			.setTimestamp()
+
+		message.channel.send(notifyEmbedError);
 		}
 	},
 

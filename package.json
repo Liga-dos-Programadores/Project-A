@@ -8,7 +8,7 @@
     "dev": "nodemon ."
   },
   "author": "Liga dos Programadores",
-  "license": "MIT",
+  "license": "AGPL3",
   "dependencies": {
     "ascii-table": "^0.0.9",
     "canvacord": "^5.0.8",
