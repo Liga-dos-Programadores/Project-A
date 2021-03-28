@@ -22,13 +22,10 @@ module.exports = {
 		// eslint-disable-next-line no-shadow
 		if (!tomute) return message.channel.send(`${message.author.username}, o uso correto do comando é: \`\`!mute @Membro tempo motivo\`\` .😅`).then(msg => msg.delete(5000));
 		if (tomute.hasPermission('ADMINISTRATOR')) return message.reply('**você não pode mutar staffs! 😅**');
-
-		message.channel.send(args.join(" "))
 		
 		const reason = args.slice(2).join(' ');
 		if (!reason) return message.reply('**insira um motivo antes. 😶**');
 
-		
 		const muterole = msg.guild.roles.cache.find( role => role.name === 'Mutado' );
 
 		const mutetime = args[1];
@@ -62,6 +59,7 @@ module.exports = {
 
 		if(!message.member.roles.cache.has(muterole)) {
 			setTimeout(function() {
+				if(!message.member.roles.cache.has(muterole)) return;
 				tomute.roles.remove(muterole.id);
 				msg.guild.channels.cache.get('735930352987799623').send(`<@${tomute.id}> **você foi desmutado! Comporte-se agora. 😁**`);
 			}, ms(mutetime));
