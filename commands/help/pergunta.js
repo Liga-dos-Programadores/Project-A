@@ -14,7 +14,7 @@ module.exports = {
   
     const embed = new Discord.MessageEmbed()
     .setColor("#29C9FC")
-    .setAuthor("Como Perguntar 📝")
+    .setAuthor("Como perguntar 📝")
     .setDescription('1. Descreva seu problema de forma simples e objetiva.\n2. Sempre que compartilhar algum código use as tags de [Markdown](https://support.discord.com/hc/en-us/articles/210298617-Markdown-Text-101-Chat-Formatting-Bold-Italic-Underline-) apropriadas.')
 
     // Aqui será enviado o embed no canal que o usuário executo o comando 
@@ -30,10 +30,10 @@ module.exports = {
     */
   get help () {
     return {
-      name: 'duvida',
+      name: 'pergunta',
       category: 'Ajuda',
       description: 'Template de como fazer uma pergunta.',
-      usage: 'duvida'
+      usage: 'pergunta'
     }
   }
 }

@@ -16,10 +16,12 @@ module.exports = {
 				.setFooter('2021 © Liga dos Programadores')
 				.setTimestamp()
 			message.channel.send(notifyEmbed1);
+
+			return;
 		} 
 		
-		else if(!message.member.roles.cache.has(notifyRole) ) {
-			message.member.roles.add(notifyRole)
+		if(!message.member.roles.cache.has(process.env.NOVIDADES)) {
+			message.member.roles.add(process.env.NOVIDADES)
 
 			const notifyEmbed2 = new Discord.MessageEmbed()
 				.setColor("#29C9FC")
@@ -31,8 +33,8 @@ module.exports = {
 			message.channel.send(notifyEmbed2);
 		}
 		
-		else if(message.member.roles.cache.has(notifyRole)) {
-			message.member.roles.remove(notifyRole);
+		else {
+			message.member.roles.remove(process.env.NOVIDADES);
 
 			const notifyEmbed3 = new Discord.MessageEmbed()
 				.setColor("#29C9FC")
@@ -43,17 +45,6 @@ module.exports = {
 
 			message.channel.send(notifyEmbed3);
 		}
-
-		else {
-			const notifyEmbedError = new Discord.MessageEmbed()
-			.setColor("#29C9FC")
-			.setAuthor('Ocorreu algum erro!')
-			.setDescription('*Ocorreu algum erro. Contate a staff do servidor.*')
-			.setFooter('2021 © Liga dos Programadores')
-			.setTimestamp()
-
-		message.channel.send(notifyEmbedError);
-		}
 	},
 
 	conf: {
@@ -63,7 +54,7 @@ module.exports = {
 
 	/**
    * Aqui exportamos Ajuda do comando como o seu nome categoria, descrição, etc...
-   */
+  */
 
 	get help() {
 		return {
