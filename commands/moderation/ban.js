@@ -14,7 +14,7 @@ module.exports = {
 		const user = message.mentions.users.first() || args[0];
 		const reason = args.slice(1).join(' ');
 
-		const embed = new Discord.RichEmbed()
+		const embed = new Discord.MessageEmbed()
 			.setColor(process.env.COLOR)
 			.setAuthor('Banimento')
 			.setThumbnail(user.avatarURL())
