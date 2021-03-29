@@ -22,11 +22,11 @@ module.exports = {
 		// eslint-disable-next-line no-shadow
 		if (!tomute) return message.channel.send(`${message.author.username}, o uso correto do comando é: \`\`!mute @Membro tempo motivo\`\` .😅`).then(msg => msg.delete(5000));
 		if (tomute.hasPermission('ADMINISTRATOR')) return message.reply('**você não pode mutar staffs! 😅**');
-
+		
 		const reason = args.slice(2).join(' ');
 		if (!reason) return message.reply('**insira um motivo antes. 😶**');
 
-		const muterole = msg.guild.roles.cache.find('name', 'Mutado');
+		const muterole = msg.guild.roles.cache.find( role => role.name === 'Mutado' );
 
 		const mutetime = args[1];
 		if (!mutetime) return message.reply('**indique um tempo. ⌛️ (1s/1m/1h/1d)**');
@@ -41,7 +41,7 @@ module.exports = {
 			message.channel.send(`${tomute} foi mutado por ${mutetime} `);
 		}
 
-		const muteembed = new Discord.RichEmbed()
+		const muteembed = new Discord.MessageEmbed()
 			.setAuthor('Mute 🤐')
 			.setColor('#74c1ff')
 			.addField('🔹 Membro', tomute, true)
@@ -52,14 +52,16 @@ module.exports = {
 			.setFooter('2020 © Liga dos Programadores', 'https://i.imgur.com/U3gX6kU.png?3')
 			.setTimestamp();
 
-		msg.guild.channels.get('737188926065737779').send(muteembed);
+		msg.guild.channels.cache.get('737188926065737779').send(muteembed);
+		
 
-		await (tomute.roles.add((muterole.id)));
+		await tomute.roles.add(muterole);
 
-		if(!message.member.roles.has(muterole)) {
+		if(!message.member.roles.cache.has(muterole)) {
 			setTimeout(function() {
+				if(!message.member.roles.cache.has(muterole)) return;
 				tomute.roles.remove(muterole.id);
-				msg.guild.channels.get('735930352987799623').send(`<@${tomute.id}> **você foi desmutado! Comporte-se agora. 😁**`);
+				msg.guild.channels.cache.get('735930352987799623').send(`<@${tomute.id}> **você foi desmutado! Comporte-se agora. 😁**`);
 			}, ms(mutetime));
 		}
 	},
