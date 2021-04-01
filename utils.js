@@ -16,8 +16,6 @@ function loadCommands(collection, directory) {
 
       if (file.endsWith('.js')) {
         const command = require(path);
-
-        console.log(file);
         console.log('log', `Carregando comando: ${command.help.name}`);
 
         collection.set(command.help.name, command);
