@@ -11,6 +11,7 @@ module.exports = async (_client, member) => {
     .setFooter("2020 ©Liga dos Programadores")
     .setTimestamp();
 
+  client.emit('boasvindas', client, member)
   // TODO: Handle error correctly //
-  member.guild.channels.get(process.env.LEAVECHANNEL).send(message).catch();
+  // member.guild.channels.get(process.env.LEAVECHANNEL).send(message).catch();
 };
