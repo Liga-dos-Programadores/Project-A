@@ -1,5 +1,5 @@
 /**
- * O Comando "botinfo" mostrará informações do bot
+  * O Comando "botinfo" mostrará informações do bot.
 */
 
 const Discord = require("discord.js");
@@ -17,7 +17,6 @@ module.exports = {
       offline: "`⚫` Offline",
     };
     const link = 'https://github.com/Liga-dos-Programadores/Project-A';
-
 
     const embed = new Discord.MessageEmbed()
       .setColor(process.env.COLOR)
@@ -48,7 +47,7 @@ module.exports = {
   get help() {
     return {
       name: "botinfo",
-      category: "Info",
+      category: "Informações",
       description: "Mostra informações do bot.",
       usage: "botinfo",
     };

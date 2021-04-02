@@ -1,18 +1,31 @@
 module.exports = {
-  run: (client, message, args) => {
-    const sayMessage = args.join(" ");
-    message.delete().catch(O_o => {});
-    message.channel.send(sayMessage);
-  },
+	run: (client, message, args) => {
+		if (!message.member.hasPermission(['MANAGE_MESSAGES', 'ADMINISTRATOR'])) { return message.channel.send('> Você não pode usar esse comando!'); }
 
-  conf: {},
+		let argsresult;
+		const mChannel = message.mentions.channels.first();
 
-  get help () {
-    return {
-      name: 'falar',
-      category: 'Moderação',
-      description: 'Faz o bot reenviar uma mensagem.',
-      usage: 'falar',
-    }
-  }
-}
+		message.delete();
+		if (mChannel) {
+			argsresult = args.slice(1).join(' ');
+			mChannel.send(argsresult);
+		}
+		else {
+			argsresult = args.join(' ');
+			message.channel.send(argsresult);
+		}
+	},
+
+	conf: {},
+
+	get help() {
+		return {
+			name: 'falar',
+			category: 'Moderação',
+			description: 'Faz o bot enviar tal mensagem.',
+			usage: 'falar',
+			admin: true,
+		};
+	},
+
+};

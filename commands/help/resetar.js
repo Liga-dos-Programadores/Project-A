@@ -1,8 +1,10 @@
 // O comando "reset" serve para usuarios que querem resetar sua apresentação.
+const Discord = require('discord.js');
+require('dotenv').config();
 
 module.exports = {
   run: async (client, message) => {
-    const presentedRole = process.env.ID_ROLE_APRESENTACAO;
+    const presentedRole = process.env.CARGO_APRESENTOU;
     // Verifica se existe o emoji especial do servidor (:thonk:) e se nao existir substitui pelo :thinking:
     const specialEmoji =
       message.guild.emojis.cache.find((emoji) => emoji.name == 'thonk') || '🤔';
@@ -10,7 +12,7 @@ module.exports = {
     if (message.member.roles.cache.has(presentedRole)) {
       // Registra e checa se o canal Apresente-se existe
       const channel = message.guild.channels.cache.find(
-        (channel) => channel.id == process.env.APRESENTACAO
+        (channel) => channel.id == process.env.CANAL_APRESENTACAO
       );
       if (channel) {
         // Faz um fetch de 100 mensagens no canal apresente-se
@@ -27,21 +29,21 @@ module.exports = {
           // remove o cargo/rolea
           message.member.roles.remove(presentedRole);
           // envia uma mensagem
-          message.reply('Sua apresentação foi removida!');
+          message.reply('sua apresentação foi removida! 🥳');
         } else {
           // se nao existirem mensagens do usuario...
           // remove o cargo/role
           message.member.roles.remove(presentedRole);
           // envia uma mensagem
-          message.reply(`Não encontrei nenhuma mensagem sua no ${channel}.`);
+          message.reply(`não encontrei nenhuma mensagem sua no ${channel}! 🤯`);
         }
       } else {
         message.reply(
-          `Não consegui encontrar o canal de apresentacoes ${specialEmoji}`
+          `não consegui encontrar o canal de apresentacoes ${specialEmoji}`
         );
       }
     } else {
-      message.reply(`${specialEmoji} você ainda não se apresentou!`);
+      message.reply(`você ainda não se apresentou! 😅`);
     }
   },
 
@@ -51,9 +53,10 @@ module.exports = {
 
   get help() {
     return {
-      name: 'reset',
+      name: 'resetar',
       category: 'Ajuda',
       description: 'Reseta o status de apresentação.',
+      usage: 'resetar'
     };
   },
 };

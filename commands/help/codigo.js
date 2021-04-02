@@ -18,7 +18,7 @@ module.exports = {
 			.setAuthor('💻 Snippet de código')
 			.setDescription('**Ao enviar um snippet (trecho de código), siga o modelo da imagem.**\nPara mais informações você pode acessar: [Formatação Discord](https://support.discord.com/hc/pt-br/artAicles/210298617-Noções-básicas-de-marcação-de-texto-Formatação-do-chat-negrito-itálico-e-sublinhado-).')
 			.setImage('https://i.imgur.com/i5b7pYf.png')
-			// .setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
+			.setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
 			.setTimestamp();
 		message.channel.send(snippetEmbed);
 	},
@@ -34,7 +34,7 @@ module.exports = {
 	get help() {
 		return {
 			name: 'codigo',
-			category: 'Útil',
+			category: 'Ajuda',
 			description: 'Como deve sr enviando uma linha de código.',
 			usage: 'codigo',
 		};

@@ -3,6 +3,7 @@
 */
 
 const Discord = require('discord.js');
+require('dotenv').config();
 
 module.exports = {
 
@@ -14,7 +15,8 @@ module.exports = {
 	run: function(client, message, args) {
     const embed = new Discord.MessageEmbed()
     .setTitle('A comunidade')
-    .setDescription('🔗 site fjdsfsd')
+    .setDescription('[Site da Liga](https://liga-dos-programadores.github.io/), [GitHub da Liga](https://github.com/Liga-dos-Programadores)')
+    .setImage('https://i.imgur.com/W2L4r1L.png')
     .setColor(process.env.COLOR)
     .setFooter('2021 © Liga dos Programadores.')
 		.setTimestamp();
@@ -31,7 +33,7 @@ module.exports = {
 	get help() {
 		return {
 			name: 'liga',
-			category: 'Ajuda',
+			category: 'Informações',
 			description: 'Template de como fazer uma pergunta.',
 			usage: 'liga',
 		};

@@ -13,7 +13,7 @@ module.exports = {
   run: function (client, message, args) {
   
     const embed = new Discord.MessageEmbed()
-    .setColor("#29C9FC")
+    .setColor(process.env.COLOR)
     .setAuthor("Como perguntar 📝")
     .setDescription('1. Descreva seu problema de forma simples e objetiva.\n2. Sempre que compartilhar algum código use as tags de [Markdown](https://support.discord.com/hc/en-us/articles/210298617-Markdown-Text-101-Chat-Formatting-Bold-Italic-Underline-) apropriadas.')
 

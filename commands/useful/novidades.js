@@ -39,7 +39,7 @@ module.exports = {
 			const notifyEmbed3 = new Discord.MessageEmbed()
 				.setColor("#29C9FC")
 				.setAuthor('Você removeu cargo novidades 🔕')
-				.setDescription('*Voce removeu o cargo, não irá receber mais notificações da comunidade.*')
+				.setDescription('*Você removeu o cargo, e não irá receber mais notificações da comunidade.*')
 				.setFooter('2021 © Liga dos Programadores')
 				.setTimestamp()
 
@@ -59,7 +59,7 @@ module.exports = {
 	get help() {
 		return {
 			name: 'novidades',
-			category: 'info',
+			category: 'Útil',
 			description: 'O Comando "novidades" adiciona o cargo de "Novidades" aos membros.',
 			usage: 'novidades',
 		};

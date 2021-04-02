@@ -57,7 +57,7 @@ module.exports = {
       name: 'gato',
       description: 'Envia um gif ou uma imagem aleatória de um ou mais gatos! API: ' + api,
       usage: 'gato',
-      category: 'Imagem'
+      category: 'Diversão'
     }
   }
 }

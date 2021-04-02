@@ -1,5 +1,5 @@
 /**
-  * O Comando "snippet" vai enviar uma mensagem ao usuário mostrando como deve ser enviado exemplo de linhas de código.
+  * O Comando "ascii" Converte uma palavra para o código ASCII.
 */
 
 const Discord = require('discord.js');
@@ -38,8 +38,8 @@ module.exports = {
 	get help() {
 		return {
 			name: 'ascii',
-			category: 'Ajuda',
-			description: 'Template de como fazer uma pergunta.',
+			category: 'Diversão',
+			description: 'Converte uma palavra para o código ASCII',
 			usage: 'ascii',
 		};
 	},

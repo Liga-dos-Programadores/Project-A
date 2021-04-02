@@ -45,6 +45,7 @@ module.exports = {
 	get help() {
 		return {
 			name: 'sugestao',
+			category: 'Útil',
 			description: 'Pega a sugestão do usuário.',
 			usage: 'sugestao',
 		};

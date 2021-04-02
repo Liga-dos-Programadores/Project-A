@@ -28,7 +28,7 @@ module.exports = {
 
 		if (!Number.isInteger(limit)) return message.reply(`determine uma quantidade entre 1 a 100! \`\`\`${process.env.PREFIX}${module.exports.help.usage}\`\`\``);
 
-		limit = Math.min(limit, 99);
+		limit = Math.min(limit, 100);
 
 		message.channel.bulkDelete(limit)
 			.then(messages => {
@@ -44,10 +44,10 @@ module.exports = {
 
 	get help() {
 		return {
-			name: 'delete',
+			name: 'deletar',
 			category: 'mod',
-			description: 'O Comando "delete" apagará determinada quantidade de mensagens.',
-			usage: 'delete [1 - 200]',
+			description: 'O Comando "deletar" apagará determinada quantidade de mensagens.',
+			usage: 'deletar [1 - 200]',
 			admin: true,
 		};
 	},

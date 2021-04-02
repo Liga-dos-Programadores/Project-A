@@ -9,28 +9,28 @@ module.exports = {
   * Que passará os argumentos atraves do middleware.
 */
 
-	run: function(client, message) {
-		message.guild.fetchInvites()
-		
-			.then(invites => {
-				if (!invites) {
-					return message.channel.send(`> ${message.author}, esse servidor não possui convites!`);
-				}
-				const rank = invites.array().sort((a, b) => b.uses - a.uses).slice(0, 5);
+	run: function(client, message, args) {
+		invites = message.guild.fetchInvites()
 
-				if (!rank.length) return message.channel;
+		.then(invites => {
+			if (!invites) {
+				return message.channel.send(`> ${message.author}, esse servidor não possui convites!`);
+			}
 
-				const embed = new Discord.MessageEmbed()
-					.setAuthor(`✉️ Convites | ${message.guild.name}`);
-				rank.map((user, index) => embed.addField('⠀⠀⠀⠀', `**${index + 1}º** ${user.inviter.username} \`\`\`Convidados: ${user.uses}\`\`\` **Link do convite**: ${user.url}`, false));
-				embed.addField('Total/Convites', `\`\`\`${invites.size} convites\`\`\``, true)
-					.setColor("#29C9FC")
-					.setFooter('2021 © Liga dos Programadores.')
-					.setTimestamp()
+			const rank = invites.array().sort((a, b) => b.uses - a.uses).slice(0, 5);
 
-				message.channel.send(embed);
+			if (!rank.length) return message.channel;
+
+			const embed = new Discord.MessageEmbed()
+			.setAuthor(`✉️ Convites | ${message.guild.name}`);
+			rank.map((user, index) => embed.addField('⠀⠀⠀⠀', `**${index + 1}º** ${user.inviter.username} \`\`\`Convidados: ${user.uses}\`\`\` **Link do convite**: ${user.url}`, false));
+			embed.addField('Total/Convites', `\`\`\`${invites.size} convites\`\`\``, true)
+			.setColor("#29C9FC")
+			.setFooter('2021 © Liga dos Programadores.')
+			.setTimestamp()
+
+			message.channel.send(embed);
 			})
-			// eslint-disable-next-line no-empty-function
 			.catch(() => { });
 	},
 
@@ -46,7 +46,7 @@ module.exports = {
 	get help() {
 		return {
 			name: 'convite',
-			category: 'info',
+			category: 'Informações',
 			description: 'Mostra quem criou o convite e a quantidade de vezes usada.',
 			usage: 'convite',
 		};
