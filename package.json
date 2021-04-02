@@ -8,16 +8,12 @@
     "dev": "nodemon ."
   },
   "author": "Liga dos Programadores",
-  "license": "AGPL3",
+  "license": "AGPL-3.0-only",
   "dependencies": {
     "ascii-table": "^0.0.9",
-    "canvacord": "^5.0.8",
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
-    "duck-duck-scrape": "^1.0.3",
-    "enmap": "^5.2.4",
     "figlet": "^1.5.0",
-    "file-system": "^2.2.2",
     "moment": "^2.29.1",
     "weather-js": "^2.0.0"
   },
