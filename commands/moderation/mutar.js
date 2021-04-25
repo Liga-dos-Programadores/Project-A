@@ -15,8 +15,7 @@ module.exports = {
 		message.delete();
 		const msg = message;
 
-		if (!message.member.hasPermission(['MANAGE_MESSAGES', 'ADMINISTRATOR'])) { return message.channel.send('> Você não tem permissão para usar esse comando! 🤨'); }
-		// Se o membro não tem permissão de admnistrador ou de gerenciar mensagens ele não pode usar o comando
+		if (!message.member.hasPermission(['MANAGE_MESSAGES', 'ADMINISTRATOR'])) { return message.channel.send('> **Você não tem permissão para usar esse comando!**').then(m => m.delete({ timeout: 2000 })); }
 
 		const tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 		// eslint-disable-next-line no-shadow
@@ -74,9 +73,9 @@ module.exports = {
 
 	get help() {
 		return {
-			name: 'mute',
+			name: 'mutar',
 			description: 'Comando para mudar temporariamente um membro.',
-			usage: 'mute',
+			usage: '!mutar',
 		};
 	},
 };

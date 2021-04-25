@@ -5,9 +5,9 @@ if (process.version.slice(1).split('.')[0] < 8)
 
 require('dotenv').config();
 
-const { Client, Collection } = require('discord.js');
+const { Client, Collection, Channel } = require('discord.js');
 const { loadCommands, loadEvents } = require('./utils');
-
+const welcome = require('./events/guildMemberAdd');
 const client = new Client();
 
 client.commands = new Collection();
@@ -15,4 +15,5 @@ client.startTime = Date.now();
 
 loadCommands(client.commands, './commands');
 loadEvents('./events', client);
+
 client.login(process.env.AUTH_TOKEN); /* Inicia o Bot. */

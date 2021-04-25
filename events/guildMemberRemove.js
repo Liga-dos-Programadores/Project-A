@@ -1,17 +1,17 @@
-const { RichEmbed } = require("discord.js");
-
 /**
- * O evento guildMemberAdd é emitido após um membro entrar (ser adicionado em uma guild).
- */
+ * O evento guildMemberRemove é emitido após um membro sair do servidor.
+*/
 
-module.exports = (_client, member) => {
-  const message = new RichEmbed()
-    .setThumbnail(member.user.displayAvatarURL)
-    .setColor("RANDOM")
-    .setAuthor("👤 Um membro saiu do servidor!")
+module.exports = (client, member) => {
+  const Discord = require('discord.js');
+
+  const leave = new Discord.MessageEmbed()
+    .setColor(process.env.COLOR)
+    .setAuthor("👥 Um membro saiu do servidor.")
+    .setThumbnail(`${member.user.avatarURL({ dynamic: true })}?size=1024`)
     .setDescription(`${member} acabou de sair.`)
-    .setFooter("2020 ©Liga dos Programadores")
+    .setFooter("2021 ©Liga dos Programadores")
     .setTimestamp();
 
-  member.guild.channels.get(process.env.LEAVECHANNEL).send(message).catch();
+    member.guild.channels.cache.get(process.env.SAIDA).send(leave);
 };

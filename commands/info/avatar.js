@@ -32,7 +32,7 @@ module.exports = {
     get help() {
         return {
             name: "avatar",
-            category: "Informações",
+            category: "Informação",
             description: "Mostra o avatar do usuário.",
             usage: "avatar"
         };

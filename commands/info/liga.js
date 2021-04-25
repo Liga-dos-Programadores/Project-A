@@ -33,7 +33,7 @@ module.exports = {
 	get help() {
 		return {
 			name: 'liga',
-			category: 'Informações',
+			category: 'Informação',
 			description: 'Template de como fazer uma pergunta.',
 			usage: 'liga',
 		};

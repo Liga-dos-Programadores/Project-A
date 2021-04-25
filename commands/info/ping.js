@@ -16,7 +16,7 @@ module.exports = {
       name: 'ping',
       description: 'Mostra a latência do bot.',
       usage: 'ping',
-      category: 'Informações'
+      category: 'Informação'
     }
   }
 }

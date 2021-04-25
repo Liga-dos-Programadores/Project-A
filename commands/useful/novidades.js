@@ -25,7 +25,7 @@ module.exports = {
 
 			const notifyEmbed2 = new Discord.MessageEmbed()
 				.setColor("#29C9FC")
-				.setAuthor('Você adicionou o cargo Novidades 🔔')
+				.setAuthor(`Você adicionou o cargo Novidades 🔔`)
 				.setDescription('*Agora você receberá notificações quando houver notícias da comunidade!*')
 				.setFooter('2021 © Liga dos Programadores')
 				.setTimestamp();
@@ -38,7 +38,7 @@ module.exports = {
 
 			const notifyEmbed3 = new Discord.MessageEmbed()
 				.setColor("#29C9FC")
-				.setAuthor('Você removeu cargo novidades 🔕')
+				.setAuthor(`Você removeu cargo Novidades 🔕`)
 				.setDescription('*Você removeu o cargo, e não irá receber mais notificações da comunidade.*')
 				.setFooter('2021 © Liga dos Programadores')
 				.setTimestamp()

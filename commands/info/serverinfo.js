@@ -53,7 +53,7 @@ module.exports = {
   get help () {
     return {
       name: 'serverinfo',
-      category: 'Informações',
+      category: 'Informação',
       description: 'Informação sobre o servidor',
       usage: 'serverinfo'
     }

@@ -46,7 +46,7 @@ module.exports = {
 	get help() {
 		return {
 			name: 'convite',
-			category: 'Informações',
+			category: 'Informação',
 			description: 'Mostra quem criou o convite e a quantidade de vezes usada.',
 			usage: 'convite',
 		};

@@ -3,25 +3,16 @@
 	* Para usar: "!movemessage [id da mensagem] [id do canal a ser enviado]"
 */
 
-const { RichEmbed } = require('discord.js');
+const Discord = require("discord.js");
 require('dotenv').config();
 
 module.exports = {
-
-	/**
-    * Primeiro o metodo run(client, message, args) será executado pelo nosso arquivo message.js
-    * Que passará os argumentos atraves do middleware que programamos.
-  */
-
 	run: function(client, message, args) {
-		if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('você não tem permissão para usar esse comando!');
+		if (!message.member.hasPermission(['MANAGE_MESSAGES', 'ADMINISTRATOR'])) { return message.channel.send('> **Você não tem permissão para usar esse comando!**'); }
 
-		// Criando embed que será enviado para o usuário
-		const embed = new RichEmbed();
-		// Buscando a mensagem que o bot vai mover
+		const embed = new Discord.MessageEmbed()
 		message.channel.fetchMessage(args[0])
 			.then(msg => {
-				// Atribuindo a mensagem ao embed
 				embed.setColor(process.env.COLOR)
 					.setAuthor(msg.author.username, msg.author.avatarURL())
 					.setDescription(msg.content)
@@ -57,10 +48,10 @@ module.exports = {
 
 	get help() {
 		return {
-			name: 'movemessage',
-			category: 'mod',
+			name: 'movermensagem',
+			category: 'Moderação',
 			description: 'Acão de movimento de uma mensagem para outro canal.',
-			usage: 'movemessage',
+			usage: 'movermensagem',
 		};
 	},
 };

@@ -50,7 +50,7 @@ module.exports = {
   get help() {
     return {
       name: "tempo",
-      category: "Info",
+      category: "Diversão",
       description: "Mostra a temperatura de determinada região.",
       usage: "tempo",
     };

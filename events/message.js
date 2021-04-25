@@ -4,17 +4,19 @@
  */
 
 module.exports = async (client, message) => {
+
   /** É uma boa pratica ignorar outros bots. isso faz o bot se auto-ignorar também.
    * E Também não entrara em um loop de spam...
-   */
+  */
 
   if (message.author.bot) return;
   if (message.channel.id == process.env.CANAL_APRESENTACAO)
     return client.emit('apresentar', message);
 
   /** Outra boa pratica é ignorar qualquer mensagem que não começe com o prefixo escolhido do bot.
-   * OBS: O PREFIXO E PEGO ATRAVES DAS CONFIGURAÇÕES EM client.settings.
-   */
+   * OBS: O prefixo é pego através da variavel PREFIX no arquivo .env.
+  */
+
   if (message.content.indexOf(process.env.PREFIX) !== 0) return;
 
   /** Separamos o nome do comando de seus argumentos que são passados ao comando em si. */
@@ -26,7 +28,8 @@ module.exports = async (client, message) => {
 
   /** Então se o comando existir ele irá ser executado.
    * Além disso o console também exibira o comando executado e quem o executou.
-   */
+  */
+  
   const cmd = client.commands.get(command);
   if (!cmd) return;
 
