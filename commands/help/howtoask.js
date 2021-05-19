@@ -1,5 +1,5 @@
 /**
-  * O Comando "duvida" vai enviar uma mensagem ao usuário mostrando como o mesmo deve realizar uma pergunta ao estar com duvida.
+  * O Comando "howtoask" vai enviar uma mensagem ao usuário mostrando como o mesmo deve realizar uma pergunta ao estar com duvida.
 */
 
 const Discord = require('discord.js')
@@ -30,10 +30,10 @@ module.exports = {
     */
   get help () {
     return {
-      name: 'pergunta',
+      name: 'howtoask',
       category: 'Ajuda',
       description: 'Template de como fazer uma pergunta.',
-      usage: 'pergunta'
+      usage: '!howtoask'
     }
   }
 }

@@ -27,7 +27,7 @@ module.exports = {
       .addField("**Estou online a**", moment().to(client.startTime, true))
       .addField("**Fui criado em**", formatDate("DD/MM/YYYY, às HH:mm:ss", date))
       .addField('🔗 **Meu código fonte**', link)
-      .setFooter('2021 © Liga dos Programadores.')
+      .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
       .setTimestamp()
 
     if (client.user.presence.status) {
@@ -49,7 +49,7 @@ module.exports = {
       name: "botinfo",
       category: "Informação",
       description: "Mostra informações do bot.",
-      usage: "botinfo",
+      usage: "!botinfo",
     };
   },
 };

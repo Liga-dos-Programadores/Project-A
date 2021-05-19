@@ -17,7 +17,7 @@ module.exports = {
         .setAuthor(`🖼️ Avatar de ${member.username}`)
         .setImage(member.displayAvatarURL({ format: 'png', dynamic: true, size: 1024 }))
         .setColor(process.env.COLOR)
-        .setFooter('2021 © Liga dos Programadores.')
+        .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
         .setTimestamp()
 
         message.channel.send(embed);
@@ -34,7 +34,7 @@ module.exports = {
             name: "avatar",
             category: "Informação",
             description: "Mostra o avatar do usuário.",
-            usage: "avatar"
+            usage: "!avatar"
         };
     }
 };

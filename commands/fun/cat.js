@@ -1,3 +1,7 @@
+/**
+ * O Comando "cat" envia um gif ou uma imagem aleatória de um ou mais gatos.
+*/
+
 const Discord = require('discord.js')
 const https = require('https')
 
@@ -54,9 +58,9 @@ module.exports = {
 
   get help () {
     return {
-      name: 'gato',
+      name: 'cat',
       description: 'Envia um gif ou uma imagem aleatória de um ou mais gatos! API: ' + api,
-      usage: 'gato',
+      usage: '!cat',
       category: 'Diversão'
     }
   }

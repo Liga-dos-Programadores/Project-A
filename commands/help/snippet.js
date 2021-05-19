@@ -1,5 +1,5 @@
 /**
-  * O Comando "codigo" vai enviar uma mensagem ao usuário mostrando como deve ser enviado uma linha de código.
+  * O Comando "snippet" vai enviar uma mensagem ao usuário mostrando como deve ser enviado uma linha de código.
 */
 
 const Discord = require('discord.js');
@@ -14,7 +14,7 @@ module.exports = {
 
 	run: function (client, message) {
 		const snippetEmbed = new Discord.MessageEmbed()
-			.setColor("#29C9FC")
+    	.setColor(process.env.COLOR)
 			.setAuthor('💻 Snippet de código')
 			.setDescription('**Ao enviar um snippet (trecho de código), siga o modelo da imagem.**\nPara mais informações você pode acessar: [Formatação Discord](https://support.discord.com/hc/pt-br/artAicles/210298617-Noções-básicas-de-marcação-de-texto-Formatação-do-chat-negrito-itálico-e-sublinhado-).')
 			.setImage('https://i.imgur.com/i5b7pYf.png')
@@ -33,10 +33,10 @@ module.exports = {
   */
 	get help() {
 		return {
-			name: 'codigo',
+			name: 'snippet',
 			category: 'Ajuda',
 			description: 'Como deve sr enviando uma linha de código.',
-			usage: 'codigo',
+			usage: '!snippet',
 		};
 	},
 };

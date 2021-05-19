@@ -1,6 +1,6 @@
 /**
  * O evento "apresentar" é emitido toda vez que o usuário enviar uma mensagem no canal de "Apresentação".
- */
+*/
 
 module.exports = async (client, message) => {
   const presentedRole = process.env.CARGO_APRESENTOU;

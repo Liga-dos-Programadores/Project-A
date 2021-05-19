@@ -1,5 +1,5 @@
 /**
-  * O Comando "snippet" vai enviar uma mensagem ao usuário mostrando como deve ser enviado exemplo de linhas de código.
+  * O Comando "liga" mostrará algumas informações da comunidade.
 */
 
 const Discord = require('discord.js');
@@ -18,7 +18,7 @@ module.exports = {
     .setDescription('[Site da Liga](https://liga-dos-programadores.github.io/), [GitHub da Liga](https://github.com/Liga-dos-Programadores)')
     .setImage('https://i.imgur.com/W2L4r1L.png')
     .setColor(process.env.COLOR)
-    .setFooter('2021 © Liga dos Programadores.')
+    .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
 		.setTimestamp();
   message.channel.send(embed);
 },
@@ -34,8 +34,8 @@ module.exports = {
 		return {
 			name: 'liga',
 			category: 'Informação',
-			description: 'Template de como fazer uma pergunta.',
-			usage: 'liga',
+			description: 'Mostrará algumas informações da comunidade.',
+			usage: '!liga',
 		};
 	},
 };

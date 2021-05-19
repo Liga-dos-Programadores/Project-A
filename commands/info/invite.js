@@ -1,5 +1,5 @@
 /**
- * O Comando "convite" mostra quem criou o convite e a quantidade de vezes usada.
+ * O Comando "invite" mostra quem criou o convite e a quantidade de vezes usada.
 */
 
 const Discord = require('discord.js');
@@ -25,8 +25,8 @@ module.exports = {
 			.setAuthor(`✉️ Convites | ${message.guild.name}`);
 			rank.map((user, index) => embed.addField('⠀⠀⠀⠀', `**${index + 1}º** ${user.inviter.username} \`\`\`Convidados: ${user.uses}\`\`\` **Link do convite**: ${user.url}`, false));
 			embed.addField('Total/Convites', `\`\`\`${invites.size} convites\`\`\``, true)
-			.setColor("#29C9FC")
-			.setFooter('2021 © Liga dos Programadores.')
+      .setColor(process.env.COLOR)
+      .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
 			.setTimestamp()
 
 			message.channel.send(embed);
@@ -45,10 +45,10 @@ module.exports = {
 
 	get help() {
 		return {
-			name: 'convite',
+			name: 'invite',
 			category: 'Informação',
 			description: 'Mostra quem criou o convite e a quantidade de vezes usada.',
-			usage: 'convite',
+			usage: '!invite',
 		};
 	},
 };

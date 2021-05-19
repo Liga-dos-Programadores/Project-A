@@ -38,7 +38,7 @@ module.exports = {
       .addField('**Cargo(s)**', `${roles.length < 10 ? roles.join(', ') : roles.length > 10 ? this.client.utils.trimArray(roles) : 'Nenhum'}`)
       .addField('**Entrou no Discord em**', formatDate('DD/MM/YYYY, às HH:mm:ss', member.user.createdAt), true)
       .addField('**Entrou no servidor em**', formatDate('DD/MM/YYYY, às HH:mm:ss', member.joinedAt), true)
-      .setFooter('2021 © Liga dos Programadores.')
+      .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
       .setTimestamp()
       
     message.channel.send(embed)
@@ -56,7 +56,7 @@ module.exports = {
       name: 'userinfo',
       category: 'Informação',
       description: 'Mostra informações sobre o usuário.',
-      usage: 'userinfo'
+      usage: '!userinfo'
     }
   }
 }

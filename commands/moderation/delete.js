@@ -44,10 +44,10 @@ module.exports = {
 
 	get help() {
 		return {
-			name: 'deletar',
+			name: 'delete',
 			category: 'mod',
 			description: 'O Comando "deletar" apagará determinada quantidade de mensagens.',
-			usage: 'deletar [1 - 200]',
+			usage: '!delete [1 - 200]',
 			admin: true,
 		};
 	},

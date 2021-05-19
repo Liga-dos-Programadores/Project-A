@@ -1,5 +1,5 @@
 /**
- * O Comando "tempo" mostrará a temperatura de determinada região
+ * O Comando "weather" mostrará a temperatura de determinada região.
 */
 
 const Discord = require("discord.js");
@@ -35,7 +35,8 @@ module.exports = {
       .addField('☁️ Sensação', `${current.feelslike}°`, true)
       .addField('💧 Humidade', `${current.humidity}%`, true)
       .setColor(process.env.COLOR)
-      .setFooter('2021 © Liga dos Programadores.')
+      .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
+
       .setTimestamp()
       message.channel.send(tempoinfo)
     })
@@ -49,10 +50,10 @@ module.exports = {
 
   get help() {
     return {
-      name: "tempo",
+      name: "weather",
       category: "Diversão",
       description: "Mostra a temperatura de determinada região.",
-      usage: "tempo",
+      usage: "!temp",
     };
   },
 };

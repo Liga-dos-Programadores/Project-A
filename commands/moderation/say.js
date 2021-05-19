@@ -20,10 +20,10 @@ module.exports = {
 
 	get help() {
 		return {
-			name: 'falar',
+			name: 'say',
 			category: 'Moderação',
 			description: 'Faz o bot enviar tal mensagem.',
-			usage: 'falar',
+			usage: '!say',
 			admin: true,
 		};
 	},

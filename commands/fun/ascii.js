@@ -40,7 +40,7 @@ module.exports = {
 			name: 'ascii',
 			category: 'Diversão',
 			description: 'Converte uma palavra para o código ASCII',
-			usage: 'ascii',
+			usage: '!ascii',
 		};
 	},
 };

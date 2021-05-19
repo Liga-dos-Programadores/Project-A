@@ -3,8 +3,8 @@ require('dotenv').config();
 
 module.exports = (client) => {
   let activities = [
-    `${process.env.PREFIX}ajuda`,
-    `${client.users.cache.size} usuários`
+    `${process.env.PREFIX}help para obter ajuda.`,
+    `${client.guilds.cache.size} usuários`
   ]
   i = 0;
   setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`, {
@@ -13,5 +13,5 @@ module.exports = (client) => {
   client.user
     .setStatus("online")
     .catch(console.log)
-  console.log(`Eu estou online agora, meu nome é ${client.user.username}. Há ${client.users.cache.size} usuário(s) online em ${client.guilds.cache.size} servidor(es)!`)
+  console.log(`Eu estou online agora, meu nome é ${client.user.username}. Há ${client.guilds.cache.size} usuário(s) online no servidor!`)
 }

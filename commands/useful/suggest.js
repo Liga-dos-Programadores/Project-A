@@ -1,5 +1,5 @@
 /**
- * O Comando "sugestion" irá receber a sugestão do membro e enviá-la para um canal expecífico.
+ * O Comando "suggest" irá receber a sugestão do membro e enviá-la para um canal expecífico.
 */
 
 const Discord = require('discord.js');
@@ -24,7 +24,7 @@ module.exports = {
 			.setAuthor(`📩 Sugestão de: ${message.author.username}`, message.author.displayAvatarURL())
 			.setDescription(`${msg}`)
 			.setColor(process.env.COLOR)
-			.setFooter('2021 © Liga dos Programadores', process.env.SERVERIMAGE)
+      .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
 			.setTimestamp();
 
 			client.channels.cache.get(process.env.SUGESTOES).send(embed)
@@ -32,7 +32,7 @@ module.exports = {
 				m.react('👍');
 				m.react('👎');
 				message.delete({ timeout: 1000 });
-				message.channel.send(`${message.author}, sua sugestão foi enviada no canal de sugestões! 📬 A staff irá analizar e logo irá enviar um feedback :)`);
+				message.channel.send(`${message.author}, sua sugestão foi enviada no canal de sugestões! A staff irá analizar e logo irá enviar um feedback. 📬`);
 			}).catch(console.log);
 	},
 
@@ -44,10 +44,10 @@ module.exports = {
 
 	get help() {
 		return {
-			name: 'sugestao',
+			name: 'suggest',
 			category: 'Útil',
 			description: 'Pega a sugestão do usuário.',
-			usage: 'sugestao',
+			usage: '!suggest',
 		};
 	},
 };

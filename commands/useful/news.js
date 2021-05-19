@@ -1,5 +1,5 @@
 /**
- * O Comando "novidades" adiciona o cargo de "Novidades" aos membros.
+ * O Comando "news" adiciona o cargo de "Novidades" aos membros.
 */
 
 const Discord = require('discord.js');
@@ -12,8 +12,8 @@ module.exports = {
 		if(!notifyRole) {
 			const notifyEmbed1 = new Discord.MessageEmbed()
 				.setColor("#29C9FC")
-				.setAuthor('Não foi encontrado o id do cargo ou ele não existe no servidor!')
-				.setFooter('2021 © Liga dos Programadores')
+				.setAuthor('Não foi encontrado o  id do cargo ou ele não existe no servidor!')
+				.setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
 				.setTimestamp()
 			message.channel.send(notifyEmbed1);
 
@@ -27,7 +27,7 @@ module.exports = {
 				.setColor("#29C9FC")
 				.setAuthor(`Você adicionou o cargo Novidades 🔔`)
 				.setDescription('*Agora você receberá notificações quando houver notícias da comunidade!*')
-				.setFooter('2021 © Liga dos Programadores')
+				.setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
 				.setTimestamp();
 
 			message.channel.send(notifyEmbed2);
@@ -40,7 +40,7 @@ module.exports = {
 				.setColor("#29C9FC")
 				.setAuthor(`Você removeu cargo Novidades 🔕`)
 				.setDescription('*Você removeu o cargo, e não irá receber mais notificações da comunidade.*')
-				.setFooter('2021 © Liga dos Programadores')
+				.setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
 				.setTimestamp()
 
 			message.channel.send(notifyEmbed3);
@@ -58,10 +58,10 @@ module.exports = {
 
 	get help() {
 		return {
-			name: 'novidades',
+			name: 'news',
 			category: 'Útil',
 			description: 'O Comando "novidades" adiciona o cargo de "Novidades" aos membros.',
-			usage: 'novidades',
+			usage: '!news',
 		};
 	},
 };

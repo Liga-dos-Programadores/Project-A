@@ -1,4 +1,5 @@
 // O comando "reset" serve para usuarios que querem resetar sua apresentação.
+
 const Discord = require('discord.js');
 require('dotenv').config();
 
@@ -53,10 +54,10 @@ module.exports = {
 
   get help() {
     return {
-      name: 'resetar',
+      name: 'reset',
       category: 'Ajuda',
       description: 'Reseta o status de apresentação.',
-      usage: 'resetar'
+      usage: '!reset'
     };
   },
 };

@@ -35,8 +35,7 @@ module.exports = {
       .addField('**Canais de voz**', channels.filter(channel => channel.type === 'voice').size, true)
       .addField('**Criado em**', formatDate('DD/MM/YYYY, às HH:mm:ss', date), true)
       .addField('**Você entrou em**', formatDate('DD/MM/YYYY, às HH:mm:ss', joined), true)
-      .addField('**Cargo(s)**', `${roles.length < 10 ? roles.join(', ') : roles.length > 10 ? this.client.utils.trimArray(roles) : 'Nenhum'}`)
-      .setFooter('2021 © Liga dos Programadores.')
+      .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
       .setTimestamp()
 
     // Aqui sera enviado o embed no canal que o usuário executo o comando
@@ -55,7 +54,7 @@ module.exports = {
       name: 'serverinfo',
       category: 'Informação',
       description: 'Informação sobre o servidor',
-      usage: 'serverinfo'
+      usage: '!serverinfo'
     }
   }
 }

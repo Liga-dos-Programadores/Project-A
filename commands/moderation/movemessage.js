@@ -48,10 +48,10 @@ module.exports = {
 
 	get help() {
 		return {
-			name: 'movermensagem',
+			name: 'movemessage',
 			category: 'Moderação',
 			description: 'Acão de movimento de uma mensagem para outro canal.',
-			usage: 'movermensagem',
+			usage: '!movemessage',
 		};
 	},
 };
