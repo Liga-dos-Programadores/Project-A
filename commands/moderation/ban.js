@@ -1,29 +1,37 @@
 /**
- * O Comando "ban" banirá o usuário.
+ * O Comando "ban" banirá determinado usuário do servidor.
 */
 
 const Discord = require('discord.js');
 
 module.exports = {
 
-	/** Primeiro o metodo run(client, message, args) será executado pelo nosso arquivo message.js
-   	* Que passará os argumentos atraves do middleware que programamos.
-  */
-
 	run: async function(client, message, args) {
-		const user = message.mentions.users.first() || args[0];
+		if (!message.member.hasPermission(['MANAGE_MESSAGES', 'ADMINISTRATOR'])) { return message.channel.send('> **Você não tem permissão para usar esse comando!**').then(m => m.delete({ timeout: 2000 })); }
+
+		const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
+		const user = message.mentions.users.first() || message.guild.members.cache.get(args[0])
 		const reason = args.slice(1).join(' ');
 
 		const embed = new Discord.MessageEmbed()
 			.setColor(process.env.COLOR)
-			.setAuthor('Banimento')
-			.setThumbnail(user.avatarURL())
-			.setDescription(`Para banir o usuário por:\n${reason}\nclique na reção ✅ se não ❌`)
-			.setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
+			.setAuthor('Banir 🚀')
+      .setThumbnail(`${member.user.avatarURL({ dynamic: true })}?size=1024`)
+			.setDescription(`Banir o usuário por: **\n${reason}.\n**Clique na reação ✅ para confirmar. Se não, clique em ❌ para cancelar.`)
+      .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
 			.setTimestamp();
 
-		if (!user) return message.channel.send('faltou o usuário');
-		if (!reason) return message.channel.send('faltou o motivo');
+		if (!user) {
+			return message.channel.send(new Discord.MessageEmbed()
+      .setColor(process.env.COLOR)
+      .setDescription(`*O uso correto do comando é: \`\`!ban @usuario [motivo]\`\`.*`));
+		}
+
+		if (!reason) {
+			return message.channel.send(new Discord.MessageEmbed()
+      .setColor(process.env.COLOR)
+      .setDescription(`*Coloque o motivo. 📃*`));
+		}	
 
 		const filter = (reaction, userFilter) => {
 			return ['✅', '❌'].includes(reaction.emoji.name) && userFilter.id === message.author.id;
@@ -39,25 +47,27 @@ module.exports = {
 
 					if (reaction.emoji.name === '✅') {
 						message.guild.members.ban(user)
-							.then(() => message.reply('Ban!'))
-							.catch(() => message.channel.send('Não foi possível banir o usário!'));
+							.then(() => message.reply('usuário banido! 🚀'))
+							.catch(() => message.channel.send('Não foi possível banir o usuário. '));
 					}
 					else {
 						msg.delete();
 					}
 				})
 				.catch(() => {
-					message.reply('Não deu react!');
+					message.reply('mensagem sem reação!');
 				});
 		});
 	},
 	conf: {},
 
-	get help() {
-		return {
-			name: 'ban',
-			description: 'O Comando "ban" bane o usuário do servidor.',
-			usage: '!ban @usuário motivo',
-		};
-	},
+  get help() {
+    return {
+      name: 'ban',
+			category: 'Moderação',
+      description: 'Banirá determinado usuário do servidor.',
+			usage: '!ban @usuário [motivo]',
+      admin: true
+    }
+  }
 };

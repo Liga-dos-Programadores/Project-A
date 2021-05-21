@@ -14,38 +14,39 @@ module.exports = {
     if (!member) {
       return message.channel.send(new Discord.MessageEmbed()
       .setColor(process.env.COLOR)
-      .setDescription(`*${message.author.username}, o uso correto do comando é: \`\`!tempmute @Membro\`\`.*`));
+      .setDescription(`*O uso correto do comando é: \`\`!tempmute @Membro [tempo]\`\`.*`));
     }
+
     if (!time) {
       return message.channel.send(new Discord.MessageEmbed()
       .setColor(process.env.COLOR)
-      .setDescription(`**${message.author.username}**. especifique o tempo. ⏱`));
+      .setDescription(`*Especifique o tempo.* ⏱`));
     }
+
     if (isNaN(time)) {
       return message.channel.send(new Discord.MessageEmbed()
       .setColor(process.env.COLOR)
-      .setDescription(`**${message.author.username}**. o tempo precisa ser numérico. ⏱`));
+      .setDescription(`*O tempo precisa ser numérico.* ⏱`));
     }
+
     const mutedRole = message.guild.roles.cache.get(process.env.CARGO_MUTADO);
+
     if(!mutedRole) {
       return message.channel.send(new Discord.MessageEmbed()
       .setColor(process.env.COLOR)
       .setDescription(`Esse cargo não foi encontrado no servidor! Verifique também seu arquivo de configuração.'`));
     }
+
     if(member.roles.cache.has(process.env.CARGO_MUTADO)) {
       return message.channel.send(new Discord.MessageEmbed()
       .setColor(process.env.COLOR)
       .setDescription(`**${member.displayName}** já foi mutado(a)! 🤭`));
     }
+    
     await member.roles.add(mutedRole)
     return message.channel.send(new Discord.MessageEmbed()
       .setColor(process.env.COLOR)
       .setDescription(`**${member.displayName}** está mutado(a) temporariamente agora por ${ms(ms(time))}. 🤫`));
-  
-      setTimeout( function () {
-        member.roles.remove(mutedRole)
-        await message.channel.send(`${member.displayName} foi desmutado(a). 🙏`)
-      }, ms(time));
   
     },
   conf: {},
@@ -55,7 +56,7 @@ module.exports = {
       name: 'tempmute',
 			category: 'Moderação',
       description: 'Mutará determinado usuário temporariamente.',
-			usage: '!mute @usuário',
+			usage: '!tempmute @usuário',
       admin: true
     }
   }

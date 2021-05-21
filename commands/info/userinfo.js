@@ -9,12 +9,6 @@ moment.locale('pt-br')
 module.exports = {
   run: function (client, message, args) {
     const inline = true
-    const status = {
-      online: ' `🟢` Online',
-      idle: ' `🟠` Ausente',
-      dnd: ' `🔴` Não pertubar',
-      offline: ' `⚫️` Offline'
-    }
 
     const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
     const roles = member.roles.cache
