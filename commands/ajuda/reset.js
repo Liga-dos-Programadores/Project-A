@@ -1,22 +1,19 @@
-// O comando "reset" serve para usuarios que querem resetar sua apresentação.
+// O comando "reset" reseta a apresentação do membro.
 
-const Discord = require('discord.js');
 require('dotenv').config();
 
 module.exports = {
   run: async (client, message) => {
     const presentedRole = process.env.CARGO_APRESENTOU;
-    // Verifica se existe o emoji especial do servidor (:thonk:) e se nao existir substitui pelo :thinking:
-    const specialEmoji =
-      message.guild.emojis.cache.find((emoji) => emoji.name == 'thonk') || '🤔';
+    const specialEmoji = message.guild.emojis.cache.find((emoji) => emoji.name == 'thinking') || '🤔';
 
     if (message.member.roles.cache.has(presentedRole)) {
-      // Registra e checa se o canal Apresente-se existe
+      // Registra e checa se o canal de apresentações existe
       const channel = message.guild.channels.cache.find(
         (channel) => channel.id == process.env.CANAL_APRESENTACAO
       );
       if (channel) {
-        // Faz um fetch de 100 mensagens no canal apresente-se
+        // Faz um fetch de 100 mensagens no canal de apresentações
         const messages = await channel.messages.fetch({ limit: 100 });
         // Filtra as mensagens retornando apenas as enviadas pelo usuario
         const userMessages = messages.filter((m) => {
@@ -24,16 +21,14 @@ module.exports = {
         });
         // Verifica se a variavel acima tem elementos
         if (userMessages.array().length > 0) {
-          // se existirem mensagens do usuario...
-          // remove todas as mensagens
+          // Se existirem mensagens do usuario remove todas as mensagens
           userMessages.forEach((message) => message.delete());
-          // remove o cargo/rolea
+          // Remove o cargo
           message.member.roles.remove(presentedRole);
-          // envia uma mensagem
+          // Envia uma mensagem confirmando a relmoção
           message.reply('sua apresentação foi removida! 🥳');
         } else {
-          // se nao existirem mensagens do usuario...
-          // remove o cargo/role
+          // Se nao existirem mensagens do usuario remove o cargo
           message.member.roles.remove(presentedRole);
           // envia uma mensagem
           message.reply(`não encontrei nenhuma mensagem sua no ${channel}! 🤯`);
@@ -56,7 +51,7 @@ module.exports = {
     return {
       name: 'reset',
       category: 'Ajuda',
-      description: 'Reseta o status de apresentação.',
+      description: 'Reseta o cargo de apresentação.',
       usage: '!reset'
     };
   },

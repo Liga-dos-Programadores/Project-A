@@ -6,11 +6,12 @@ const fs = require('fs');
 
 module.exports = {
   run: (client, message, args) => {
+    
     if(!args[0]) {
       let categories = [];
 
-      fs.readdirSync('../../commands').forEach((dir) => {
-        const commands = fs.readdirSync(`../../commands/${dir}`).filter((file) => file.endsWith('.js'));
+      fs.readdirSync('./commands/').forEach((dir) => {
+        const commands = fs.readdirSync(`./commands/${dir}`).filter((file) => file.endsWith('.js'));
 
         const cmds = commands.map((command) => {
           let file = require(`../../commands/${dir}/${command}`);
@@ -25,16 +26,17 @@ module.exports = {
         let data = new Object();
         data = {
           name: dir.toUpperCase(),
-          value: cmds.length === 0 ?'In progress' : cmds.join(' '),
+          value: cmds.length === 0 ?'Em progresso' : cmds.join(' '),
         };
         categories.push(data)
       });
 
       const helpembed = new Discord.MessageEmbed()
-      .setTitle('Lista de comandos')
-      .addField(categories)
-      .setDescription(`Use ${process.env.PREFIX}ajuda mais o comando para ver mais informações`)
+      .setTitle('Lista de comandos 📃')
+      .addFields(categories)
+      .setDescription(`Use ${process.env.PREFIX}help + *nome do comando* para ver mais informações.`)
       .setColor(process.env.COLOR)
+      .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
       .setTimestamp()
 
       return message.channel.send(helpembed)
@@ -43,24 +45,26 @@ module.exports = {
     
       if(!command) {
         const nocommandembed = new Discord.MessageEmbed()
-        .setTitle(`Nenhum comando foi encontrado! Use \`${process.env.PREFIX}ajuda\` para listar todos os comandos.`)
+        .setTitle('Comando não encontrado!')
+        .setDescription(`Use \`${process.env.PREFIX}help\` para listar todos os comandos.`)
         .setColor(process.env.COLOR)
-        .setTimestamp();
+        .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
+			  .setTimestamp()
 
         return message.channel.send(nocommandembed)
       }
 
-      const helpmenuembed = new Discord.MessageEmbed()
-      .setTitle('Comando info')
-      .addField(`Prefix`, `\`${process.env.PREFIX}\``)
-      .addField('Comando', command.name ? `\`${command.name}\`` : 'Sem nome')
-      .addField('Aliases', command.aliases ? `\`${command.aliases.join('` `')}\`` : 'Sem aliases')
-      .addField('Usage', command.usage)
-      .addField('Descrição', command.description)
-      setTimestamp()
+      const helpcommandembed = new Discord.MessageEmbed()
+      .setTitle('Informações do comando 📄')
+      .addField('Nome', command.help.name ? `\`${command.help.name}\`` : 'Sem nome')
+      .addField(`Como usar:`, `\`${command.help.usage}\``)
+      .addField('Descrição', command.help.description)
+      .addField('Categoria', command.help.category)
       .setColor(process.env.COLOR)
+      .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
+      .setTimestamp()
 
-      return message.channel.send(helpmenuembed)
+      return message.channel.send(helpcommandembed)
     }
   },
 
@@ -70,8 +74,6 @@ module.exports = {
 		name: 'help',
 		category: 'Ajuda',
 		description: 'Mostra todos os comandos disponíveis do bot.',
-		usage: 'help',
+		usage: '!help',
 	},
 }
-
-

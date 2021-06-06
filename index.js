@@ -5,9 +5,8 @@ if (process.version.slice(1).split('.')[0] < 8)
 
 require('dotenv').config();
 
-const { Client, Collection, Channel } = require('discord.js');
+const { Client, Collection } = require('discord.js');
 const { loadCommands, loadEvents } = require('./utils');
-const welcome = require('./events/guildMemberAdd');
 const client = new Client();
 
 client.commands = new Collection();

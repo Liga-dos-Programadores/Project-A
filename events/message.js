@@ -11,7 +11,7 @@ module.exports = async (client, message) => {
 
   if (message.author.bot) return;
   if (message.channel.id == process.env.CANAL_APRESENTACAO)
-    return client.emit('apresentar', message);
+    return client.emit('present', message);
 
   /** Outra boa pratica é ignorar qualquer mensagem que não começe com o prefixo escolhido do bot.
    * OBS: O prefixo é pego através da variavel PREFIX no arquivo .env.

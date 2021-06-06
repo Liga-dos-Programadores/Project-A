@@ -15,19 +15,19 @@ module.exports = {
     const embed = new Discord.MessageEmbed()
     .setColor(process.env.COLOR)
     .setAuthor("Como perguntar 📝")
-    .setDescription('1. Descreva seu problema de forma simples e objetiva.\n2. Sempre que compartilhar algum código use as tags de [Markdown](https://support.discord.com/hc/en-us/articles/210298617-Markdown-Text-101-Chat-Formatting-Bold-Italic-Underline-) apropriadas.')
-
-    // Aqui será enviado o embed no canal que o usuário executo o comando 
+    .setDescription('1. Descreva seu problema de forma simples e objetiva.\n2. Sempre que ao compartilhar algum código use as tags de [Markdown](https://support.discord.com/hc/en-us/articles/210298617-Markdown-Text-101-Chat-Formatting-Bold-Italic-Underline-) apropriadas.')
+    .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
+    .setTimestamp()
     message.channel.send({ embed })
   },
   /**
     * Aqui podemos colocar mais algumas configurações do comando.
-    */
+  */
   conf: {},
 
   /**
     * Aqui exportamos ajuda do comando como o seu nome categoria, descrição, etc...
-    */
+  */
   get help () {
     return {
       name: 'howtoask',
