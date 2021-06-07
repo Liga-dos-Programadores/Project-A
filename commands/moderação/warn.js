@@ -1,10 +1,10 @@
 /**
- * O Comando "warn" desmutará determinado usuário.
+ * O Comando "warn" alertará determinado usuário.
 */
 
 const Discord = require('discord.js');
 const fs = require("fs");
-// const warns = JSON.parse(fs.readFileSync("./warnings.json", "utf-8"));
+const warns = JSON.parse(fs.readFileSync("./warnings.json", "utf-8"));
 
 module.exports = {
   run: async (client, message, args) => {
@@ -16,17 +16,17 @@ module.exports = {
   	if (!member) {
 			return message.channel.send(new Discord.MessageEmbed()
       .setColor(process.env.COLOR)
-      .setDescription(`*O uso correto do comando é: \`\`!warn @usuario [motivo]\`\`.*`));
+      .setDescription(`${message.author}, o uso correto do comando é: \`\`!warn @usuario [motivo]\`\`.`));
 		}
 
     if (!reason) {
 			return message.channel.send(new Discord.MessageEmbed()
       .setColor(process.env.COLOR)
-      .setDescription(`*Coloque o motivo. 📃*`));
+      .setDescription(`${message.author}, coloque o motivo. 📃`));
 		}	
 
-    if (member.hasPermission("MANAGE_MESSAGES")) {
-      return message.channel.send(`Você não tem poder contra esse usuário!`)
+    if (member.hasPermission("ADMINISTRATOR")) {
+      return message.channel.send(`${message.author}, você não tem poder contra esse usuário!`)
     }
 
     if (!warns[member.id]) warns[member.id] = {
@@ -41,10 +41,10 @@ module.exports = {
 
     const embed = new Discord.MessageEmbed()
 			.setColor(process.env.COLOR)
-			.setAuthor('Warn!')
+			.setAuthor(`Warn ❗️`, message.author.displayAvatarURL())
       .setThumbnail(`${member.user.avatarURL({ dynamic: true })}?size=1024`)
-			.setDescription(`Membro: ${member}(${member.id})\nWarn por ${message.auhor}\nMotivo: ${reason}`)
-      .addField("Warns", warns[member.id].warns)
+			.setDescription(`Membro: ${member}\nWarn por: ${message.author}\nMotivo: ${reason}`)
+      .addField("Quantidade de warns", warns[member.id].warns)
       .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
 			.setTimestamp();
 
@@ -56,7 +56,7 @@ module.exports = {
     return {
       name: 'warn',
 			category: 'Moderação',
-      description: 'Mutará determinado usuário.',
+      description: 'Mutará alertará usuário.',
 			usage: '!warn @usuário motivo',
       admin: true
     }

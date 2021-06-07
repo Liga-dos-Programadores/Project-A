@@ -18,19 +18,22 @@ module.exports = {
     const mutedRole = message.guild.roles.cache.get(process.env.CARGO_MUTADO);
 
     if (!member) {
-      return message.channel.send(
-        `*${message.author}, o uso correto do comando é: \`\`!unmute @Usuário\`\`.*`
+      return message.channel.send(new Discord.MessageEmbed()
+        .setColor(process.env.COLOR)
+        .setDescription(`${message.author}, o uso correto do comando é: \`\`!unmute @Usuário\`\`.`)
       );
     }
 
     if (member.roles.cache.has(process.env.CARGO_MUTADO)) {
       member.roles.remove(process.env.CARGO_MUTADO);
-     return message.reply(
-        `**${member.displayName}** foi desmutado(a)!`
+      return message.reply(new Discord.MessageEmbed()
+        .setColor(process.env.COLOR)
+        .setDescription(`${message.author}, **${member}** foi desmutado(a)!`)
       );
     } else {
-      return message.channel.send(
-        `${message.author}, **${member.displayName}** não está mutado(a). 🤔`
+      return message.channel.send(new Discord.MessageEmbed()
+        .setColor(process.env.COLOR)
+        .setDescription(`${message.author}, **${member}** não está mutado(a). 🤔`)
       );
     }
   },
@@ -41,7 +44,8 @@ module.exports = {
     return {
       name: 'unmute',
       description: 'O Comando "unmute" desmutará determinado usuário.',
-      usage: 'unmute',
+      usage: '!unute @usuário',
+      admin: true,
     };
   },
 };

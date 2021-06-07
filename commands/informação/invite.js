@@ -22,9 +22,9 @@ module.exports = {
 			if (!rank.length) return message.channel;
 
 			const embed = new Discord.MessageEmbed()
-			.setAuthor(`✉️ Convites | ${message.guild.name}`);
+			.setAuthor(`✉️ Convites do servidor ${message.guild.name}`);
 			rank.map((user, index) => embed.addField('⠀⠀⠀⠀', `**${index + 1}º** ${user.inviter.username} \`\`\`Convidados: ${user.uses}\`\`\` **Link do convite**: ${user.url}`, false));
-			embed.addField('Total/Convites', `\`\`\`${invites.size} convites\`\`\``, true)
+			embed.addField('Convites', `\`\`\`${invites.size} convites\`\`\``, true)
       .setColor(process.env.COLOR)
       .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
 			.setTimestamp()

@@ -44,9 +44,11 @@ module.exports = {
         let response = JSON.parse(data)
 
         const embed = new Discord.MessageEmbed()
-          .setTitle(randomTitle() + ' 🐱')
+          .setAuthor(randomTitle() + ' 🐱')
           .setImage(response.file)
           .setColor(process.env.COLOR)
+          .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
+          .setTimestamp()
 
         message.channel.send(embed)
       })

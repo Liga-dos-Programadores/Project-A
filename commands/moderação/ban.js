@@ -15,22 +15,22 @@ module.exports = {
 
 		const embed = new Discord.MessageEmbed()
 			.setColor(process.env.COLOR)
-			.setAuthor('Banir 🚀')
+			.setAuthor(`Confirme o banimento 🚀`, message.author.displayAvatarURL())
       .setThumbnail(`${member.user.avatarURL({ dynamic: true })}?size=1024`)
-			.setDescription(`Banir o usuário por: **\n${reason}.\n**Clique na reação ✅ para confirmar. Se não, clique em ❌ para cancelar.`)
+			.setDescription(`**Usuário que será banido: ${member.user}** \n **Motivo: **${reason}.\n\nClique na reação ✅ para confirmar. \n Se não, clique em ❌ para cancelar.`)
       .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
 			.setTimestamp();
 
 		if (!user) {
 			return message.channel.send(new Discord.MessageEmbed()
       .setColor(process.env.COLOR)
-      .setDescription(`*O uso correto do comando é: \`\`!ban @usuario [motivo]\`\`.*`));
+      .setDescription(`${message.author}, o uso correto do comando é: \`\`!ban @usuario [motivo]\`\`.`));
 		}
 
 		if (!reason) {
 			return message.channel.send(new Discord.MessageEmbed()
       .setColor(process.env.COLOR)
-      .setDescription(`*Coloque o motivo. 📃*`));
+      .setDescription(`${message.author}, coloque o motivo. 📃`));
 		}	
 
 		const filter = (reaction, userFilter) => {
@@ -55,7 +55,7 @@ module.exports = {
 					}
 				})
 				.catch(() => {
-					message.reply('mensagem sem reação!');
+					message.reply('O banimento irá ser cancelado.');
 				});
 		});
 	},

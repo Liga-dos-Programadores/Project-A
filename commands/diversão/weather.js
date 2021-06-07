@@ -13,20 +13,30 @@ module.exports = {
 
   run: function (client, message, args) {
     weather.find({search: args.join(" "), degreeType: 'C'}, function (error, result) {
+      
+      if (error) {
+        return message.channel.send(new Discord.MessageEmbed()
+        .setColor(process.env.COLOR)
+        .setDescription(`Não foi possível encontrar esse lugar! `));
+      }
 
-      errorMessage = "> **Ocorreu um erro!**"
-      localMessage = "> **Especifique uma localidade.**"
-      invalidLocal = "> **Localização inválida!**"
+      if (!args[0]) {
+        return message.channel.send(new Discord.MessageEmbed()
+        .setColor(process.env.COLOR)
+        .setDescription(`Especifique uma localidade.`));
+      }
 
-      if(error) return message.channel.send(localMessage);
-      if(!args[0]) return message.channel.send(localMessage);
-      if(result === undefined || result.length === 0) return message.channel.send(invalidLocal);
+      if(result === undefined || result.length === 0) {
+        return message.channel.send(new Discord.MessageEmbed()
+        .setColor(process.env.COLOR)
+        .setDescription(`Local inválido!`));
+      }
 
       var current = result[0].current;
       var location = result[0].location;
 
       const tempoinfo = new Discord.MessageEmbed()
-      .setAuthor(`☁️ Previsão do tempo para ${current.observationpoint}`)
+      .setAuthor(`Previsão do tempo para ${current.observationpoint} ☁️`)
       .setThumbnail(current.imageUrl)
       .addField('⌚ Fuso horário', `UTC${location.timezone}`, true)
       .addField('📍 Tipo de grau', 'Celsius', true)

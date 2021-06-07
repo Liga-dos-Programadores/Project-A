@@ -23,13 +23,13 @@ module.exports = {
     if (!user) {
       return message.channel.send(new Discord.MessageEmbed()
       .setColor(process.env.COLOR)
-      .setDescription(`*O uso correto do comando é: \`\`!kick @membro\`\`.*`));
+      .setDescription(`${message.author}, o uso correto do comando é: \`\`!kick @membro\`\`.`));
     }
 
     if (!reason) {
 			return message.channel.send(new Discord.MessageEmbed()
       .setColor(process.env.COLOR)
-      .setDescription(`*Coloque o motivo. 📃*`));
+      .setDescription(`${message.author}, coloque o motivo. 📃*`));
 		}
 
     const filter = (reaction, userFilter) => {
@@ -54,7 +54,7 @@ module.exports = {
         }
       })
       .catch(() => {
-        message.reply('mensagem sem reação!');
+        message.reply('O alerta será cancelado!');
       });
     });
   },

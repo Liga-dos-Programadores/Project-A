@@ -1,5 +1,5 @@
 /**
- * O Comando "suggest" irá receber a sugestão do membro e enviá-la para um canal expecífico.
+ * O Comando "suggest" irá receber a sugestão do membro e irá enviá-la para um canal expecífico.
 */
 
 const Discord = require('discord.js');
@@ -16,13 +16,14 @@ module.exports = {
 		const msg = args.join(' ');
 
 		if (!msg) {
-			message.channel.send(`${message.author}, digite: \`\`!sugestao[sua sugestão]\`\` :mailbox_with_no_mail:`);
-			return undefined;
+			return message.channel.send(new Discord.MessageEmbed()
+      .setColor(process.env.COLOR)
+      .setDescription(`${message.author}, digite: \`\`!suggest + [sua sugestão]\`\` :mailbox_with_no_mail:`));
 		}
 
 		const embed = new Discord.MessageEmbed()
-			.setAuthor(`📩 Sugestão de: ${message.author.username}`, message.author.displayAvatarURL())
-			.setDescription(`${msg}`)
+			.setAuthor(`📩 Nova sugestão`, message.author.displayAvatarURL())
+			.setDescription(`**Sugestão de: ${message.author}**\n${msg}`)
 			.setColor(process.env.COLOR)
       .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
 			.setTimestamp();
@@ -31,8 +32,9 @@ module.exports = {
 			.then((m) => {
 				m.react('👍');
 				m.react('👎');
-				message.delete({ timeout: 1000 });
-				message.channel.send(`${message.author}, sua sugestão foi enviada no canal de sugestões! A staff irá analizar e logo irá enviar um feedback. 📬`);
+				return message.channel.send(new Discord.MessageEmbed()
+      	.setColor(process.env.COLOR)
+      	.setDescription(`${message.author}, sua sugestão foi enviada no canal de sugestões! A staff irá analizar e logo irá enviar um feedback. 📬`));
 			}).catch(console.log);
 	},
 
@@ -46,7 +48,7 @@ module.exports = {
 		return {
 			name: 'suggest',
 			category: 'Útil',
-			description: 'Pega a sugestão do usuário.',
+			description: 'Pega uma sugestão do usuário e envia para determinado canal.',
 			usage: '!suggest',
 		};
 	},

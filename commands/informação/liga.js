@@ -14,8 +14,8 @@ module.exports = {
 
 	run: function(client, message, args) {
     const embed = new Discord.MessageEmbed()
-    .setTitle('A comunidade')
-    .setDescription('[Site da Liga](https://liga-dos-programadores.github.io/), [GitHub da Liga](https://github.com/Liga-dos-Programadores)')
+    .setTitle('Liga dos Programadores')
+    .setDescription('[Site da Liga](https://liga-dos-programadores.github.io/) e [GitHub da Liga](https://github.com/Liga-dos-Programadores)')
     .setImage('https://i.imgur.com/W2L4r1L.png')
     .setColor(process.env.COLOR)
     .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')

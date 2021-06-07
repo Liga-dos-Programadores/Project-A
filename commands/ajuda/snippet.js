@@ -1,5 +1,5 @@
 /**
-  * O Comando "snippet" vai enviar uma mensagem ao usuário mostrando como deve ser enviado uma linha de código.
+  * O Comando "snippet" vai enviar uma mensagem ao usuário mostrando como deve ser enviado linha de código.
 */
 
 const Discord = require('discord.js');
@@ -35,7 +35,7 @@ module.exports = {
 		return {
 			name: 'snippet',
 			category: 'Ajuda',
-			description: 'Como deve sr enviando uma linha de código.',
+			description: 'Como deve ser enviando uma linha de código.',
 			usage: '!snippet',
 		};
 	},

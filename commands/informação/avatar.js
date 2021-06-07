@@ -14,7 +14,7 @@ module.exports = {
         const member = message.mentions.users.first() || message.author;
 
         const embed = new Discord.MessageEmbed()
-        .setAuthor(`🖼️ Avatar de ${member.username}`)
+        .setDescription(`**🖼️ Avatar de ${member}**`)
         .setImage(member.displayAvatarURL({ format: 'png', dynamic: true, size: 1024 }))
         .setColor(process.env.COLOR)
         .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')

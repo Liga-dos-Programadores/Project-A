@@ -1,4 +1,8 @@
-// O comando "reset" reseta a apresentação do membro.
+/**
+ * O comando "reset" remove a apresentação do usuário.
+*/
+
+const Discord = require('discord.js');
 
 require('dotenv').config();
 
@@ -25,21 +29,30 @@ module.exports = {
           userMessages.forEach((message) => message.delete());
           // Remove o cargo
           message.member.roles.remove(presentedRole);
-          // Envia uma mensagem confirmando a relmoção
-          message.reply('sua apresentação foi removida! 🥳');
+          // Envia uma mensagem confirmando a remoção do cargo
+          message.reply(new Discord.MessageEmbed()
+            .setColor(process.env.COLOR)
+            .setDescription(`${message.author}, sua apresentação foi removida! 🥳`)
+          );
+
         } else {
-          // Se nao existirem mensagens do usuario remove o cargo
           message.member.roles.remove(presentedRole);
-          // envia uma mensagem
-          message.reply(`não encontrei nenhuma mensagem sua no ${channel}! 🤯`);
+          message.reply(new Discord.MessageEmbed()
+            .setColor(process.env.COLOR)
+            .setDescription(`${message.author}, não encontrei nenhuma mensagem sua no ${channel}! 🤯`)
+          );
         }
       } else {
-        message.reply(
-          `não consegui encontrar o canal de apresentacoes ${specialEmoji}`
+        message.reply(new Discord.MessageEmbed()
+          .setColor(process.env.COLOR)
+          .setDescription(`${message.author}, não consegui encontrar o canal de apresentacoes ${specialEmoji}`)
         );
       }
     } else {
-      message.reply(`você ainda não se apresentou! 😅`);
+      message.reply(new Discord.MessageEmbed()
+        .setColor(process.env.COLOR)
+        .setDescription(`${message.author}, você ainda não se apresentou!`)
+      );
     }
   },
 
