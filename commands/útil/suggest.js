@@ -26,14 +26,12 @@ module.exports = {
       .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
       .setTimestamp()
 
-    client.channels.cache.get(process.env.SUGESTOES).send(embed)
-      .then((m) => {
-        m.react('👍')
-        m.react('👎')
-        return message.channel.send(new Discord.MessageEmbed()
-          .setColor(process.env.COLOR)
-          .setDescription(`${message.author}, sua sugestão foi enviada no canal de sugestões! A staff irá analizar e logo irá enviar um feedback. 📬`))
-      }).catch(console.log)
+    const m = await client.channels.cache.get(process.env.SUGESTOES).send(embed)
+    m.react('👍')
+    m.react('👎')
+    return message.channel.send(new Discord.MessageEmbed()
+      .setColor(process.env.COLOR)
+      .setDescription(`${message.author}, sua sugestão foi enviada no canal de sugestões! A staff irá analizar e logo irá enviar um feedback. 📬`))
   },
 
   conf: {},

@@ -9,26 +9,24 @@ module.exports = {
   * Que passará os argumentos atraves do middleware.
   */
 
-  run: function(client, message, args) {
-    message.guild.fetchInvites()
-      .then(invites => {
-        if (!invites) {
-          return message.channel.send(`> ${message.author}, esse servidor não possui convites!`)
-        }
+  run: async function(client, message, args) {
+    const invites = await message.guild.fetchInvites()
+    if (!invites) {
+      return message.channel.send(`> ${message.author}, esse servidor não possui convites!`)
+    }
 
-        const rank = invites.array().sort((a, b) => b.uses - a.uses).slice(0, 5)
+    const rank = invites.array().sort((a, b) => b.uses - a.uses).slice(0, 5)
 
-        if (!rank.length) return message.channel
+    if (!rank.length) return message.channel
 
-        const embed = new Discord.MessageEmbed()
-          .setAuthor(`✉️ Convites do servidor ${message.guild.name}`)
-        rank.map((user, index) => embed.addField(`**${index + 1}º** ${user.inviter.username}`, `\`\`\`Convidados: ${user.uses}\`\`\` **Link do convite**: ${user.url}`, false))
-        embed.setColor(process.env.COLOR)
-          .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
-          .setTimestamp()
+    const embed = new Discord.MessageEmbed()
+      .setAuthor(`✉️ Convites do servidor ${message.guild.name}`)
+    rank.map((user, index) => embed.addField(`**${index + 1}º** ${user.inviter.username}`, `\`\`\`Convidados: ${user.uses}\`\`\` **Link do convite**: ${user.url}`, false))
+    embed.setColor(process.env.COLOR)
+      .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
+      .setTimestamp()
 
-        message.channel.send(embed)
-      })
+    message.channel.send(embed)
   },
 
   conf: {

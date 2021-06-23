@@ -37,26 +37,25 @@ module.exports = {
       return ['✅', '❌'].includes(reaction.emoji.name) && userFilter.id === message.author.id
     }
 
-    message.channel.send(embed).then(async msg => {
-      await msg.react('✅')
-      await msg.react('❌')
+    const msg = await message.channel.send(embed)
+    await msg.react('✅')
+    await msg.react('❌')
 
-      msg.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
-        .then(collected => {
-          const reaction = collected.first()
+    msg.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
+      .then(collected => {
+        const reaction = collected.first()
 
-          if (reaction.emoji.name === '✅') {
-            message.guild.members.ban(user)
-              .then(() => message.reply('usuário banido! 🚀'))
-              .catch(() => message.channel.send('Não foi possível banir o usuário. '))
-          } else {
-            msg.delete()
-          }
-        })
-        .catch(() => {
-          message.reply('O banimento irá ser cancelado.')
-        })
-    })
+        if (reaction.emoji.name === '✅') {
+          message.guild.members.ban(user)
+            .then(() => message.reply('usuário banido! 🚀'))
+            .catch(() => message.channel.send('Não foi possível banir o usuário. '))
+        } else {
+          msg.delete()
+        }
+      })
+      .catch(() => {
+        message.reply('Banimento cancelado.')
+      })
   },
   conf: {},
 
