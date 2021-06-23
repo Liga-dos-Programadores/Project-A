@@ -8,15 +8,13 @@ moment.locale('pt-br')
 
 module.exports = {
 
-  run: function (client, message, args) {
-
-    const roles = message.guild.roles.cache.sort((a,b) => b.position - a.position).map(role => role.toString());
-    const members = message.guild.members.cache;
-    const channels = message.guild.channels.cache;
+  run: function(client, message, args) {
+    const members = message.guild.members.cache
+    const channels = message.guild.channels.cache
     const date = message.guild.createdAt
     const joined = message.member.joinedAt
     const region = {
-      brazil: ':flag_br: Brasil'
+      brazil: ':flag_br: Brasil',
     }
 
     const embed = new Discord.MessageEmbed()
@@ -49,14 +47,14 @@ module.exports = {
   /**
      * Aqui exportamos ajuda do comando como o seu nome categoria, descrição, etc...
      */
-  get help () {
+  get help() {
     return {
       name: 'serverinfo',
       category: 'Informação',
       description: 'Informação sobre o servidor',
-      usage: '!serverinfo'
+      usage: '!serverinfo',
     }
-  }
+  },
 }
 
 /**
@@ -65,10 +63,10 @@ module.exports = {
  * @param {Date=} [date]
  * @return {string}
  */
-function formatDate (template, date) {
-  var specs = 'YYYY:MM:DD:HH:mm:ss'.split(':')
+function formatDate(template, date) {
+  const specs = 'YYYY:MM:DD:HH:mm:ss'.split(':')
   date = new Date(date || Date.now() - new Date().getTimezoneOffset() * 6e4)
-  return date.toISOString().split(/[-:.TZ]/).reduce(function (template, item, i) {
-    return template.split(specs[i]).join(item)
+  return date.toISOString().split(/[-:.TZ]/).reduce(function(t, item, i) {
+    return t.split(specs[i]).join(item)
   }, template)
 }

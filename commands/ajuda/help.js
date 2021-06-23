@@ -1,30 +1,25 @@
 /** O Comando "Help" envia uma mensagem contendo as informações dos comandos. */
 
 const Discord = require('discord.js')
-require('dotenv').config();
-const fs = require('fs');
+const fs = require('fs')
 
 module.exports = {
   run(client, message, args) {
-
     if (!args[0]) {
-      let categories = [];
+      const categories = []
 
       fs.readdirSync('./commands/').forEach((dir) => {
-        let values = []
-
         const commands = fs
           .readdirSync(`./commands/${dir}`)
           .filter(file => file.endsWith('.js'))
-          .map( command => {
-            let commandProps = require(`../../commands/${dir}/${command}`)
-            if(commandProps?.help) return `\`${commandProps.help.name}\``
+          .map(command => {
+            const commandProps = require(`../../commands/${dir}/${command}`)
+            return `\`${commandProps.help.name}\``
           })
-          .filter(i => i != undefined)
+          .filter(i => i !== undefined)
 
-
-          if (commands.length > 0) categories.push({ name: dir.toUpperCase(), value: commands.join(' ') })
-      });
+        if (commands.length > 0) categories.push({ name: dir.toUpperCase(), value: commands.join(' ') })
+      })
 
       const helpembed = new Discord.MessageEmbed()
         .setAuthor('📃 Lista de comandos')
@@ -35,8 +30,8 @@ module.exports = {
         .setTimestamp()
 
       return message.channel.send(helpembed)
-
-    } else {
+    }
+    else {
       const command = client.commands.get(args[0].toLowerCase()) || client.commands.find(c => c.aliases && c.aliases.includes(args[0].toLowerCase()))
 
       if (!command) {
@@ -53,7 +48,7 @@ module.exports = {
       const helpcommandembed = new Discord.MessageEmbed()
         .setAuthor('📄 Informações do comando')
         .addField('Nome', command.help.name ? `\`${command.help.name}\`` : 'Sem nome')
-        .addField(`Como usar:`, `\`${command.help.usage}\``)
+        .addField('Como usar:', `\`${command.help.usage}\``)
         .addField('Descrição', command.help.description)
         .addField('Categoria', command.help.category)
         .setColor(process.env.COLOR)

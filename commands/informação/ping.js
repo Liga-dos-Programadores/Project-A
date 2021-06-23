@@ -11,12 +11,12 @@ module.exports = {
 
   conf: {},
 
-  get help () {
+  get help() {
     return {
       name: 'ping',
       description: 'Mostra a latência do bot.',
       usage: 'ping',
-      category: 'Informação'
+      category: 'Informação',
     }
-  }
+  },
 }

@@ -12,12 +12,11 @@ const titles = [
   'Pare de procrastinar.',
   'Aproveitando bem o dia!',
   'Sim.',
-  'A mimir?'
+  'A mimir?',
 ]
 
 function randomTitle() {
-  if (titles.length === 0)
-    return undefined
+  if (titles.length === 0) { return undefined }
 
   const index = Math.floor(Math.random() * titles.length)
   return titles[index]
@@ -26,12 +25,11 @@ function randomTitle() {
 module.exports = {
 
   run: async (client, message, args) => {
-
     https.get(api, {}, (res) => {
       let data = ''
 
       // Caso ocorra um erro
-      if (res.statusCode != '200') {
+      if (res.statusCode !== '200') {
         message.reply('Infelizmente eu não consegui pegar uma foto de gato para você. 😔')
         return
       }
@@ -41,7 +39,7 @@ module.exports = {
       })
 
       res.on('end', () => {
-        let response = JSON.parse(data)
+        const response = JSON.parse(data)
 
         const embed = new Discord.MessageEmbed()
           .setAuthor(randomTitle() + ' 🐱')
@@ -53,17 +51,16 @@ module.exports = {
         message.channel.send(embed)
       })
     }).on('error', (error) => console.log(error))
-
   },
 
   conf: {},
 
-  get help () {
+  get help() {
     return {
       name: 'cat',
       description: 'Envia um gif ou uma imagem aleatória de um ou mais gatos! API: ' + api,
       usage: '!cat',
-      category: 'Diversão'
+      category: 'Diversão',
     }
-  }
+  },
 }

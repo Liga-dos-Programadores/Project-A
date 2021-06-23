@@ -10,14 +10,13 @@ module.exports = {
     * Que passará os argumentos atraves do middleware que programamos.
   */
 
-  run: function (client, message, args) {
-  
+  run: function(client, message, args) {
     const embed = new Discord.MessageEmbed()
-    .setColor(process.env.COLOR)
-    .setAuthor("📝 Como perguntar")
-    .setDescription('1. Descreva seu problema de forma simples e objetiva.\n2. Sempre que ao compartilhar algum código use as tags de [Markdown](https://support.discord.com/hc/en-us/articles/210298617-Markdown-Text-101-Chat-Formatting-Bold-Italic-Underline-) apropriadas.')
-    .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
-    .setTimestamp()
+      .setColor(process.env.COLOR)
+      .setAuthor('📝 Como perguntar')
+      .setDescription('1. Descreva seu problema de forma simples e objetiva.\n2. Sempre que ao compartilhar algum código use as tags de [Markdown](https://support.discord.com/hc/en-us/articles/210298617-Markdown-Text-101-Chat-Formatting-Bold-Italic-Underline-) apropriadas.')
+      .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
+      .setTimestamp()
     message.channel.send({ embed })
   },
   /**
@@ -28,12 +27,12 @@ module.exports = {
   /**
     * Aqui exportamos ajuda do comando como o seu nome categoria, descrição, etc...
   */
-  get help () {
+  get help() {
     return {
       name: 'howtoask',
       category: 'Ajuda',
       description: 'Template de como fazer uma pergunta.',
-      usage: '!howtoask'
+      usage: '!howtoask',
     }
-  }
+  },
 }
