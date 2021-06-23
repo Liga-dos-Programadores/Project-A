@@ -6,7 +6,7 @@ module.exports = (client) => {
   let i = 0
   setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`, {
     type: 'WATCHING',
-  }), 5000)
+  }), 30000)
   client.user
     .setStatus('online')
     .catch(console.log)
