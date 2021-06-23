@@ -18,7 +18,7 @@ module.exports = {
     if (!mutedRole) {
       return message.channel.send(new Discord.MessageEmbed()
         .setColor(process.env.COLOR)
-        .setDescription(`${message.author}, esse cargo não foi encontrado no servidor! Verifique também seu arquivo de configuração.'`))
+        .setDescription(`${message.author}, esse cargo não foi encontrado no servidor! Verifique também seu arquivo de configuração.`))
     }
     if (member.roles.cache.has(process.env.CARGO_MUTADO)) {
       return message.channel.send(new Discord.MessageEmbed()
