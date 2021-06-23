@@ -49,8 +49,7 @@ module.exports = {
             message.guild.members.ban(user)
               .then(() => message.reply('usuário banido! 🚀'))
               .catch(() => message.channel.send('Não foi possível banir o usuário. '))
-          }
-          else {
+          } else {
             msg.delete()
           }
         })

@@ -30,8 +30,7 @@ module.exports = {
         .setTimestamp()
 
       return message.channel.send(helpembed)
-    }
-    else {
+    } else {
       const command = client.commands.get(args[0].toLowerCase()) || client.commands.find(c => c.aliases && c.aliases.includes(args[0].toLowerCase()))
 
       if (!command) {

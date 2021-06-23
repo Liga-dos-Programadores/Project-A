@@ -12,8 +12,7 @@ module.exports = async (client, message) => {
     emoji && message.react(emoji)
     console.log(message.member)
     message.member.roles.add(presentedRole).catch(console.error)
-  }
-  else {
+  } else {
     const embed = {
       color: process.env.COLOR,
       title: 'Como resetar seu status de apresentação',

@@ -11,7 +11,7 @@
         "ecmaVersion": 12
     },
     "rules": {
-      "brace-style": ["error", "stroustrup", { "allowSingleLine": true }],
+      "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
       "eslint-disable-next-line": 0,
 			"comma-dangle": ["error", "always-multiline"],
 			"comma-spacing": "error",

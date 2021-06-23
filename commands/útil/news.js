@@ -30,9 +30,7 @@ module.exports = {
         .setTimestamp()
 
       message.channel.send(notifyEmbed2)
-    }
-
-    else {
+    } else {
       message.member.roles.remove(process.env.NOVIDADES)
 
       const notifyEmbed3 = new Discord.MessageEmbed()

@@ -30,23 +30,20 @@ module.exports = {
             .setColor(process.env.COLOR)
             .setDescription(`${message.author}, sua apresentação foi removida! 🥳`),
           )
-        }
-        else {
+        } else {
           message.member.roles.remove(presentedRole)
           message.reply(new Discord.MessageEmbed()
             .setColor(process.env.COLOR)
             .setDescription(`${message.author}, não encontrei nenhuma mensagem sua no ${channel}! 🤯`),
           )
         }
-      }
-      else {
+      } else {
         message.reply(new Discord.MessageEmbed()
           .setColor(process.env.COLOR)
           .setDescription(`${message.author}, não consegui encontrar o canal de apresentacoes ${specialEmoji}`),
         )
       }
-    }
-    else {
+    } else {
       message.reply(new Discord.MessageEmbed()
         .setColor(process.env.COLOR)
         .setDescription(`${message.author}, você ainda não se apresentou!`),

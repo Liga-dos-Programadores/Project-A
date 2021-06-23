@@ -29,8 +29,7 @@ module.exports = {
         .setColor(process.env.COLOR)
         .setDescription(`${message.author}, **${member}** foi desmutado(a)!`),
       )
-    }
-    else {
+    } else {
       return message.channel.send(new Discord.MessageEmbed()
         .setColor(process.env.COLOR)
         .setDescription(`${message.author}, **${member}** não está mutado(a). 🤔`),

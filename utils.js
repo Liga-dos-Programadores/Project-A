@@ -25,12 +25,10 @@ function loadCommands(collection, directory) {
             collection.set(alias, command),
           )
         }
-      }
-      else if (lstatSync(path).isDirectory()) {
+      } else if (lstatSync(path).isDirectory()) {
         loadCommands(collection, path)
       }
-    }
-    catch (e) {
+    } catch (e) {
       console.error(`Não foi possível carregar o comando ${file}: ${e}`)
     }
   }
@@ -45,8 +43,7 @@ function loadEvents(directory, client) {
 
     try {
       client.on(eventName, event.bind(null, client))
-    }
-    catch (error) {
+    } catch (error) {
       console.error(`Não foi possível carregar o evento ${eventName}: error`)
     }
   }

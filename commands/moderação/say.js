@@ -9,8 +9,7 @@ module.exports = {
     if (mChannel) {
       argsresult = args.slice(1).join(' ')
       mChannel.send(argsresult)
-    }
-    else {
+    } else {
       argsresult = args.join(' ')
       message.channel.send(argsresult)
     }

@@ -48,8 +48,7 @@ module.exports = {
             message.guild.members.kick(user)
               .then(() => message.reply('usuário expulso do servidor! ✈️'))
               .catch(() => message.channel.send('Não foi possível expulsar o usuário. '))
-          }
-          else {
+          } else {
             msg.delete()
           }
         })
