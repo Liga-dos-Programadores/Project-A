@@ -16,7 +16,7 @@ module.exports = {
     const embed = new Discord.MessageEmbed()
       .setColor(process.env.COLOR)
       .setAuthor('Confirme o banimento 🚀', message.author.displayAvatarURL())
-      .setThumbnail(`${member.user.avatarURL({ dynamic: true })}?size=1024`)
+      .setThumbnail(`${member.user.displayAvatarURL({ dynamic: true })}?size=1024`)
       .setDescription(`**Usuário que será banido: ${member.user}** \n **Motivo: **${reason}.\n\nClique na reação ✅ para confirmar. \n Se não, clique em ❌ para cancelar.`)
       .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
       .setTimestamp()

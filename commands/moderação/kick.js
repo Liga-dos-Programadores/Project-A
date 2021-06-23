@@ -15,7 +15,7 @@ module.exports = {
     const embed = new Discord.MessageEmbed()
       .setColor(process.env.COLOR)
       .setAuthor('Expulsar ✈️')
-      .setThumbnail(`${member.user.avatarURL({ dynamic: true })}?size=1024`)
+      .setThumbnail(`${member.user.displayAvatarURL({ dynamic: true })}?size=1024`)
       .setDescription(`Expulsar o usuário por: **\n${reason}.\n**Clique na reação ✅ para confirmar. Se não, clique em ❌ para cancelar.`)
       .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
       .setTimestamp()

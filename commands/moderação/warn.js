@@ -44,7 +44,7 @@ module.exports = {
     const embed = new Discord.MessageEmbed()
       .setColor(process.env.COLOR)
       .setAuthor('Warn ❗️', message.author.displayAvatarURL())
-      .setThumbnail(`${member.user.avatarURL({ dynamic: true })}?size=1024`)
+      .setThumbnail(`${member.user.displayAvatarURL({ dynamic: true })}?size=1024`)
       .setDescription(`Membro: ${member}\nWarn por: ${message.author}\nMotivo: ${reason}`)
       .addField('Quantidade de warns', warns[member.id].warns)
       .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')

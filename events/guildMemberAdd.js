@@ -7,7 +7,7 @@ module.exports = async (client, member) => {
 
   const welcome = new Discord.MessageEmbed()
     .setColor(process.env.COLOR)
-    .setThumbnail(`${member.user.avatarURL({ dynamic: true })}?size=1024`)
+    .setThumbnail(`${member.user.displayAvatarURL({ dynamic: true })}?size=1024`)
     .setTitle('👋 Bem-vindo(a) a Liga dos Programadores!')
     .setDescription(`${member}, vá em <#824486458814365726> e leia os tópicos. E também não se esqueça de se apresentar em <#825028534006841354> :)`)
     .setImage('https://i.imgur.com/W2L4r1L.png')
@@ -19,7 +19,7 @@ module.exports = async (client, member) => {
     .setColor(process.env.COLOR)
     .setAuthor('👤 Um novo membro entrou no servidor!')
     .setDescription(`${member} acabou de entrar.`)
-    .setThumbnail(`${member.user.avatarURL({ dynamic: true })}?size=1024`)
+    .setThumbnail(`${member.user.displayAvatarURL({ dynamic: true })}?size=1024`)
     .addField('**Entrou no Discord em**', formatDate('DD/MM/YYYY, às HH:mm:ss', member.user.createdAt), true)
     .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
     .setTimestamp()

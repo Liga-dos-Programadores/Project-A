@@ -21,7 +21,7 @@ module.exports = {
 
     const embed = new Discord.MessageEmbed()
       .setThumbnail(target.displayAvatarURL)
-      .setThumbnail(`${member.user.avatarURL({ dynamic: true })}?size=1024`)
+      .setThumbnail(`${member.user.displayAvatarURL({ dynamic: true })}?size=1024`)
       .setColor(process.env.COLOR)
       .setAuthor('🔍 Informações do usuário/bot')
       .addField('**Tag**', member.user.tag, inline)
