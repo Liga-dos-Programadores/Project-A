@@ -31,8 +31,8 @@ module.exports = {
       .addField('**Boost**', `${message.guild.premiumSubscriptionCount || '0'}`, true)
       .addField('**Canais de texto**', `${channels.filter(channel => channel.type === 'text').size}`, true)
       .addField('**Canais de voz**', channels.filter(channel => channel.type === 'voice').size, true)
-      .addField('**Criado em**', formatDate('DD/MM/YYYY, às HH:mm:ss', date), true)
-      .addField('**Você entrou em**', formatDate('DD/MM/YYYY, às HH:mm:ss', joined), true)
+      .addField('**Criado em**', moment(date).format('DD/MM/YYYY, à\\s HH:mm:ss'), true)
+      .addField('**Você entrou em**', moment(joined).format('DD/MM/YYYY, à\\s HH:mm:ss'), true)
       .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
       .setTimestamp()
 
@@ -55,18 +55,4 @@ module.exports = {
       usage: '!serverinfo',
     }
   },
-}
-
-/**
- * Formata a data passada para o padrão do Brasil.
- * @param {string} template
- * @param {Date=} [date]
- * @return {string}
- */
-function formatDate(template, date) {
-  const specs = 'YYYY:MM:DD:HH:mm:ss'.split(':')
-  date = new Date(date || Date.now() - new Date().getTimezoneOffset() * 6e4)
-  return date.toISOString().split(/[-:.TZ]/).reduce(function(t, item, i) {
-    return t.split(specs[i]).join(item)
-  }, template)
 }

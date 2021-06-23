@@ -20,12 +20,12 @@ module.exports = {
 
     const embed = new Discord.MessageEmbed()
       .setColor(process.env.COLOR)
-      .setThumbnail(`${client.user.avatarURL({ dynamic: true })}?size=1024`)
+      .setThumbnail(`${client.user.displayAvatarURL({ dynamic: true })}?size=1024`)
       .setAuthor('🤖 Minhas informações')
       .addField('**Meu nome**', userName)
       .addField('**Meu ID**', client.user.id)
       .addField('**Estou online a**', moment().to(client.startTime, true))
-      .addField('**Fui criado em**', formatDate('DD/MM/YYYY, às HH:mm:ss', date))
+      .addField('**Fui criado em**', moment(date).format('DD/MM/YYYY, à\\s HH:mm:ss'))
       .addField('🔗 **Meu código fonte**', link)
       .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
       .setTimestamp()
@@ -52,20 +52,4 @@ module.exports = {
       usage: '!botinfo',
     }
   },
-}
-/**
- * Formata a data passada para o padrão do Brasil.
- * @param {string} template
- * @param {Date=} [date]
- * @return {string}
- */
-function formatDate(template, date) {
-  const specs = 'YYYY:MM:DD:HH:mm:ss'.split(':')
-  date = new Date(date || Date.now() - new Date().getTimezoneOffset() * 6e4)
-  return date
-    .toISOString()
-    .split(/[-:.TZ]/)
-    .reduce(function(t, item, i) {
-      return t.split(specs[i]).join(item)
-    }, template)
 }

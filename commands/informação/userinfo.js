@@ -28,10 +28,10 @@ module.exports = {
       .addField('**ID**', member.user.id, inline)
       .addField('**Apelido**', `${member.nickname || 'Nenhum'}`)
       .addField('**Bot**', `${bot}`, inline, true)
-      .addField('**Jogando**', `${activity !== null ? activity : ' Nada'}`, inline, true)
-      .addField('**Cargo(s)**', `${roles.length < 10 ? roles.join(', ') : roles.length > 10 ? this.client.utils.trimArray(roles) : 'Nenhum'}`)
-      .addField('**Entrou no Discord em**', formatDate('DD/MM/YYYY, às HH:mm:ss', member.user.createdAt), true)
-      .addField('**Entrou no servidor em**', formatDate('DD/MM/YYYY, às HH:mm:ss', member.joinedAt), true)
+      .addField('**Jogando**', `${activity !== null ? activity : 'Nada'}`, inline, true)
+      .addField('**Cargo(s)**', (roles.length < 10 && roles.length > 0) ? roles.length < 10 ? roles.join(', ') : this.client.utils.trimArray(roles) : 'Nenhum')
+      .addField('**Entrou no Discord em**', moment(member.user.createdAt).format('DD/MM/YYYY, à\\s HH:mm:ss'), true)
+      .addField('**Entrou no servidor em**', moment(member.joinedAt).format('DD/MM/YYYY, à\\s HH:mm:ss'), true)
       .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
       .setTimestamp()
 
@@ -53,18 +53,4 @@ module.exports = {
       usage: '!userinfo',
     }
   },
-}
-
-/**
- * Formata a data passada para o padrão do Brasil.
- * @param {string} template
- * @param {Date=} [date]
- * @return {string}
- */
-function formatDate(template, date) {
-  const specs = 'YYYY:MM:DD:HH:mm:ss'.split(':')
-  date = new Date(date || Date.now() - new Date().getTimezoneOffset() * 6e4)
-  return date.toISOString().split(/[-:.TZ]/).reduce(function(t, item, i) {
-    return template.split(specs[i]).join(item)
-  }, template)
 }
