@@ -33,7 +33,7 @@ module.exports = {
     if (client.user.presence.status) {
       embed.addField(
         '**Status**',
-        `${status[client.user.presence.status]}`,
+        status[client.user.presence.status],
         inline,
         true,
       )
