@@ -31,8 +31,7 @@ module.exports = {
       .addField('**Boost**', message.guild.premiumSubscriptionCount || '0', true)
       .addField('**Canais de texto**', channels.filter(channel => channel.type === 'text').size, true)
       .addField('**Canais de voz**', channels.filter(channel => channel.type === 'voice').size, true)
-      .addField('**Criado em**', moment(date).format('DD/MM/YYYY, à\\s HH:mm:ss'), true)
-      .addField('**Você entrou em**', moment(joined).format('DD/MM/YYYY, à\\s HH:mm:ss'), true)
+      .setDescription(`Servidor criado **<t:${moment(date).unix()}:R>** e você está nele **<t:${moment(joined).unix()}:R>**!`)
       .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
       .setTimestamp()
 

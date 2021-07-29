@@ -30,8 +30,7 @@ module.exports = {
       .addField('**Bot**', bot, inline, true)
       .addField('**Jogando**', activity !== null ? activity : 'Nada', inline, true)
       .addField('**Cargo(s)**', (roles.length < 10 && roles.length > 0) ? roles.length < 10 ? roles.join(', ') : this.client.utils.trimArray(roles) : 'Nenhum')
-      .addField('**Entrou no Discord em**', moment(member.user.createdAt).format('DD/MM/YYYY, à\\s HH:mm:ss'), true)
-      .addField('**Entrou no servidor em**', moment(member.joinedAt).format('DD/MM/YYYY, à\\s HH:mm:ss'), true)
+      .setDescription(`Está no Discord **<t:${moment(member.user.createdAt).unix()}:R>** e no servidor **<t:${moment(member.joinedAt).unix()}:R>**!`)
       .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
       .setTimestamp()
 
