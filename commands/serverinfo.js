@@ -26,6 +26,7 @@ module.exports = {
       .addField('**Dono(a)**', `${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`)
       .addField('**Região**', region[message.guild.region], true)
       .addField('**Humanos | Bots**', `${message.guild.members.filter(member => !member.user.bot).size} | ${message.guild.members.filter(member => member.user.bot).size}`)
+      .addField('**Online**', `Há ${(message.guild.members.cache.filter(member => !member.user.bot).size - message.guild.members.cache.filter(member => member.presence.status == "offline").size)} humanos online` ;`
       .addField('**Canais**', message.guild.channels.size, true)
       .addField('**Cargos**', message.guild.roles.size, true)
       .addField('**Criado em**', formatDate('DD/MM/YYYY, às HH:mm:ss', date))
