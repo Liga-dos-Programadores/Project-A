@@ -29,7 +29,7 @@ module.exports = {
       let data = ''
 
       // Caso ocorra um erro
-      if (res.statusCode !== '200') {
+      if (res.statusCode !== 200) {
         message.reply('Infelizmente eu não consegui pegar uma foto de gato para você. 😔')
         return
       }
