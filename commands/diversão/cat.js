@@ -1,4 +1,3 @@
-
 /**
  * O Comando "cat" envia um gif ou uma imagem aleatória de um ou mais gatos.
 */
@@ -8,8 +7,8 @@ const axios = require('axios').default
 
 const api = axios.create({
   baseURL: 'https://api.thecatapi.com/v1',
-  timeout: 1000
-});
+  timeout: 1000,
+})
 
 const titles = [
   'Lindo gatinho',
@@ -30,7 +29,7 @@ module.exports = {
 
   run: async (client, message, args) => {
     try {
-      const response = await api.get('images/search');
+      const response = await api.get('images/search')
       const embed = new Discord.MessageEmbed()
         .setAuthor(randomTitle() + ' 🐱')
         .setImage(response.data[0].url)
