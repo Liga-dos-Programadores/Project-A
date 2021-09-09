@@ -3,9 +3,13 @@
 */
 
 const Discord = require('discord.js')
-const https = require('https')
+const axios = require('axios').default
 
-const api = 'https://aws.random.cat/meow'
+const api = axios.create({
+  baseURL: 'https://api.thecatapi.com/v1',
+  timeout: 1000,
+})
+
 const titles = [
   'Lindo gatinho',
   'Meow!',
@@ -17,7 +21,6 @@ const titles = [
 
 function randomTitle() {
   if (titles.length === 0) { return undefined }
-
   const index = Math.floor(Math.random() * titles.length)
   return titles[index]
 }
@@ -25,32 +28,18 @@ function randomTitle() {
 module.exports = {
 
   run: async (client, message, args) => {
-    https.get(api, {}, (res) => {
-      let data = ''
-
-      // Caso ocorra um erro
-      if (res.statusCode !== '200') {
-        message.reply('Infelizmente eu não consegui pegar uma foto de gato para você. 😔')
-        return
-      }
-
-      res.on('data', (chunk) => {
-        data += chunk
-      })
-
-      res.on('end', () => {
-        const response = JSON.parse(data)
-
-        const embed = new Discord.MessageEmbed()
-          .setAuthor(randomTitle() + ' 🐱')
-          .setImage(response.file)
-          .setColor(process.env.COLOR)
-          .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
-          .setTimestamp()
-
-        message.channel.send(embed)
-      })
-    }).on('error', (error) => console.log(error))
+    try {
+      const response = await api.get('images/search')
+      const embed = new Discord.MessageEmbed()
+        .setAuthor(randomTitle() + ' 🐱')
+        .setImage(response.data[0].url)
+        .setColor(process.env.COLOR)
+        .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
+        .setTimestamp()
+      message.channel.send(embed)
+    } catch (error) {
+      message.reply('Infelizmente eu não consegui pegar uma foto de gato para você. 😔')
+    }
   },
 
   conf: {},
@@ -58,7 +47,7 @@ module.exports = {
   get help() {
     return {
       name: 'cat',
-      description: 'Envia um gif ou uma imagem aleatória de um ou mais gatos! API: ' + api,
+      description: 'Envia um gif ou uma imagem aleatória de um ou mais gatos! API: https://api.thecatapi.com/v1/images/get',
       usage: '!cat',
       category: 'Diversão',
     }
