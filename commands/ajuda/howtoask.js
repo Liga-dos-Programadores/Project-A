@@ -5,6 +5,7 @@
 const Discord = require('discord.js')
 
 module.exports = {
+
   /**
     * Primeiro o metodo run(client, message, args) será executado pelo nosso arquivo message.js
     * Que passará os argumentos atraves do middleware que programamos.
@@ -19,14 +20,17 @@ module.exports = {
       .setTimestamp()
     message.channel.send({ embed })
   },
+
   /**
     * Aqui podemos colocar mais algumas configurações do comando.
   */
+
   conf: {},
 
   /**
     * Aqui exportamos ajuda do comando como o seu nome categoria, descrição, etc...
   */
+ 
   get help() {
     return {
       name: 'howtoask',

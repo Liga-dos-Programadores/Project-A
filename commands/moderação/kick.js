@@ -20,6 +20,10 @@ module.exports = {
       .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
       .setTimestamp()
 
+    if (member.hasPermission('ADMINISTRATOR')) {
+      return message.channel.send(`${message.author}, você não tem poder contra esse usuário!`)
+    }
+
     if (!user) {
       return message.channel.send(new Discord.MessageEmbed()
         .setColor(process.env.COLOR)

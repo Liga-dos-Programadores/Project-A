@@ -6,7 +6,7 @@ const Discord = require('discord.js')
 module.exports = {
 
   /** Primeiro o metodo run(client, message, args) será executado pelo arquivo message.js
-  * Que passará os argumentos atraves do middleware.
+    * Que passará os argumentos atraves do middleware.
   */
 
   run: async function(client, message, args) {

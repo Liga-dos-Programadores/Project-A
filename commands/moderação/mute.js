@@ -15,6 +15,11 @@ module.exports = {
     }
 
     const mutedRole = message.guild.roles.cache.get(process.env.CARGO_MUTADO)
+
+    if (member.hasPermission('ADMINISTRATOR')) {
+      return message.channel.send(`${message.author}, você não tem poder contra esse usuário!`)
+    }
+    
     if (!mutedRole) {
       return message.channel.send(new Discord.MessageEmbed()
         .setColor(process.env.COLOR)

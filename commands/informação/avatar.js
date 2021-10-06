@@ -7,7 +7,7 @@ const Discord = require('discord.js')
 module.exports = {
 
   /** Primeiro o metodo run(client, message, args) será executado pelo arquivo message.js
-  * Que passará os argumentos atraves do middleware.
+    * Que passará os argumentos atraves do middleware.
   */
 
   run: function(client, message, args) {
@@ -26,7 +26,7 @@ module.exports = {
   conf: {},
 
   /**
-  * Aqui exportamos ajuda do comando como o seu nome categoria, descrição, etc...
+    * Aqui exportamos ajuda do comando como o seu nome categoria, descrição, etc...
   */
 
   get help() {

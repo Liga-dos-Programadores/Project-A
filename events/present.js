@@ -21,14 +21,13 @@ module.exports = async (client, message) => {
     }
     message.author
       .send({ embed: embed })
-      // TODO: Handle properly //
       .catch(() =>
         message.reply(
           'Me desculpe, mas eu não tenho permissões para enviar DM para você!',
         ),
       )
 
-    // TODO: Check if the bot has permission before trying to delete //
+    // TODO: Checar se o bot pode deletar a mensagem //
     message.delete().catch(console.error)
   }
 }

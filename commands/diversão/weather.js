@@ -8,21 +8,21 @@ const weather = require('weather-js')
 module.exports = {
 
   /** Primeiro o metodo run(client, message, args) será executado pelo arquivo message.js
-  * Que passará os argumentos atraves do middleware.
+    * Que passará os argumentos atraves do middleware.
   */
 
   run: function(client, message, args) {
+    if (!args[0]) {
+      return message.channel.send(new Discord.MessageEmbed()
+        .setColor(process.env.COLOR)
+        .setDescription('Especifique uma localidade.'))
+    }
+
     weather.find({ search: args.join(' '), degreeType: 'C' }, function(error, result) {
       if (error) {
         return message.channel.send(new Discord.MessageEmbed()
           .setColor(process.env.COLOR)
           .setDescription('Não foi possível encontrar esse lugar! '))
-      }
-
-      if (!args[0]) {
-        return message.channel.send(new Discord.MessageEmbed()
-          .setColor(process.env.COLOR)
-          .setDescription('Especifique uma localidade.'))
       }
 
       if (result === undefined || result.length === 0) {

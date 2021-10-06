@@ -1,22 +1,19 @@
 /**
- * O Comando "cat" envia um gif ou uma imagem aleatória de um ou mais gatos.
+ * O Comando "capybara" envia um gif de capivaras
 */
 
 const Discord = require('discord.js')
 const axios = require('axios').default
 
-const api = axios.create({
-  baseURL: 'https://api.thecatapi.com/v1',
-  timeout: 1000,
-})
+const capivaraURL = `https://api.tenor.com/v1/random?&key=${process.env.TENOR_TOKEN}&q=capivara&contentfilter=high&limit=1`
 
 const titles = [
-  'Lindo gatinho',
-  'Meow!',
+  'Linda capivara',
+  'Faço que som mesmo?!',
   'Pare de procrastinar.',
   'Aproveitando bem o dia!',
   'Sim.',
-  'A mimir?',
+  'Tem gente que acha que sou um cachorro >:(',
 ]
 
 function randomTitle() {
@@ -29,17 +26,16 @@ module.exports = {
 
   run: async (client, message, args) => {
     try {
-      const response = await api.get('images/search')
-      console.log(response)
+      const response = await axios.get(capivaraURL)
       const embed = new Discord.MessageEmbed()
-        .setAuthor(randomTitle() + ' 🐱')
-        .setImage(response.data[0].url)
+        .setAuthor(randomTitle())
+        .setImage(response.data.results[0].media[0].gif.url)
         .setColor(process.env.COLOR)
         .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
         .setTimestamp()
       message.channel.send(embed)
     } catch (error) {
-      message.reply('Infelizmente eu não consegui pegar uma foto de gato para você. 😔')
+      message.reply('Infelizmente eu não consegui pegar um gif de capivara para você. 😔')
     }
   },
 
@@ -47,9 +43,9 @@ module.exports = {
 
   get help() {
     return {
-      name: 'cat',
-      description: 'Envia um gif ou uma imagem aleatória de um ou mais gatos! API: https://api.thecatapi.com/v1/images/get',
-      usage: '!cat',
+      name: 'capybara',
+      description: 'O Comando "capybara" envia um gif de capivaras!',
+      usage: '!capybara',
       category: 'Diversão',
     }
   },

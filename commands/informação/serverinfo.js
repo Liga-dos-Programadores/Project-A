@@ -40,13 +40,13 @@ module.exports = {
     message.channel.send(embed)
   },
   /**
-     * Aqui podemos colocar mais algumas configurações do comando.
-     */
+    * Aqui podemos colocar mais algumas configurações do comando.
+  */
   conf: {},
 
   /**
-     * Aqui exportamos ajuda do comando como o seu nome categoria, descrição, etc...
-     */
+    * Aqui exportamos ajuda do comando como o seu nome categoria, descrição, etc...
+  */
   get help() {
     return {
       name: 'serverinfo',

@@ -20,10 +20,10 @@ module.exports = {
 
   get help() {
     return {
-      name: 'tias',
+      name: 'tryit',
       category: 'Útil',
       description: 'Irá enviar um video de auto ajuda para aqueles que estão com determinada dúvida.',
-      usage: '!tias',
+      usage: '!tryit',
     }
   },
 }
