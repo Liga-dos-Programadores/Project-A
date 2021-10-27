@@ -5,10 +5,10 @@ module.exports = {
     if (!message.member.hasPermission(['MANAGE_MESSAGES', 'ADMINISTRATOR'])) { return message.channel.send('> **Você não tem permissão para usar esse comando!**').then(m => m.delete({ timeout: 2000 })) }
 
     /** Emojis */
-    const memberEmoji = process.env.SERVER_EMOJI
-    const frontendEmoji = process.env.FRONTEND_EMOJI
-    const backendEmoji = process.env.BACKEND_EMOJI
-    const fullstackEmoji = process.env.FULLSTACK_EMOJI
+    const memberEmoji = message.guild.emojis.cache.get(process.env.SERVER_EMOJI)
+    const frontendEmoji = message.guild.emojis.cache.get(process.env.FRONTEND_EMOJI)
+    const backendEmoji = message.guild.emojis.cache.get(process.env.BACKEND_EMOJI)
+    const fullstackEmoji = message.guild.emojis.cache.get(process.env.FULLSTACK_EMOJI)
 
     /** Roles */
     const memberRole = message.guild.roles.cache.get(process.env.CARGO_MEMBRO)
@@ -33,21 +33,23 @@ module.exports = {
       if (user.bot || !reaction.message.guild) return
       if (reaction.message.id !== msg.id) return
 
-      switch (reaction.emoji.name) {
+      const userReact = await reaction.message.guild.members.cache.get(user.id)
+
+      switch (reaction.emoji) {
       case memberEmoji:
-        await reaction.message.guild.members.cache.get(user.id).roles.add(memberRole).catch(console.error)
+        await userReact.roles.add(memberRole).catch(console.error)
         break
 
       case frontendEmoji:
-        await reaction.message.guild.members.cache.get(user.id).roles.add(frontendRole).catch(console.error)
+        await userReact.roles.add(frontendRole).catch(console.error)
         break
 
       case backendEmoji:
-        await reaction.message.guild.members.cache.get(user.id).roles.add(backendRole).catch(console.error)
+        await userReact.roles.add(backendRole).catch(console.error)
         break
 
       case fullstackEmoji:
-        await reaction.message.guild.members.cache.get(user.id).roles.add(fullstackRole).catch(console.error)
+        await userReact.roles.add(fullstackRole).catch(console.error)
         break
 
       default:
@@ -62,21 +64,23 @@ module.exports = {
       if (!reaction.message.guild) return
       if (reaction.message.id !== msg.id) return
 
-      switch (reaction.emoji.name) {
+      const userReact = await reaction.message.guild.members.cache.get(user.id)
+
+      switch (reaction.emoji) {
       case memberEmoji:
-        await reaction.message.guild.members.cache.get(user.id).roles.remove(memberRole).catch(console.error)
+        await userReact.roles.remove(memberRole).catch(console.error)
         break
 
       case frontendEmoji:
-        await reaction.message.guild.members.cache.get(user.id).roles.remove(frontendRole).catch(console.error)
+        await userReact.roles.remove(frontendRole).catch(console.error)
         break
 
       case backendEmoji:
-        await reaction.message.guild.members.cache.get(user.id).roles.remove(backendRole).catch(console.error)
+        await userReact.roles.remove(backendRole).catch(console.error)
         break
 
       case fullstackEmoji:
-        await reaction.message.guild.members.cache.get(user.id).roles.remove(fullstackRole).catch(console.error)
+        await userReact.roles.remove(fullstackRole).catch(console.error)
         break
 
       default:
