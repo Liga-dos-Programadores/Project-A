@@ -16,7 +16,7 @@ module.exports = {
       .setColor(process.env.COLOR)
       .setAuthor('📝 Como perguntar')
       .setDescription('1. Descreva seu problema de forma simples e objetiva.\n2. Sempre que ao compartilhar algum código use as tags de [Markdown](https://support.discord.com/hc/en-us/articles/210298617-Markdown-Text-101-Chat-Formatting-Bold-Italic-Underline-) apropriadas.')
-      .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
+      .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=60,height=60')
       .setTimestamp()
     message.channel.send({ embed })
   },

@@ -51,7 +51,7 @@ module.exports = {
         .addField('Descrição', command.help.description)
         .addField('Categoria', command.help.category)
         .setColor(process.env.COLOR)
-        .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=150,height=150')
+        .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/ym2SEWz.png?width=150,height=150')
         .setTimestamp()
 
       return message.channel.send(helpcommandembed)

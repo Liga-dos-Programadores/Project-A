@@ -6,12 +6,14 @@ module.exports = {
 
     /** Emojis */
     const memberEmoji = message.guild.emojis.cache.get(process.env.SERVER_EMOJI)
+    const newsEmoji = message.guild.emojis.cache.get(process.env.NEWS_EMOJI)
     const frontendEmoji = message.guild.emojis.cache.get(process.env.FRONTEND_EMOJI)
     const backendEmoji = message.guild.emojis.cache.get(process.env.BACKEND_EMOJI)
     const fullstackEmoji = message.guild.emojis.cache.get(process.env.FULLSTACK_EMOJI)
 
     /** Roles */
     const memberRole = message.guild.roles.cache.get(process.env.CARGO_MEMBRO)
+    const newsRole = message.guild.roles.cache.get(process.env.NOVIDADES)
     const frontendRole = message.guild.roles.cache.get(process.env.CARGO_FRONTEND)
     const backendRole = message.guild.roles.cache.get(process.env.CARGO_BACKEND)
     const fullstackRole = message.guild.roles.cache.get(process.env.CARGO_FULLSTACK)
@@ -19,10 +21,17 @@ module.exports = {
     const embed = new Discord.MessageEmbed()
       .setColor(process.env.COLOR)
       .setAuthor('Cargos!')
-      .setDescription(`Reaja para obter os cargos! Obs: O cargo **Membro** é o mais importante!\n\n${memberEmoji} - **Cargo ${memberRole}**\n\n${frontendEmoji} - **Cargo ${frontendRole}**\n\n${backendEmoji} - **Cargo ${backendRole}**\n\n${fullstackEmoji} - **Cargo ${fullstackRole}**\n\n`)
+      .setDescription(`
+        Reaja para obter os cargos! Obs: O cargo **Membro** é o mais importante!
+        \n\n${memberEmoji} - **Cargo ${memberRole}**
+        \n\n${newsEmoji} - **Cargo ${newsRole}**
+        \n\n${frontendEmoji} - **Cargo ${frontendRole}**
+        \n\n${backendEmoji} - **Cargo ${backendRole}**
+        \n\n${fullstackEmoji} - **Cargo ${fullstackRole}**\n\n`)
 
     const msg = await message.channel.send(embed)
     msg.react(`${memberEmoji}`)
+    msg.react(`${newsEmoji}`)
     msg.react(`${frontendEmoji}`)
     msg.react(`${backendEmoji}`)
     msg.react(`${fullstackEmoji}`)
@@ -38,6 +47,10 @@ module.exports = {
       switch (reaction.emoji) {
       case memberEmoji:
         await userReact.roles.add(memberRole).catch(console.error)
+        break
+
+      case newsEmoji:
+        await userReact.roles.add(newsRole).catch(console.error)
         break
 
       case frontendEmoji:
@@ -69,6 +82,10 @@ module.exports = {
       switch (reaction.emoji) {
       case memberEmoji:
         await userReact.roles.remove(memberRole).catch(console.error)
+        break
+
+      case newsEmoji:
+        await userReact.roles.remove(newsRole).catch(console.error)
         break
 
       case frontendEmoji:

@@ -18,7 +18,11 @@
   </a>
 </p>
 
+#
 
+> ## 📦 Versão do discord.js : ^12.5.1
+
+#
 ## Um projeto totalmente livre
 
 Fizemos este projeto visando quem quer se aprofundar mais em [discord.js](https://discord.js.org/#/) e JavaScript. Combinamos as melhores práticas do JavaScript para criar um bot simples e funcional que possui funções como Command Handlers e Event Handlers!
