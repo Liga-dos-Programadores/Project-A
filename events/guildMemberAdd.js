@@ -9,7 +9,7 @@ module.exports = async (client, member) => {
     .setColor(process.env.COLOR)
     .setThumbnail(`${member.user.displayAvatarURL({ dynamic: true })}?size=1024`)
     .setTitle('👋 Bem-vindo(a) a Liga dos Programadores!')
-    .setDescription(`${member}, vá em <#824486458814365726> e leia os tópicos. E também não se esqueça de se apresentar em <#825028534006841354> :)`)
+    .setDescription(`${member}, vá em <#701166972003549244> e leia os tópicos. E também não se esqueça de se apresentar em <#395257984764346368> :)`)
     .setImage('https://i.imgur.com/W2L4r1L.png')
     .setFooter('2021 © Liga dos Programadores', 'https://i.imgur.com/Mu4KEVh.png?width=200,height=200')
     .setTimestamp()
